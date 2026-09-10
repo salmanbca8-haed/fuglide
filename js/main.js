@@ -839,8 +839,6 @@ async function initFooter() {
 }
 
 function getRelativeSiteRoot() {
-  if (window.location.protocol !== 'file:') return '';
-
   const currentPath = window.location.pathname.toLowerCase();
   if (currentPath.includes('/course_details.html/')) return '../../';
   if (currentPath.includes('/pages/')) return '../';
@@ -848,8 +846,6 @@ function getRelativeSiteRoot() {
 }
 
 function normalizeLocalSitePaths() {
-  if (window.location.protocol !== 'file:') return;
-
   const relativeRoot = getRelativeSiteRoot();
   document.querySelectorAll('a[href^="/"], img[src^="/"]').forEach((element) => {
     const attribute = element.hasAttribute('href') ? 'href' : 'src';
