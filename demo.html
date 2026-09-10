@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Fu-Glide delivers software development, app development, and tutoring services with modern digital solutions and student-focused learning." />
+    <meta name="keywords" content="software development, app development, tutoring, Fu-Glide" />
+    <title>Fu-Glide | Software, Apps, and Tutoring</title>
+    <link rel="icon" href="images/icon.png" type="image/png" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/transitions.css" />
+    <style>
+      :root {
+  --bg: #f5f7ff;
+  --surface: rgba(255, 255, 255, 0.92);
+  --surface-alt: rgba(238, 242, 255, 0.85);
+  --text: #14213d;
+  --muted: #475569;
+  --primary: #4f46e5;
+  --secondary: #6d28d9;
+  --accent: #14b8a6;
+  --border: rgba(223, 231, 255, 0.8);
+  --shadow: 0 15px 35px rgba(20, 33, 61, 0.08);
+  --radius: 18px;
+  --max-width: 1200px;
+  --transition: 0.25s ease;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; height: 100%; }
+
+body {
+  margin: 0;
+  font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  color: var(--text);
+  line-height: 1.6;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* --- Fixed Background & Overlay --- */
+.bg-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Update this path to your desired static background image */
+  background-image: url('../images/bg-pattern.jpg'); 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -2;
+}
+
+.bg-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Adjust tint/color or gradient here */
+  background: rgba(245, 247, 255, 0.85); 
+  backdrop-filter: blur(4px);
+  z-index: -1;
+}
+
+.content-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Navigation & Header --- */
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+iframe { width: 100%; min-height: 320px; border: 0; border-radius: var(--radius); box-shadow: var(--shadow); }
+.container { width: min(var(--max-width), calc(100% - 2rem)); margin: 0 auto; }
+
+.site-header {
+  position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border);
+}
+.navbar { display: flex; align-items: center; justify-content: space-between; min-height: 72px; gap: 1rem; }
+.brand { display: flex; align-items: center; gap: 0.7rem; font-weight: 800; font-size: 1.1rem; }
+.brand-mark { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; }
+.nav-links { display: flex; align-items: center; gap: 1rem; }
+.nav-links a, .dropdown-toggle { background: none; border: 0; color: var(--text); font-weight: 600; cursor: pointer; padding: 0.5rem 0.8rem; border-radius: 999px; transition: var(--transition); }
+.nav-links a:hover, .dropdown-toggle:hover, .dropdown:hover .dropdown-toggle { background: var(--surface-alt); color: var(--primary); }
+.dropdown { position: relative; }
+.dropdown-menu {
+  position: absolute; top: calc(100% + 0.65rem); left: 0; display: none; flex-direction: column; min-width: 240px; padding: 0.6rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); backdrop-filter: blur(12px);
+}
+.dropdown:hover .dropdown-menu, .dropdown:focus-within .dropdown-menu { display: flex; }
+.dropdown-menu a { padding: 0.6rem 0.8rem; border-radius: 10px; }
+.dropdown-menu a:hover { background: var(--surface-alt); }
+.nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: 0; cursor: pointer; padding: 0.3rem; }
+.nav-toggle span { width: 24px; height: 2px; background: var(--text); border-radius: 999px; }
+
+/* --- Layout Sections --- */
+.hero, .page-hero { padding: 5rem 0 3rem; }
+.hero-grid, .grid-2, .contact-grid { display: grid; gap: 2rem; align-items: center; }
+.hero-grid { grid-template-columns: 1.2fr 0.8fr; }
+.grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.contact-grid { grid-template-columns: 0.9fr 1.1fr; }
+.eyebrow { text-transform: uppercase; letter-spacing: 0.2em; font-weight: 700; color: var(--primary); font-size: 0.8rem; margin-bottom: 0.65rem; }
+h1, h2, h3 { line-height: 1.2; }
+h1 { font-size: clamp(2rem, 4vw, 3.2rem); margin: 0 0 1rem; }
+h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); margin-bottom: 0.75rem; }
+p { margin: 0 0 1rem; color: var(--muted); }
+
+/* --- Buttons --- */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; border: 0; padding: 0.9rem 1.2rem; border-radius: 999px; font-weight: 700; cursor: pointer; transition: transform var(--transition), box-shadow var(--transition); }
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; box-shadow: var(--shadow); }
+.btn-secondary { background: var(--surface); color: var(--primary); border: 1px solid var(--border); }
+.btn-accent { background: var(--accent); color: white; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 0.85rem; margin-top: 1.4rem; }
+
+/* --- Cards & Containers --- */
+.card-panel, .info-card, .testimonial-card, .stat-card, .team-card, .portfolio-card, .form-shell {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.3rem; backdrop-filter: blur(8px);
+}
+.section { padding: 4rem 0; }
+.stats-grid, .testimonial-grid, .card-grid, .team-grid { display: grid; gap: 1.2rem; }
+.stats-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.testimonial-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.team-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.feature-list { display: grid; gap: 1rem; }
+.feature-item { padding: 1rem; border-radius: var(--radius); background: var(--surface-alt); backdrop-filter: blur(8px); }
+.section-heading { margin-bottom: 2rem; }
+.cta-section { text-align: center; }
+.timeline { display: grid; gap: 0.8rem; }
+.timeline-item { padding: 1rem 1.2rem; background: var(--surface); border-radius: 14px; border: 1px solid var(--border); }
+
+/* --- Forms & Footer --- */
+.contact-form { display: grid; gap: 1rem; }
+.contact-form label { display: grid; gap: 0.4rem; font-weight: 600; color: var(--text); }
+.contact-form input, .contact-form select, .contact-form textarea {
+  width: 100%; padding: 0.8rem 0.95rem; border-radius: 12px; border: 1px solid var(--border); background: #fbfcff; font: inherit;
+}
+.form-message { min-height: 1.2rem; font-weight: 600; color: var(--primary); }
+.site-footer { padding: 3rem 0; background: rgba(15, 23, 42, 0.95); color: #f8fafc; backdrop-filter: blur(10px); }
+.footer-grid { display: grid; grid-template-columns: 1.2fr 0.8fr 0.8fr; gap: 2rem; }
+.site-footer a { color: #cbd5e1; }
+.site-footer a:hover { color: white; }
+.social-links { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+.whatsapp-float { position: fixed; right: 1rem; bottom: 1rem; display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #25d366, #128c7e); color: white; font-weight: 800; box-shadow: var(--shadow); z-index: 1200; }
+
+/* --- Animations & Responsive --- */
+.reveal { opacity: 0; transform: translateY(18px); transition: all 0.7s ease; }
+.reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 900px) {
+  .hero-grid, .grid-2, .contact-grid, .footer-grid, .stats-grid, .testimonial-grid, .card-grid, .team-grid { grid-template-columns: 1fr; }
+  .nav-toggle { display: flex; }
+  .nav-links { display: none; position: absolute; top: 72px; right: 1rem; left: 1rem; background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; flex-direction: column; align-items: flex-start; box-shadow: var(--shadow); }
+  .nav-links.is-open { display: flex; }
+  .dropdown-menu { position: static; display: none; min-width: auto; border: 0; box-shadow: none; padding-left: 1rem; }
+  .dropdown:hover .dropdown-menu, .dropdown:focus-within .dropdown-menu { display: flex; }
+}
+
+@media (max-width: 600px) {
+  .hero, .page-hero { padding-top: 3rem; }
+  .section { padding: 3rem 0; }
+  .btn { width: 100%; }
+  .hero-actions { flex-direction: column; }
+}
+    </style>
+  </head>
+  <body>
+    <!-- Background Layer & Overlay -->
+    <div class="bg-layer"></div>
+    <div class="bg-overlay"></div>
+
+    <!-- Main Content -->
+    <div class="content-wrapper">
+      <header class="site-header animate-in">
+  <div class="announcement-bar" role="region" aria-label="Fu-Glide announcements">
+    <div class="announcement-bar__contact">
+      <a class="announcement-bar__phone" href="tel:+919150792336">+91 91507 92336</a>
+      <a class="announcement-bar__instagram" href="https://www.instagram.com/fu_glide_iin/?hl=en" target="_blank"
+        rel="noopener noreferrer" aria-label="Follow Fu-Glide on Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.79 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+        </svg>
+      </a>
+      <a class="announcement-bar__email" href="mailto:fuglide@gmail.com" aria-label="Email Fu-Glide">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 5h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm0 2v.5l9 6 9-6V7H3zm18 10V9.9l-8.45 5.63a1 1 0 0 1-1.1 0L3 9.9V17h18z" />
+        </svg>
+      </a>
+    </div>
+    <div class="announcement-bar__marquee">
+      <div class="announcement-bar__viewport">
+        <div class="announcement-bar__track">
+          <div class="announcement-bar__group">
+            <span class="announcement-bar__item">Best AI Course in Dindigul</span>
+            <span class="announcement-bar__item">Practical Generative AI Training</span>
+            <span class="announcement-bar__item">Robotics &amp; Automation Programs Open</span>
+          </div>
+          <div class="announcement-bar__group" aria-hidden="true">
+            <span class="announcement-bar__item">Best AI Course in Dindigul</span>
+            <span class="announcement-bar__item">Practical Generative AI Training</span>
+            <span class="announcement-bar__item">Robotics &amp; Automation Programs Open</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="navbar container">
+    <a class="brand" href="/index.html">
+      <img src="/images/logo.png" alt="Fu-Glide Logo" class="brand-logo" />
+    </a>
+
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="nav-links">
+      <a href="/index.html">Home</a>
+      <a href="/pages/about.html">About</a>
+
+      <div class="dropdown">
+        <button class="dropdown-toggle" type="button">
+          Courses
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="dropdown-menu">
+          <a href="/pages/tutoring.html">IT courses & Technology Training</a>
+          <a href="/pages/software-achievements.html">Non-IT Courses</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropdown-toggle" type="button">
+          Services
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="dropdown-menu">
+          <!-- Added distinct hashes so dropdown selections can jump to specific areas -->
+          <a href="/pages/services2.html#seo">SEO</a>
+          <a href="/pages/services2.html#smo">SMO</a>
+          <a href="/pages/services2.html#ads">Meta and Google Ads</a>
+          <a href="/pages/services2.html#webdev">Website Development</a>
+          <a href="/pages/services2.html#branding">Branding and Marketing</a>
+          <a href="/pages/services2.html#robotics">Robotic Services</a>
+          <a href="/pages/services2.html#proposals">Business Proposals and Writing</a>
+          <a href="/pages/services2.html#growth">Business Growth Development</a>
+        </div>
+      </div>
+
+      <a href="/pages/blog.html">Blog</a>
+      <a href="/pages/apply.html">Apply</a>
+      <a href="/pages/contact.html">Contact</a>
+    </div>
+  </nav>
+</header>
+
+      <main>
+        <section class="hero animate-in">
+          <div class="container hero-grid">
+            <div class="hero-content reveal animate-in">
+              <p class="eyebrow">Software • Apps • Tutoring</p>
+              <h1 style="color: rgb(98, 9, 147);">Our Vision & Mission</h1>
+              <span style="color: rgb(255, 194, 9); font-weight: bold;">FU-GLIDE</span>
+              <p>was born from a simple belief that true education should empower people to think, act and grow with confidence. Our vision is to create a future-ready community where students, professionals and entrepreneurs gain not just knowledge, but real-world clarity and purpose. Through practical learning, business awareness, and ethical guidance, our mission is to bridge the gap between education and industry, turning ambition into action and ideas into impact. At FU-GLIDE, we are not just building skills we are shaping responsible leaders and meaningful careers for tomorrow.</p>
+              <h3 style="color: rgb(255, 194, 9); font-weight: bold;">Mr. T Hariharan</h3>
+              <p>Founder,</p>
+              <p style="font-size: larger; font-weight: bold;">Fu-Glide</p>
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="pages/software.html">Our Software</a>
+                <a class="btn btn-secondary" href="pages/app-development.html">Our Apps</a>
+                <a class="btn btn-accent" href="pages/apply.html">Join Tutoring</a>
+              </div>
+            </div>
+            <div class="hero-card reveal animate-in">
+              <div class="card-panel">
+                <h3>Why clients choose Fu-Glide</h3>
+                <ul>
+                  <li>Fast, reliable product delivery</li>
+                  <li>Modern mobile and web solutions</li>
+                  <li>Personalized tutoring with measurable results</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section intro-section animate-in">
+          <div class="container grid-2">
+            <div class="reveal animate-in">
+              <p class="eyebrow">About the company</p>
+              <h2>One team, three impact-driven services.</h2>
+              <p>Fu-Glide blends technology expertise and education to help businesses grow and students unlock new opportunities through practical learning.</p>
+            </div>
+            <div class="feature-list reveal animate-in">
+              <div class="feature-item animate-in">
+                <h3>Software</h3>
+                <p>Web apps, dashboards, SaaS platforms, and business automation.</p>
+              </div>
+              <div class="feature-item animate-in">
+                <h3>Apps</h3>
+                <p>Android, iOS, and cross-platform apps designed for strong user experiences.</p>
+              </div>
+              <div class="feature-item animate-in">
+                <h3>Tutoring</h3>
+                <p>Structured mentoring for coding, technology, and academic growth.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section stats-section animate-in">
+          <div class="container">
+            <div class="section-heading reveal animate-in">
+              <p class="eyebrow">Results that speak</p>
+              <h2>Trusted by startups, growing businesses, and ambitious learners.</h2>
+            </div>
+            <div class="stats-grid">
+              <div class="stat-card reveal animate-in">
+                <h3>120+</h3>
+                <p>Projects delivered</p>
+              </div>
+              <div class="stat-card reveal animate-in">
+                <h3>2.5k</h3>
+                <p>Students taught</p>
+              </div>
+              <div class="stat-card reveal animate-in">
+                <h3>35</h3>
+                <p>Apps launched</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section testimonials-section animate-in">
+          <div class="container">
+            <div class="section-heading reveal animate-in">
+              <p class="eyebrow">Testimonials</p>
+              <h2>What clients and students say.</h2>
+            </div>
+            <div class="testimonial-grid">
+              <article class="testimonial-card reveal animate-in">
+                <p>“Fu-Glide transformed our workflow with a custom dashboard that saved us hours every week.”</p>
+                <h3>— Maya, Operations Lead</h3>
+              </article>
+              <article class="testimonial-card reveal animate-in">
+                <p>“The tutoring sessions were practical, encouraging, and structured around my learning goals.”</p>
+                <h3>— Daniel, Student</h3>
+              </article>
+              <article class="testimonial-card reveal animate-in">
+                <p>“Their app launch support was seamless from prototype to store publication.”</p>
+                <h3>— Riya, Founder</h3>
+              </article>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <div id="footer-placeholder"></div>
+
+      <!-- Back to Top Floating Button -->
+      <button id="backToTop" class="back-to-top" aria-label="Back to Top" title="Back to Top">
+        <svg viewBox="0 0 24 24">
+          <line x1="12" y1="19" x2="12" y2="5"></line>
+          <polyline points="5 12 12 5 19 12"></polyline>
+        </svg>
+      </button>
+
+      <a class="whatsapp-float" href="https://wa.me/9150792336?text=Hello%20Fu-Glide%2C%20I%20would%20like%20to%20connect." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+        <img src="icons/wp.png" alt="WhatsApp" />
+      </a>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+  </body>
+</html>
+

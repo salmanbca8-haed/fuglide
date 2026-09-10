@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A behind-the-scenes look at how Fu-Glide is managing more than five website projects at once." />
+  <title>Behind the Scenes: Running 5+ Website Projects at Once</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/transitions.css" />
+  <style>
+    :root {
+      --background: #050713;
+      --background-soft: #0b0d1d;
+      --card: rgba(18, 20, 43, 0.82);
+      --card-strong: #11142b;
+      --text: #f7f5ff;
+      --muted: #aaa9c2;
+      --line: rgba(185, 143, 255, 0.2);
+      --violet: #a96cff;
+      --purple: #6d3de2;
+      --glow: rgba(143, 82, 255, 0.28);
+      --radius: 22px;
+      --content-width: 760px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--background);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 50% -10%, rgba(112, 56, 224, 0.28), transparent 38rem),
+        linear-gradient(155deg, #08091a 0%, var(--background) 48%, #0e071b 100%);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.blog-page::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background: linear-gradient(180deg, rgba(6, 17, 36, 0.82) 0%, rgba(3, 8, 20, 0.92) 100%);
+      pointer-events: none;
+    }
+
+    body.blog-page > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .page-shell {
+      position: relative;
+      width: min(calc(100% - 36px), var(--content-width));
+      margin: 0 auto;
+      padding: 64px 0 84px;
+    }
+
+    .article-header {
+      margin-bottom: 34px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin: 0 0 10px;
+      padding: 4px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--violet);
+      background: rgba(169, 108, 255, 0.1);
+      font-size: 0.84rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.85rem, 4vw, 2.7rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      text-wrap: balance;
+    }
+
+    .article-date {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .article-content {
+      display: grid;
+      gap: 22px;
+    }
+
+    .image-placeholder {
+      margin: 0;
+    }
+
+    .image-placeholder figcaption {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .content-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px 30px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 45%),
+        var(--card);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(8px);
+    }
+
+    .content-card h2 {
+      margin: 0 0 12px;
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.45rem;
+      letter-spacing: -0.01em;
+    }
+
+    .content-card p {
+      margin: 0;
+      color: #e5e2f6;
+    }
+
+    .content-card p + p {
+      margin-top: 12px;
+    }
+
+    .content-card ul,
+    .content-card ol {
+      margin: 0;
+      padding-left: 22px;
+      color: #e5e2f6;
+    }
+
+    .content-card li + li {
+      margin-top: 8px;
+    }
+
+    li::marker {
+      color: var(--violet);
+      font-weight: 700;
+    }
+
+    .wiring-summary {
+      margin: 0;
+      padding: 18px 22px;
+      border-left: 3px solid var(--violet);
+      border-radius: 0 14px 14px 0;
+      color: #ece8f8;
+      background: linear-gradient(90deg, rgba(116, 60, 226, 0.2), rgba(116, 60, 226, 0.05));
+    }
+
+    .image {
+        display: block;
+        max-width: 100%;
+        border-radius: 12px;
+    }
+
+    .placeholder-box {
+      display: grid;
+      min-height: 250px;
+      place-items: center;
+      border: 1px dashed rgba(188, 148, 255, 0.65);
+      border-radius: 15px;
+      color: #c7a7ff;
+      background:
+        linear-gradient(135deg, rgba(119, 62, 232, 0.18), transparent 50%),
+        repeating-gradient(135deg, rgba(255, 255, 255, 0.025) 0 2px, transparent 2px 10px);
+      text-align: center;
+    }
+
+    .placeholder-box span {
+      padding: 12px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 999px;
+      background: rgba(14, 10, 31, 0.8);
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+
+    .cta {
+      margin-top: 36px;
+      padding: 34px 26px;
+      border: 1px solid rgba(195, 153, 255, 0.35);
+      border-radius: var(--radius);
+      background: linear-gradient(115deg, rgba(97, 45, 200, 0.68), rgba(50, 25, 106, 0.72));
+      box-shadow: 0 18px 55px var(--glow);
+      text-align: center;
+    }
+
+    .cta p {
+      margin: 0 0 18px;
+      color: #ece7fb;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 21px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 12px;
+      color: #180c35;
+      background: linear-gradient(135deg, #f0ddff, #b98bff);
+      box-shadow: 0 10px 24px rgba(8, 3, 22, 0.28);
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .cta-button:hover,
+    .cta-button:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(8, 3, 22, 0.38);
+    }
+
+    @media (max-width: 560px) {
+      .page-shell {
+        width: min(calc(100% - 22px), var(--content-width));
+        padding-top: 44px;
+      }
+
+      .content-card {
+        padding: 23px 20px;
+      }
+
+      .placeholder-box {
+        min-height: 190px;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="blog-page">
+  <header class="site-header animate-in">
+  <div class="announcement-bar" role="region" aria-label="Fu-Glide announcements">
+    <div class="announcement-bar__contact">
+      <a class="announcement-bar__phone" href="tel:+919150792336">+91 91507 92336</a>
+      <a class="announcement-bar__instagram" href="https://www.instagram.com/fu_glide_iin/?hl=en" target="_blank"
+        rel="noopener noreferrer" aria-label="Follow Fu-Glide on Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.79 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+        </svg>
+      </a>
+      <a class="announcement-bar__email" href="mailto:fuglide@gmail.com" aria-label="Email Fu-Glide">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 5h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm0 2v.5l9 6 9-6V7H3zm18 10V9.9l-8.45 5.63a1 1 0 0 1-1.1 0L3 9.9V17h18z" />
+        </svg>
+      </a>
+    </div>
+    <div class="announcement-bar__marquee">
+      <div class="announcement-bar__viewport">
+        <div class="announcement-bar__track">
+          <div class="announcement-bar__group">
+            <span class="announcement-bar__item">Best AI Course in Dindigul</span>
+            <span class="announcement-bar__item">Practical Generative AI Training</span>
+            <span class="announcement-bar__item">Robotics &amp; Automation Programs Open</span>
+          </div>
+          <div class="announcement-bar__group" aria-hidden="true">
+            <span class="announcement-bar__item">Best AI Course in Dindigul</span>
+            <span class="announcement-bar__item">Practical Generative AI Training</span>
+            <span class="announcement-bar__item">Robotics &amp; Automation Programs Open</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="navbar container">
+    <a class="brand" href="/index.html">
+      <img src="/images/logo.png" alt="Fu-Glide Logo" class="brand-logo" />
+    </a>
+
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="nav-links">
+      <a href="/index.html">Home</a>
+      <a href="/pages/about.html">About</a>
+
+      <div class="dropdown">
+        <button class="dropdown-toggle" type="button">
+          Courses
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="dropdown-menu">
+          <a href="/pages/tutoring.html">IT courses & Technology Training</a>
+          <a href="/pages/software-achievements.html">Non-IT Courses</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropdown-toggle" type="button">
+          Services
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="dropdown-menu">
+          <a href="/pages/services2.html#seo">SEO</a>
+          <a href="/pages/services2.html#smo">SMO</a>
+          <a href="/pages/services2.html#ads">Meta and Google Ads</a>
+          <a href="/pages/services2.html#webdev">Website Development</a>
+          <a href="/pages/services2.html#branding">Branding and Marketing</a>
+          <a href="/pages/services2.html#robotics">Robotic Services</a>
+          <a href="/pages/services2.html#proposals">Business Proposals and Writing</a>
+          <a href="/pages/services2.html#growth">Business Growth Development</a>
+        </div>
+      </div>
+
+      <a href="/pages/blog.html" style="color: #f6b84b;">Blog</a>
+      <a href="/pages/apply.html">Apply</a>
+      <a href="/pages/contact.html">Contact</a>
+    </div>
+  </nav>
+</header>
+
+  <main class="page-shell">
+      <button id="backToTop" class="back-to-top" aria-label="Back to Top" title="Back to Top">
+    <svg viewBox="0 0 24 24">
+      <line x1="12" y1="19" x2="12" y2="5"></line>
+      <polyline points="5 12 12 5 19 12"></polyline>
+    </svg>
+  </button>
+    <header class="article-header animate-in">
+      <p class="eyebrow">Studio Journal</p>
+      <h1>Behind the Scenes: Running 5+ Website Projects at Once</h1>
+      <p class="article-date">September 10, 2026</p>
+    </header>
+
+    <article class="article-content">
+      <figure class="image-placeholder animate-in">
+        <div class="placeholder-box" role="img" aria-label="Team working across multiple website projects placeholder">
+          <img src="./images/web1.jpg" alt="" class="image">
+        </div>
+        <figcaption>Juggling client sites, side projects, and internal builds — all at once</figcaption>
+      </figure>
+
+      <section class="content-card animate-in">
+        <p>Right now we've got more than five website projects moving at the same time on our end. Different clients, different stacks, different deadlines — all running in parallel. We wanted to write down how we're actually handling that, mostly so we remember what worked when the next batch lands.</p>
+      </section>
+
+      <section class="content-card animate-in">
+        <h2>Where We're At</h2>
+        <p>Between client work and a couple of internal builds, our team is currently juggling five-plus live projects. Some are early-stage — still in the wireframe and content-gathering phase. Others are close to launch and need daily attention. A few are maintenance and updates on sites we shipped months ago.</p>
+      </section>
+
+      <section class="content-card animate-in">
+        <h2>What We're Building</h2>
+        <ul>
+          <li>A course platform redesign with a new applications flow</li>
+          <li>Two client business sites, each with their own branding and CMS needs</li>
+          <li>A portfolio site for a design partner</li>
+          <li>An internal dashboard for tracking student enrollments</li>
+          <li>Ongoing updates and fixes on three previously delivered sites</li>
+        </ul>
+      </section>
+
+      <section class="content-card animate-in">
+        <h2>How We're Keeping It Together</h2>
+        <ol>
+          <li>Every project gets its own board, no shared to-do lists across clients.</li>
+          <li>We block specific days for specific projects instead of context-switching hourly.</li>
+          <li>Reusable components and templates get pulled out early so we're not rebuilding the same header five times.</li>
+          <li>Client updates go out on a fixed schedule, not whenever we remember to send them.</li>
+          <li>Anything blocked gets flagged the same day, not left to pile up.</li>
+        </ol>
+      </section>
+
+      <p class="wiring-summary animate-in">Setup: shared component library, per-project boards, fixed check-in days. That combination is what's actually kept five-plus projects from colliding into one another.</p>
+
+      <figure class="image-placeholder animate-in">
+        <div class="placeholder-box" role="img" aria-label="Project tracking board placeholder">
+          <img src="./images/project-board.png" alt="" class="image">
+        </div>
+        <figcaption>How we're tracking progress across projects</figcaption>
+      </figure>
+
+      <section class="content-card animate-in">
+        <h2>Problems We Ran Into</h2>
+        <ul>
+          <li>Two projects nearly collided on the same launch week, so we shifted one timeline earlier than felt comfortable.</li>
+          <li>A shared component broke on one site when we updated it for another, which taught us to version things more carefully.</li>
+          <li>Client feedback got lost in scattered chats until we moved everyone onto one shared thread per project.</li>
+          <li>We underestimated how much time content collection takes, and it kept pushing our own internal deadlines back.</li>
+        </ul>
+      </section>
+
+      <section class="content-card animate-in">
+        <h2>What's Next</h2>
+        <ul>
+          <li>Standardize a proper handoff checklist for every project we close out.</li>
+          <li>Bring in a dedicated project coordinator once we cross six or more active builds.</li>
+          <li>Document our shared component library properly instead of relying on memory.</li>
+        </ul>
+      </section>
+
+      <section class="content-card animate-in">
+        <h2>Takeaway</h2>
+        <p>Running this many projects at once isn't about working faster — it's about not letting any one project quietly fall behind while you're focused on another. The system we've built is far from perfect, but it's holding, and every project we ship teaches us something we'll use on the next one.</p>
+      </section>
+    </article>
+
+    <section class="cta animate-in" aria-label="Call to action">
+      <p>Explore more practical projects and learning guides from Fu-Glide.</p>
+      <a class="cta-button animate-in" href="pages/blog.html">Back to the blog</a>
+    </section>
+  </main>
+  <script src="js/animations.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

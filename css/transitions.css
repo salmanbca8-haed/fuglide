@@ -1,0 +1,27 @@
+/* ==========================================================================
+   Fu-Glide - Site-Wide Shared Entrance Transitions
+   ========================================================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+  .animate-in {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.45s ease-in, transform 0.45s ease-in;
+    transition-delay: var(--stagger-delay, 0s);
+    will-change: opacity, transform;
+  }
+
+  .animate-in.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Reduced motion fallback: ensure elements appear immediately */
+@media (prefers-reduced-motion: reduce) {
+  .animate-in {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}

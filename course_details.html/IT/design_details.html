@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UI/UX Design | Fu-Glide</title>
+    <link rel="icon" href="../../images/icon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../../css/style.css" />
+    <style>
+      /* Topic cards for "What You'll Learn" - safe to move into style.css later */
+      .topic-card img {
+        width: 48px;
+        height: 48px;
+        object-fit: contain;
+        margin-bottom: 0.75rem;
+      }
+    </style>
+    <link rel="stylesheet" href="../../css/transitions.css" />
+</head>
+  <body>
+    <header class="site-header animate-in">
+  <div class="announcement-bar" role="region" aria-label="Fu-Glide announcements">
+    <div class="announcement-bar__contact">
+      <a class="announcement-bar__phone" href="tel:+919150792336">+91 91507 92336</a>
+      <a class="announcement-bar__instagram" href="https://www.instagram.com/fu_glide_iin/?hl=en" target="_blank"
+        rel="noopener noreferrer" aria-label="Follow Fu-Glide on Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.79 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+        </svg>
+      </a>
+      <a class="announcement-bar__email" href="mailto:fuglide@gmail.com" aria-label="Email Fu-Glide">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 5h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm0 2v.5l9 6 9-6V7H3zm18 10V9.9l-8.45 5.63a1 1 0 0 1-1.1 0L3 9.9V17h18z" />
+        </svg>
+      </a>
+    </div>
+    <div class="announcement-bar__marquee">
+      <div class="announcement-bar__viewport">
+        <div class="announcement-bar__track">
+          <div class="announcement-bar__group">
+            <span class="announcement-bar__item">Best AI Course in Dindigul</span>
+            <span class="announcement-bar__item">Practical Generative AI Training</span>
+            <span class="announcement-bar__item">Robotics &amp; Automation Programs Open</span>
+          </div>
+          <div class="announcement-bar__group" aria-hidden="true">
+            <span class="announcement-bar__item">Best AI Course in Dindigul</span>
+            <span class="announcement-bar__item">Practical Generative AI Training</span>
+            <span class="announcement-bar__item">Robotics &amp; Automation Programs Open</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="navbar container">
+    <a class="brand" href="/index.html">
+      <img src="/images/logo.png" alt="Fu-Glide Logo" class="brand-logo" />
+    </a>
+
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="nav-links">
+      <a href="/index.html">Home</a>
+      <a href="/pages/about.html">About</a>
+
+      <div class="dropdown">
+        <button class="dropdown-toggle" type="button" style="color: #f6b84b;">
+          Courses
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="dropdown-menu">
+          <a href="/pages/tutoring.html">IT courses & Technology Training</a>
+          <a href="/pages/software-achievements.html">Non-IT Courses</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropdown-toggle" type="button">
+          Services
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="dropdown-menu">
+          <!-- Added distinct hashes so dropdown selections can jump to specific areas -->
+          <a href="/pages/services2.html#seo">SEO</a>
+          <a href="/pages/services2.html#smo">SMO</a>
+          <a href="/pages/services2.html#ads">Meta and Google Ads</a>
+          <a href="/pages/services2.html#webdev">Website Development</a>
+          <a href="/pages/services2.html#branding">Branding and Marketing</a>
+          <a href="/pages/services2.html#robotics">Robotic Services</a>
+          <a href="/pages/services2.html#proposals">Business Proposals and Writing</a>
+          <a href="/pages/services2.html#growth">Business Growth Development</a>
+        </div>
+      </div>
+
+      <a href="/pages/blog.html">Blog</a>
+      <a href="/pages/apply.html">Apply</a>
+      <a href="/pages/contact.html">Contact</a>
+    </div>
+  </nav>
+</header>
+
+    <main>
+      <a class="btn_btn-primary" href="../../pages/tutoring.html" style="font-size: 30px;">←</a>
+      <section class="page-hero animate-in">
+        <div class="container reveal animate-in">
+          <p class="eyebrow">IT Courses & Technology Training</p>
+          <h1>UI/UX Design</h1>
+          <p class="accent-text" style="font-size: 1.3rem; margin-top: 0.5rem;">Design interfaces people actually enjoy using.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2>Overview</h2>
+          <p>Learn the principles and tools behind good digital design — from wireframes to polished, user-tested interfaces. This course blends design theory with hands-on practice using industry-standard tools.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2>What You'll Learn</h2>
+          <div class="card-grid">
+            <article class="stat-card blog-card reveal animate-in">
+              <img src="../../icons/topics/design-1.png" alt="User research and understanding user needs" />
+              <p>User research and understanding user needs</p>
+            </article>
+            <article class="stat-card blog-card reveal animate-in">
+              <img src="../../icons/topics/design-2.png" alt="Wireframing and prototyping" />
+              <p>Wireframing and prototyping</p>
+            </article>
+            <article class="stat-card blog-card reveal animate-in">
+              <img src="../../icons/topics/design-3.png" alt="Visual design principles and color theory" />
+              <p>Visual design principles and color theory</p>
+            </article>
+            <article class="stat-card blog-card reveal animate-in">
+              <img src="../../icons/topics/design-4.png" alt="Tools like Figma for real design work" />
+              <p>Tools like Figma for real design work</p>
+            </article>
+            <article class="stat-card blog-card reveal animate-in">
+              <img src="../../icons/topics/design-5.png" alt="Usability testing and iteration" />
+              <p>Usability testing and iteration</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt">
+        <div class="container grid-2">
+          <div class="feature-item reveal animate-in">
+            <h2>Who This Course Is For</h2>
+            <p>Aspiring designers, developers who want to design their own products better, and anyone interested in how good digital products are actually built.</p>
+          </div>
+          <div class="feature-item reveal animate-in">
+            <h2>Duration & Format</h2>
+            <p>8 weeks, online or hybrid, with a full design project by the end.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="feature-item reveal animate-in">
+            <h2>Certification</h2>
+            <p>Certificate of completion plus a polished design portfolio piece.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section cta-section animate-in">
+        <div class="container reveal animate-in">
+          <h2>Ready to get started with UI/UX Design?</h2>
+          <a class="btn btn-primary" href="../../pages/apply.html">Apply Now</a>
+        </div>
+      </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <!-- Back to Top Floating Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Back to Top" title="Back to Top">
+      <svg viewBox="0 0 24 24">
+        <line x1="12" y1="19" x2="12" y2="5"></line>
+        <polyline points="5 12 12 5 19 12"></polyline>
+      </svg>
+    </button>
+
+    <a class="whatsapp-float" href="https://wa.me/9150792336?text=Hello%20Fu-Glide%2C%20I%20would%20like%20to%20connect." target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+      <img src="../../icons/wp.png" alt="WhatsApp" />
+    </a>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore-compat.js"></script>
+    <script src="../../js/firebase-config.js"></script>
+    <script src="../../js/main.js"></script>
+    <script src="../../js/animations.js"></script>
+</body>
+</html>
