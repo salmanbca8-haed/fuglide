@@ -1,0 +1,1485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Founder | Mr. Hariharan T. | Fu-Glide Innovation Intelligence Network</title>
+  <meta name="description"
+    content="Meet Mr. Hariharan T., Founder of Fu-Glide Innovation Intelligence Network. Explore his vision, academic foundations, leadership philosophy, and multi-division ecosystem connecting technology, education, and entrepreneurship." />
+  <meta name="keywords"
+    content="Hariharan T, Fu-Glide Founder, Fu-Glide Innovation Intelligence Network, Entrepreneur Dindigul, Chinnalapatti, MBA Gnanam School of Business, AI Course Dindigul" />
+  <link rel="icon" href="images/icon.png" type="image/png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/transitions.css" />
+
+  <style>
+    /* =========================================================
+       FOUNDER PAGE — ULTRA-PREMIUM BIOGRAPHY DESIGN SYSTEM
+       ========================================================= */
+
+    .founder-page {
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    /* Ambient Lighting Orbs */
+    .founder-page::before {
+      content: "";
+      position: fixed;
+      width: 650px;
+      height: 650px;
+      top: 10%;
+      left: -200px;
+      background: radial-gradient(circle, rgba(176, 108, 255, 0.14), transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+      animation: ambientPulse 12s ease-in-out infinite alternate;
+    }
+
+    .founder-page::after {
+      content: "";
+      position: fixed;
+      width: 650px;
+      height: 650px;
+      bottom: 5%;
+      right: -200px;
+      background: radial-gradient(circle, rgba(246, 184, 75, 0.12), transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+      animation: ambientPulse 15s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes ambientPulse {
+      0% {
+        transform: scale(0.9) translate(0, 0);
+        opacity: 0.6;
+      }
+      100% {
+        transform: scale(1.15) translate(30px, 40px);
+        opacity: 1;
+      }
+    }
+
+    /* Page Hero Enhancements */
+    .founder-hero {
+      padding: 5.5rem 0 3.5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .founder-hero .eyebrow-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1.25rem;
+      background: rgba(246, 184, 75, 0.1);
+      border: 1px solid rgba(246, 184, 75, 0.35);
+      border-radius: 999px;
+      color: var(--secondary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 0 20px rgba(246, 184, 75, 0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+
+    .founder-hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff 40%, var(--secondary-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .founder-hero .hero-subtitle {
+      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+      color: var(--text-dim);
+      max-width: 780px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.75;
+    }
+
+    /* Quick Metrics Strip */
+    .founder-stats-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .founder-stat-item {
+      background: rgba(12, 22, 45, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 1.25rem 1rem;
+      text-align: center;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .founder-stat-item:hover {
+      transform: translateY(-4px);
+      border-color: rgba(246, 184, 75, 0.4);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(246, 184, 75, 0.1);
+    }
+
+    .founder-stat-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.35rem;
+      display: inline-block;
+    }
+
+    .founder-stat-value {
+      font-family: var(--font-heading);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.15rem;
+    }
+
+    .founder-stat-label {
+      font-size: 0.8rem;
+      color: var(--secondary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* Main Biography Section Layout */
+    .biography-wrapper {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 5rem;
+    }
+
+    .founder-profile {
+      display: grid;
+      grid-template-columns: 340px minmax(0, 1fr);
+      gap: 3.5rem;
+      align-items: start;
+    }
+
+    /* Sticky Profile Card */
+    .founder-photo-card {
+      position: sticky;
+      top: 110px;
+      background: linear-gradient(180deg, rgba(16, 28, 58, 0.75) 0%, rgba(8, 16, 36, 0.85) 100%);
+      border: 1px solid rgba(246, 184, 75, 0.3);
+      border-radius: 28px;
+      padding: 1.25rem;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45), 0 0 35px rgba(246, 184, 75, 0.1);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .founder-photo-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+    }
+
+    .founder-photo-card:hover {
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.55), 0 0 45px rgba(246, 184, 75, 0.18);
+    }
+
+    .founder-image-wrapper {
+      position: relative;
+      border-radius: 22px;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .founder-photo {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .founder-photo-card:hover .founder-photo {
+      transform: scale(1.03);
+    }
+
+    .founder-photo-badge {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      right: 12px;
+      background: rgba(6, 17, 36, 0.85);
+      border: 1px solid rgba(246, 184, 75, 0.35);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-radius: 12px;
+      padding: 0.5rem 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.78rem;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .founder-photo-badge .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 10px #10b981;
+      flex-shrink: 0;
+      animation: pulseGreen 2s infinite;
+    }
+
+    @keyframes pulseGreen {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.7; }
+    }
+
+    .founder-photo-info {
+      padding: 1.5rem 0.5rem 0.5rem;
+      text-align: center;
+    }
+
+    .founder-photo-info h2 {
+      font-family: var(--font-heading);
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      background: linear-gradient(135deg, #ffffff 40%, var(--secondary-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .founder-role {
+      color: var(--secondary);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin: 0 0 0.4rem;
+    }
+
+    .founder-location {
+      color: var(--text-dim);
+      font-size: 0.84rem;
+      margin: 0 0 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+    }
+
+    /* Founder Action Buttons */
+    .founder-connect-btns {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .founder-connect-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      transition: var(--transition);
+      text-decoration: none;
+    }
+
+    .founder-connect-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    .founder-connect-btn:hover {
+      background: var(--secondary);
+      color: #061124;
+      border-color: var(--secondary);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(246, 184, 75, 0.35);
+    }
+
+    .founder-details-list {
+      list-style: none;
+      padding: 1rem 0 0;
+      margin: 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: left;
+    }
+
+    .founder-details-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+      font-size: 0.82rem;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
+    }
+
+    .founder-details-list li:last-child {
+      border-bottom: none;
+    }
+
+    .founder-details-list .label {
+      color: var(--text-dim);
+    }
+
+    .founder-details-list .val {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* Biography Content Articles */
+    .biography-content {
+      min-width: 0;
+    }
+
+    .biography-intro {
+      margin-bottom: 2.75rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .biography-intro .eyebrow {
+      color: var(--secondary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .biography-intro h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      font-weight: 700;
+      margin-bottom: 1.25rem;
+      line-height: 1.25;
+      color: #ffffff;
+    }
+
+    .biography-intro p {
+      font-size: 1.06rem;
+      line-height: 1.85;
+      color: rgba(226, 232, 240, 0.9);
+      margin-bottom: 1.1rem;
+    }
+
+    .biography-intro p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Narrative Section Block */
+    .bio-block {
+      margin-bottom: 2.5rem;
+      background: rgba(12, 22, 45, 0.45);
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      border-radius: 24px;
+      padding: 2rem 2.25rem;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: var(--transition);
+    }
+
+    .bio-block:hover {
+      border-color: rgba(246, 184, 75, 0.25);
+      background: rgba(12, 22, 45, 0.6);
+      transform: translateY(-2px);
+    }
+
+    .bio-block h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--secondary);
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .bio-block h3::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--secondary);
+      box-shadow: 0 0 12px var(--secondary-glow);
+      flex-shrink: 0;
+    }
+
+    .bio-block p {
+      color: rgba(226, 232, 240, 0.88);
+      font-size: 1.02rem;
+      line-height: 1.85;
+      margin-bottom: 0.9rem;
+    }
+
+    .bio-block p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Highlight Bento Grid (4 Cards) */
+    .bio-highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.35rem;
+      margin: 2.75rem 0;
+    }
+
+    .bio-highlight {
+      position: relative;
+      padding: 1.75rem;
+      background: linear-gradient(135deg, rgba(16, 28, 58, 0.7) 0%, rgba(10, 20, 42, 0.7) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 22px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+      overflow: hidden;
+    }
+
+    .bio-highlight::after {
+      content: "";
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      top: -70px;
+      right: -60px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(176, 108, 255, 0.18), transparent 70%);
+      pointer-events: none;
+    }
+
+    .bio-highlight:hover {
+      transform: translateY(-6px);
+      border-color: rgba(246, 184, 75, 0.45);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4), 0 0 25px rgba(246, 184, 75, 0.12);
+    }
+
+    .bio-highlight-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: rgba(246, 184, 75, 0.12);
+      border: 1px solid rgba(246, 184, 75, 0.3);
+      color: var(--secondary);
+      font-size: 1.15rem;
+      margin-bottom: 1rem;
+    }
+
+    .bio-highlight h4 {
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .bio-highlight p {
+      color: var(--text-dim);
+      font-size: 0.93rem;
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* Leadership Values & Principles */
+    .values-card {
+      margin-top: 3rem;
+      padding: 2.25rem;
+      background: linear-gradient(135deg, rgba(176, 108, 255, 0.08), rgba(246, 184, 75, 0.05)), var(--surface-card);
+      border: 1px solid rgba(176, 108, 255, 0.3);
+      border-radius: 26px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      position: relative;
+    }
+
+    .values-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+
+    .values-card .values-subtitle {
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.85rem;
+      list-style: none;
+      padding: 0;
+      margin: 0 0 2rem;
+    }
+
+    .value-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 1rem;
+      border-radius: 14px;
+      background: rgba(246, 184, 75, 0.08);
+      border: 1px solid rgba(246, 184, 75, 0.22);
+      color: #f8fafc;
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .value-pill:hover {
+      background: rgba(246, 184, 75, 0.18);
+      border-color: rgba(246, 184, 75, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+    }
+
+    .value-pill-icon {
+      color: var(--secondary);
+      font-size: 1.1rem;
+    }
+
+    /* Founder Signature Quote */
+    .founder-quote {
+      position: relative;
+      margin-top: 1.5rem;
+      padding: 2.25rem 2.5rem;
+      border-left: 4px solid var(--secondary);
+      background: linear-gradient(90deg, rgba(246, 184, 75, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%);
+      border-radius: 0 24px 24px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .quote-mark {
+      font-family: Georgia, serif;
+      font-size: 3.5rem;
+      line-height: 1;
+      color: var(--secondary);
+      opacity: 0.5;
+      display: block;
+      margin-bottom: -1rem;
+    }
+
+    .founder-quote p {
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-size: clamp(1.15rem, 2vw, 1.38rem);
+      line-height: 1.7;
+      font-weight: 500;
+      margin: 0 0 1rem;
+      font-style: italic;
+    }
+
+    .quote-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.9rem;
+      color: var(--secondary);
+      font-weight: 700;
+    }
+
+    /* Future Vision Section */
+    .future-vision-section {
+      padding: 5rem 0;
+      position: relative;
+    }
+
+    .future-vision {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .future-vision-card {
+      padding: 3rem;
+      background: linear-gradient(180deg, rgba(16, 28, 58, 0.75) 0%, rgba(8, 16, 36, 0.85) 100%);
+      border: 1px solid rgba(246, 184, 75, 0.25);
+      border-radius: 30px;
+      box-shadow: var(--shadow-lg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .future-vision-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--secondary), var(--primary), transparent);
+    }
+
+    .future-vision-card p {
+      color: rgba(226, 232, 240, 0.92);
+      font-size: 1.1rem;
+      line-height: 1.9;
+      margin-bottom: 1.25rem;
+    }
+
+    .future-vision-card p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Call To Action Section */
+    .founder-cta {
+      text-align: center;
+      padding: 6rem 0;
+      position: relative;
+    }
+
+    .founder-cta-box {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 3.5rem 2.5rem;
+      background: radial-gradient(circle at 50% 0%, rgba(176, 108, 255, 0.12) 0%, rgba(12, 22, 45, 0.7) 100%);
+      border: 1px solid rgba(246, 184, 75, 0.35);
+      border-radius: 32px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 40px rgba(176, 108, 255, 0.12);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+
+    .founder-cta h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 3.5vw, 2.75rem);
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff 40%, var(--secondary-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .founder-cta p {
+      max-width: 620px;
+      margin: 0 auto 2.25rem;
+      font-size: 1.05rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    .founder-cta-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.85rem;
+      background: linear-gradient(135deg, #f6b84b 0%, #e59d24 100%);
+      color: #061124;
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 0.95rem;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: var(--transition);
+      box-shadow: 0 10px 25px rgba(246, 184, 75, 0.35);
+      border: none;
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 35px rgba(246, 184, 75, 0.5);
+      color: #000000;
+    }
+
+    .btn-outline-glass {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.85rem;
+      background: rgba(255, 255, 255, 0.05);
+      color: #ffffff;
+      font-family: var(--font-heading);
+      font-weight: 600;
+      font-size: 0.95rem;
+      border-radius: 999px;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: var(--transition);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-outline-glass:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(246, 184, 75, 0.4);
+      transform: translateY(-3px);
+      color: var(--secondary);
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 992px) {
+      .founder-profile {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .founder-photo-card {
+        position: relative;
+        top: auto;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+
+      .founder-stats-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .founder-hero {
+        padding: 4rem 0 2.5rem;
+      }
+
+      .founder-stats-strip {
+        grid-template-columns: 1fr;
+        gap: 0.85rem;
+      }
+
+      .bio-highlight-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .values-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .founder-photo-card {
+        max-width: 320px;
+        padding: 1rem;
+      }
+
+      .bio-block {
+        padding: 1.5rem;
+      }
+
+      .values-card,
+      .future-vision-card,
+      .founder-cta-box {
+        padding: 1.75rem;
+      }
+
+      .founder-quote {
+        padding: 1.5rem;
+      }
+
+      .biography-intro p,
+      .bio-block p,
+      .future-vision-card p {
+        font-size: 0.98rem;
+        line-height: 1.75;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Ambient Particle Canvas Layer -->
+  <canvas id="ambient-bg-canvas" class="ambient-particles-canvas"></canvas>
+
+  <!-- =========================================================
+       SITE HEADER & ANNOUNCEMENT BAR
+       ========================================================= -->
+  <header class="site-header animate-in">
+    <div class="announcement-bar" role="region" aria-label="Fu-Glide announcements">
+      <div class="announcement-bar__contact">
+        <a class="announcement-bar__phone" href="tel:+919150792336">+91 91507 92336</a>
+        <a class="announcement-bar__instagram" href="https://www.instagram.com/fu_glide_iin/?hl=en" target="_blank"
+          rel="noopener noreferrer" aria-label="Follow Fu-Glide on Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.79 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+          </svg>
+        </a>
+        <a class="announcement-bar__email" href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#search/fuglide%40gmail.com?compose=new" aria-label="Email Fu-Glide">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 5h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm0 2v.5l9 6 9-6V7H3zm18 10V9.9l-8.45 5.63a1 1 0 0 1-1.1 0L3 9.9V17h18z" />
+          </svg>
+        </a>
+      </div>
+      <div class="announcement-bar__marquee">
+        <div class="announcement-bar__viewport">
+          <div class="announcement-bar__track">
+            <div class="announcement-bar__group">
+              <span class="announcement-bar__item">Fu-Glide Leadership &amp; Innovation</span>
+              <span class="announcement-bar__item">Best AI Course in Dindigul</span>
+              <span class="announcement-bar__item">Education Hub</span>
+              <span class="announcement-bar__item">Biz Clinic &amp; Solutions</span>
+              <span class="announcement-bar__item">Youth Entrepreneurship</span>
+            </div>
+            <div class="announcement-bar__group" aria-hidden="true">
+              <span class="announcement-bar__item">Fu-Glide Leadership &amp; Innovation</span>
+              <span class="announcement-bar__item">Best AI Course in Dindigul</span>
+              <span class="announcement-bar__item">Education Hub</span>
+              <span class="announcement-bar__item">Biz Clinic &amp; Solutions</span>
+              <span class="announcement-bar__item">Youth Entrepreneurship</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar container">
+      <a class="brand" href="index.html">
+        <img src="images/logo.png" alt="Fu-Glide Logo" class="brand-logo" />
+      </a>
+
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="pages/about.html">About</a>
+
+        <div class="dropdown">
+          <button class="dropdown-toggle" type="button">
+            Courses
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="pages/tutoring.html">IT courses &amp; Technology Training</a>
+            <a href="pages/software-achievements.html">Non-IT Courses</a>
+          </div>
+        </div>
+
+        <div class="dropdown">
+          <button class="dropdown-toggle" type="button">
+            Services
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="pages/services2.html#seo">SEO</a>
+            <a href="pages/services2.html#smo">SMO</a>
+            <a href="pages/services2.html#ads">Meta and Google Ads</a>
+            <a href="pages/services2.html#webdev">Website Development</a>
+            <a href="pages/services2.html#branding">Branding and Marketing</a>
+            <a href="pages/services2.html#robotics">Robotic Services</a>
+            <a href="pages/services2.html#proposals">Business Proposals and Writing</a>
+            <a href="pages/services2.html#growth">Business Growth Development</a>
+          </div>
+        </div>
+
+        <!-- <a href="founder.html" style="color: #f6b84b; font-weight: 700;" aria-current="page">Founder</a> -->
+        <a href="pages/blog.html">Blog</a>
+        <a href="pages/apply.html">Apply</a>
+        <a href="pages/contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="founder-page">
+
+    <!-- =========================================================
+         PAGE HERO SECTION
+         ========================================================= -->
+    <section class="founder-hero">
+      <div class="container">
+        <div class="reveal animate-in">
+          <span class="eyebrow-badge">★ Leadership &amp; Vision</span>
+          <h1>Meet the Founder</h1>
+          <p class="hero-subtitle">
+            The visionary journey, philosophy, and entrepreneurial drive behind the 
+            <strong>Fu-Glide Innovation Intelligence Network</strong>.
+          </p>
+        </div>
+
+        <!-- Dynamic Metrics Strip -->
+        <div class="founder-stats-strip reveal animate-in">
+          <div class="founder-stat-item">
+            <span class="founder-stat-icon">🎓</span>
+            <div class="founder-stat-value">MBA</div>
+            <div class="founder-stat-label">Gnanam School of Business</div>
+          </div>
+          <div class="founder-stat-item">
+            <span class="founder-stat-icon">🏛️</span>
+            <div class="founder-stat-value">Multi-Division</div>
+            <div class="founder-stat-label">Integrated Ecosystem</div>
+          </div>
+          <div class="founder-stat-item">
+            <span class="founder-stat-icon">💡</span>
+            <div class="founder-stat-value">Youth Impact</div>
+            <div class="founder-stat-label">Tech &amp; Skill Development</div>
+          </div>
+          <div class="founder-stat-item">
+            <span class="founder-stat-icon">📍</span>
+            <div class="founder-stat-value">Dindigul</div>
+            <div class="founder-stat-label">Tamil Nadu, India</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         FOUNDER PROFILE + BIOGRAPHY NARRATIVE
+         ========================================================= -->
+    <section class="section">
+      <div class="container biography-wrapper">
+        <div class="founder-profile">
+
+          <!-- Sticky Founder Photo & Info Card -->
+          <aside class="founder-photo-card reveal animate-in">
+            <div class="founder-image-wrapper">
+              <img
+                src="images/foun.png"
+                alt="Mr. Hariharan T. - Founder of Fu-Glide Innovation Intelligence Network"
+                class="founder-photo"
+              />
+              <div class="founder-photo-badge">
+                <span class="status-dot"></span>
+                <span>Leading Fu-Glide Ecosystem</span>
+              </div>
+            </div>
+
+            <div class="founder-photo-info">
+              <h2>Mr. Hariharan T.</h2>
+              <p class="founder-role">Founder &amp; Managing Director</p>
+              <p class="founder-location">
+                <span>📍 Chinnalapatti, Dindigul, Tamil Nadu</span>
+              </p>
+
+              <!-- Social / Connect buttons -->
+              <div class="founder-connect-btns">
+                <a href="tel:+919150792336" class="founder-connect-btn" aria-label="Call Hariharan">
+                  <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.58.57a1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
+                </a>
+                <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#search/fuglide%40gmail.com?compose=new" class="founder-connect-btn" aria-label="Email Hariharan">
+                  <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                </a>
+                <a href="https://wa.me/9150792336?text=Hello%20Hariharan%2C%20I%20would%20like%20to%20connect." target="_blank" rel="noopener" class="founder-connect-btn" aria-label="WhatsApp Hariharan">
+                  <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0012.04 2z"/></svg>
+                </a>
+                <a href="https://www.instagram.com/fu_glide_iin/?hl=en" target="_blank" rel="noopener" class="founder-connect-btn" aria-label="Instagram">
+                  <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073z"/></svg>
+                </a>
+              </div>
+
+              <!-- Quick Facts List -->
+              <ul class="founder-details-list">
+                <li>
+                  <span class="label">Date of Birth</span>
+                  <span class="val">23 December 2003</span>
+                </li>
+                <li>
+                  <span class="label">Post Graduation</span>
+                  <span class="val">MBA (GSB Thanjavur)</span>
+                </li>
+                <li>
+                  <span class="label">Undergraduate</span>
+                  <span class="val">NPR Arts &amp; Science</span>
+                </li>
+                <li>
+                  <span class="label">Focus Area</span>
+                  <span class="val">AI, Tech &amp; Youth Incubation</span>
+                </li>
+              </ul>
+            </div>
+          </aside>
+
+
+          <!-- Main Narrative Column -->
+          <article class="biography-content">
+
+            <!-- Intro Section -->
+            <div class="biography-intro reveal animate-in">
+              <span class="eyebrow">Biography &amp; Journey</span>
+              <h2>Building Ideas Into Sustainable Opportunities</h2>
+              <p>
+                Mr. Hariharan T. is a dynamic young entrepreneur, business strategist, technology enthusiast, 
+                and visionary leader from Chinnalapatti, Dindigul, Tamil Nadu, born on <strong>23 December 2003</strong>.
+              </p>
+              <p>
+                From the earliest stages of his career, he recognized the transformative potential of combining modern 
+                technology with career-focused education, enterprise solutions, and entrepreneurial mentorship. 
+                With an ambition to build high-impact opportunities for students and institutions, he established the 
+                <strong>Fu-Glide Innovation Intelligence Network</strong>—an integrated ecosystem designed to bridge 
+                the gap between academic knowledge and real-world industry demands.
+              </p>
+            </div>
+
+            <!-- Education & Foundations -->
+            <div class="bio-block reveal animate-in">
+              <h3>Education &amp; Intellectual Foundation</h3>
+              <p>
+                Mr. Hariharan completed his primary and secondary schooling at 
+                <strong>Cheran Vidyalaya Matric Higher Secondary School, Chinnalapatti, Dindigul</strong>, where he built 
+                his early analytical curiosity and teamwork mindset.
+              </p>
+              <p>
+                He pursued his undergraduate studies at <strong>NPR Arts and Science College, Dindigul – Natham</strong>, 
+                laying a strong foundation in administration and analytical thinking. He further sharpened his executive acumen 
+                by earning his <strong>Master of Business Administration (MBA)</strong> from the prestigious 
+                <strong>Gnanam School of Business, Thanjavur</strong>.
+              </p>
+              <p>
+                His advanced management education, paired with direct practical exposure to startup incubation, digital strategy, 
+                and organizational leadership, enables him to steer Fu-Glide with rigorous strategic clarity.
+              </p>
+            </div>
+
+            <!-- Values & Personal Heritage -->
+            <div class="bio-block reveal animate-in">
+              <h3>Personal Heritage &amp; Core Values</h3>
+              <p>
+                Born to <strong>Mr. P. Thandapani</strong> and <strong>Mrs. T. Murugeswari</strong>, Mr. Hariharan attributes 
+                his core traits of discipline, resilience, ethical responsibility, and relentless work ethic to the unwavering 
+                support and values instilled by his parents.
+              </p>
+              <p>
+                His journey is fueled by a commitment to translate constructive ideas into practical societal solutions—building 
+                platforms that uplift students, support educational institutions, and empower growing businesses.
+              </p>
+            </div>
+
+            <!-- Building Fu-Glide Ecosystem -->
+            <div class="bio-block reveal animate-in">
+              <h3>Architecting the Fu-Glide Ecosystem</h3>
+              <p>
+                One of his primary milestones has been developing the 
+                <strong>Fu-Glide Innovation Intelligence Network</strong> as an umbrella organization unifying multiple 
+                specialized divisions under a cohesive operational vision.
+              </p>
+              <p>
+                Rather than treating education, software development, business services, and skill training as separate silos, 
+                his architectural model creates an interdependent synergy. Each division operates with dedicated domain expertise 
+                while contributing to a shared pipeline of talent, technology, and economic growth.
+              </p>
+            </div>
+
+            <!-- Strategic Highlights Grid -->
+            <div class="bio-highlight-grid reveal animate-in">
+              <div class="bio-highlight">
+                <div class="bio-highlight-badge">🚀</div>
+                <h4>Student &amp; Career Acceleration</h4>
+                <p>
+                  Delivering hands-on artificial intelligence training, technical internships, and career workshops that transform students into job-ready professionals.
+                </p>
+              </div>
+
+              <div class="bio-highlight">
+                <div class="bio-highlight-badge">🌐</div>
+                <h4>Real-World Industry Synergy</h4>
+                <p>
+                  Connecting academic curriculums with modern industry standards, live enterprise projects, and state-of-the-art technological tools.
+                </p>
+              </div>
+
+              <div class="bio-highlight">
+                <div class="bio-highlight-badge">💡</div>
+                <h4>Youth Entrepreneurship</h4>
+                <p>
+                  Fostering an incubation environment where ambitious young innovators can structure, validate, and launch their own commercial ventures.
+                </p>
+              </div>
+
+              <div class="bio-highlight">
+                <div class="bio-highlight-badge">🤝</div>
+                <h4>Institutional Collaborations</h4>
+                <p>
+                  Partnering with leading colleges, universities, and schools to establish Centers of Excellence in AI, Robotics, and Digital Media.
+                </p>
+              </div>
+            </div>
+
+            <!-- Leadership Philosophy & Values Card -->
+            <div class="values-card reveal animate-in">
+              <h3>Leadership Philosophy &amp; Principles</h3>
+              <p class="values-subtitle">
+                The core pillars that guide every decision, venture, and initiative across the Fu-Glide network:
+              </p>
+
+              <div class="values-grid">
+                <div class="value-pill">
+                  <span class="value-pill-icon">✨</span>
+                  <span>Innovation First</span>
+                </div>
+                <div class="value-pill">
+                  <span class="value-pill-icon">🛡️</span>
+                  <span>Uncompromising Integrity</span>
+                </div>
+                <div class="value-pill">
+                  <span class="value-pill-icon">🎯</span>
+                  <span>Disciplined Execution</span>
+                </div>
+                <div class="value-pill">
+                  <span class="value-pill-icon">📚</span>
+                  <span>Lifelong Learning</span>
+                </div>
+                <div class="value-pill">
+                  <span class="value-pill-icon">🤝</span>
+                  <span>Ecosystem Collaboration</span>
+                </div>
+                <div class="value-pill">
+                  <span class="value-pill-icon">🌱</span>
+                  <span>Social Value Creation</span>
+                </div>
+              </div>
+
+              <!-- Editorial Quote -->
+              <div class="founder-quote">
+                <span class="quote-mark">“</span>
+                <p>
+                  Age should never be a limitation to leadership or entrepreneurship when an individual possesses 
+                  the willingness to learn, take responsibility, face uncertainty, and build meaningful value for society.
+                </p>
+                <div class="quote-author">
+                  <span>— Mr. Hariharan T., Founder</span>
+                </div>
+              </div>
+            </div>
+
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         FUTURE VISION & STRATEGIC EXPANSION
+         ========================================================= -->
+    <section class="future-vision-section section-alt">
+      <div class="container future-vision">
+        <div class="section-heading text-center reveal animate-in">
+          <span class="eyebrow" style="color: var(--secondary);">Strategic Roadmap</span>
+          <h2>A Vision for the Future</h2>
+          <p style="color: var(--text-dim); max-width: 680px; margin: 0 auto 2.5rem;">
+            Expanding Fu-Glide into a globally recognized, innovation-driven intelligence network.
+          </p>
+        </div>
+
+        <div class="future-vision-card reveal animate-in">
+          <p>
+            Looking ahead, Mr. Hariharan is steering the <strong>Fu-Glide Innovation Intelligence Network</strong> 
+            towards becoming a premier hub for Applied Artificial Intelligence, Robotics Education, Enterprise Software Solutions, 
+            and Strategic Business Consultancy in South India and beyond.
+          </p>
+          <p>
+            His vision encompasses expanding specialized research divisions, launching advanced tech incubation programs, 
+            and forging long-term institutional tie-ups that equip the next generation with future-proof capabilities.
+          </p>
+          <p>
+            Today, Mr. Hariharan T. continues to lead with energy, visionary foresight, and practical determination—collaborating 
+            with students, educators, corporate partners, and mentors to build an organization where innovation meets opportunity.
+          </p>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =========================================================
+         CALL TO ACTION (CTA)
+         ========================================================= -->
+    <section class="founder-cta">
+      <div class="container">
+        <div class="founder-cta-box reveal animate-in">
+          <span class="eyebrow-badge">Connect &amp; Collaborate</span>
+          <h2>From Vision to Action. From Ideas to Impact.</h2>
+          <p>
+            Discover the cutting-edge courses, enterprise digital services, and partnership opportunities created through 
+            the Fu-Glide ecosystem.
+          </p>
+          <div class="founder-cta-actions">
+            <a href="index.html" class="btn-gold">
+              <span>Explore Ecosystem</span>
+              <span>→</span>
+            </a>
+            <a href="pages/tutoring.html" class="btn-outline-glass">
+              <span>AI &amp; Tech Courses</span>
+            </a>
+            <a href="pages/contact.html" class="btn-outline-glass">
+              <span>Get in Touch</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- =========================================================
+       STANDARDIZED SITE FOOTER
+       ========================================================= -->
+  <footer class="site-footer animate-in">
+    <div class="container footer-grid">
+      <!-- Column 1: Brand Info -->
+      <div class="footer-col footer-brand animate-in">
+        <a class="footer-logo-wrap" href="index.html" aria-label="Fu-Glide Home">
+          <img src="images/logo.png" alt="Fu-Glide Logo" class="footer-logo" />
+          <span class="footer-brand-name">Fu-Glide</span>
+        </a>
+        <p class="footer-about-text">
+          Fu-Glide Innovation Intelligence Network connects advanced technology, modern education, entrepreneurship, 
+          and professional development into an integrated ecosystem.
+        </p>
+        <div class="footer-social-row">
+          <a href="https://www.instagram.com/fu_glide_iin/?hl=en" target="_blank" rel="noopener noreferrer"
+            class="footer-social-btn" aria-label="Instagram">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.79 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+            </svg>
+          </a>
+          <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#search/fuglide%40gmail.com?compose=new" class="footer-social-btn" aria-label="Email Fu-Glide">
+            <svg viewBox="0 0 24 24">
+              <path d="M3 5h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm0 2v.5l9 6 9-6V7H3zm18 10V9.9l-8.45 5.63a1 1 0 0 1-1.1 0L3 9.9V17h18z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+ <!-- Column 2: Quick Links -->
+    <div class="footer-col animate-in">
+      <h4 class="footer-heading">Quick Links</h4>
+      <ul class="footer-nav-list">
+        <li class="footer-nav-item">
+          <a href="index.html" class="footer-nav-link">
+            <span class="footer-icon-badge">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z" />
+              </svg>
+            </span>
+            <span>Home</span>
+          </a>
+        </li>
+        <li class="footer-nav-item">
+          <a href="pages/about.html" class="footer-nav-link">
+            <span class="footer-icon-badge">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z" />
+              </svg>
+            </span>
+            <span>About Us</span>
+          </a>
+        </li>
+        <li class="footer-nav-item">
+          <a href="pages/tutoring.html" class="footer-nav-link">
+            <span class="footer-icon-badge">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z" />
+              </svg>
+            </span>
+            <span>Our Courses</span>
+          </a>
+        </li>
+        <li class="footer-nav-item">
+          <a href="pages/blog.html" class="footer-nav-link">
+            <span class="footer-icon-badge">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z" />
+              </svg>
+            </span>
+            <span>Blog</span>
+          </a>
+        </li>
+        <li class="footer-nav-item">
+          <a href="pages/services2.html" class="footer-nav-link">
+            <span class="footer-icon-badge">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z" />
+              </svg>
+            </span>
+            <span>Our Services</span>
+          </a>
+        </li>
+        <li class="footer-nav-item">
+          <a href="pages/contact.html" class="footer-nav-link">
+            <span class="footer-icon-badge">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M18 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 4h5v8l-2.5-1.5L6 12V4z" />
+              </svg>
+            </span>
+            <span>Contact Us</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Column 3: Contact Us -->
+    <div class="footer-col animate-in">
+      <h4 class="footer-heading">Contact Us</h4>
+      <ul class="footer-contact-list">
+        <li class="footer-contact-item">
+          <span class="footer-icon-badge">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+            </svg>
+          </span>
+          <span>
+            <strong>Fu-Glide Innovation Network</strong>
+            Dindigul,<br>Tamil Nadu, India.
+          </span>
+        </li>
+        <li class="footer-contact-item">
+          <span class="footer-icon-badge">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+            </svg>
+          </span>
+          <span>
+            <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#search/fuglide%40gmail.com?compose=new">fuglide@gmail.com</a>
+          </span>
+        </li>
+        <li class="footer-contact-item">
+          <span class="footer-icon-badge">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.053 15.053 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1.01A11.36 11.36 0 018.5 3.99c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.61c0-.55-.45-1-.99-1z" />
+            </svg>
+          </span>
+          <span>
+            <a href="tel:+919150792336">+91 91507 92336</a>
+          </span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Column 4: Our Location -->
+    <div class="footer-col animate-in">
+      <h4 class="footer-heading">Our Location</h4>
+      <div class="footer-map-wrapper">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62804.04400047483!2d77.90463166305959!3d10.321646438874492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00ab004b59b95d%3A0x1382bb12b1642380!2sFu-Glide%20Innovation%20Intelligence%20Network!5e0!3m2!1sen!2sin!4v1785505014608!5m2!1sen!2sin"
+          width="100%" height="175" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin" title="Fu-Glide Innovation Network Location Map">
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>&copy; 2026 Fu-Glide Innovation Intelligence Network. All rights reserved.</p>
+    <p>Empowering Next-Gen Innovators & Students</p>
+  </div>
+  </footer>
+
+
+  <!-- Floating WhatsApp Action -->
+  <a class="whatsapp-float" href="https://wa.me/9150792336?text=Hello%20Fu-Glide%2C%20I%20would%20like%20to%20connect%20with%20the%20founder."
+    target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <img src="icons/wp.png" alt="WhatsApp" />
+  </a>
+
+  <!-- Back to Top Floating Button -->
+  <button id="backToTop" class="back-to-top" aria-label="Back to Top" title="Back to Top">
+    <svg viewBox="0 0 24 24">
+      <line x1="12" y1="19" x2="12" y2="5"></line>
+      <polyline points="5 12 12 5 19 12"></polyline>
+    </svg>
+  </button>
+
+
+  <!-- =========================================================
+       SCRIPTS & ANIMATIONS
+       ========================================================= -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+
+  <script>
+    /* Founder Page Interactive Enhancements */
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize 3D Card tilt on highlight and photo cards
+      const photoCard = document.querySelector('.founder-photo-card');
+      if (photoCard && !window.matchMedia('(prefers-reduced-motion: reduce)').matches && !('ontouchstart' in window)) {
+        let bounds;
+        photoCard.addEventListener('mouseenter', () => {
+          bounds = photoCard.getBoundingClientRect();
+          photoCard.style.transition = 'transform 0.1s ease-out, box-shadow 0.3s ease';
+        });
+
+        photoCard.addEventListener('mousemove', (e) => {
+          if (!bounds) bounds = photoCard.getBoundingClientRect();
+          const mouseX = e.clientX - bounds.left;
+          const mouseY = e.clientY - bounds.top;
+          const xPct = (mouseX / bounds.width - 0.5) * 2;
+          const yPct = (mouseY / bounds.height - 0.5) * 2;
+          const rotX = -yPct * 6;
+          const rotY = xPct * 6;
+          photoCard.style.transform = `perspective(1000px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) scale3d(1.01, 1.01, 1.01)`;
+        });
+
+        photoCard.addEventListener('mouseleave', () => {
+          photoCard.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease';
+          photoCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
