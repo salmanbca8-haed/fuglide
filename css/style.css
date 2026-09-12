@@ -364,18 +364,31 @@ p {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(6, 17, 36, 0.75);
+  background: radial-gradient(ellipse 70% 80% at 20% 0%, rgba(176, 108, 255, 0.08), transparent 70%),
+              radial-gradient(ellipse 50% 60% at 85% 100%, rgba(246, 184, 75, 0.05), transparent 60%),
+              linear-gradient(180deg, rgba(6, 17, 36, 0.96) 0%, rgba(3, 8, 20, 0.98) 100%);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid rgba(246, 184, 75, 0.22);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+  transition: background var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
 
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  transition: background var(--transition), box-shadow var(--transition), padding var(--transition);
+.site-header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, rgba(176, 108, 255, 0.4) 20%, rgba(246, 184, 75, 0.75) 50%, rgba(176, 108, 255, 0.4) 80%, transparent 100%);
+  pointer-events: none;
 }
 
 .site-header.scrolled {
-  background: rgba(4, 11, 24, 0.92);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
-  border-bottom-color: rgba(176, 108, 255, 0.18);
+  background: rgba(3, 8, 20, 0.98);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.65), 0 0 20px rgba(176, 108, 255, 0.15);
+  border-bottom-color: rgba(246, 184, 75, 0.35);
 }
 
 .navbar {
@@ -383,12 +396,12 @@ p {
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  min-height: 74px;
+  min-height: 80px;
   transition: min-height var(--transition);
 }
 
 .site-header.scrolled .navbar {
-  min-height: 64px;
+  min-height: 68px;
 }
 
 .brand {
@@ -397,20 +410,40 @@ p {
   gap: 0.75rem;
   text-decoration: none;
   flex-shrink: 0;
+  padding: 6px 14px;
+  border-radius: 14px;
+  background: #ffffff;
+  border: 2px solid rgba(246, 184, 75, 0.65);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), 0 0 18px rgba(246, 184, 75, 0.3);
+  transition: all var(--transition);
+}
+
+.brand:hover {
+  background: #ffffff;
+  border-color: var(--secondary, #f6b84b);
+  box-shadow: 0 6px 26px rgba(246, 184, 75, 0.55), 0 0 22px rgba(176, 108, 255, 0.35);
+  transform: translateY(-2px) scale(1.02);
 }
 
 .brand-logo {
-  height: 48px;
+  height: 50px;
   width: auto;
-  max-width: 140px;
-  border-radius: 10px;
+  max-width: 170px;
   object-fit: contain;
-  transition: transform var(--transition), filter var(--transition);
+  display: block;
+  transition: transform var(--transition), height var(--transition);
 }
 
-.brand-logo:hover {
-  transform: scale(1.03) translateY(-1px);
-  filter: brightness(1.08);
+.brand:hover .brand-logo {
+  transform: scale(1.02);
+}
+
+.site-header.scrolled .brand {
+  padding: 4px 11px;
+}
+
+.site-header.scrolled .brand-logo {
+  height: 42px;
 }
 
 /* Nav Links Container */
@@ -2140,17 +2173,17 @@ iframe {
   }
 }
 
-/* --- Reveal & Animation States --- */
+/* --- Reveal & Animation States (Ease In From Right) --- */
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateX(35px);
+  transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
 .reveal.is-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(0);
 }
 
 /* --- Responsive Media Queries --- */
@@ -2184,6 +2217,14 @@ iframe {
 }
 
 @media (max-width: 1080px) {
+  .brand {
+    padding: 5px 12px;
+  }
+
+  .brand-logo {
+    height: 46px;
+  }
+
   .hero-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -2550,6 +2591,15 @@ iframe {
 
 /* Standard Mobile Handsets (376px - 640px) */
 @media (max-width: 640px) {
+  .brand {
+    padding: 4px 10px;
+    border-radius: 12px;
+  }
+
+  .brand-logo {
+    height: 40px;
+  }
+
   .hero {
     padding: 3.5rem 0 2.5rem;
   }

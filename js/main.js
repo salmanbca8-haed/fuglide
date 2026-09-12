@@ -192,15 +192,12 @@ function initScrollAnimations() {
         element,
         {
           opacity: 0,
-          y: 40,
-          rotationX: 8,
+          x: 35,
           transformPerspective: 800,
-          transformOrigin: '50% 100%',
         },
         {
           opacity: 1,
-          y: 0,
-          rotationX: 0,
+          x: 0,
           duration: 0.6,
           ease: 'power3.out',
           scrollTrigger: {
