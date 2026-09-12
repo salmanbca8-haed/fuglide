@@ -139,10 +139,6 @@ p { margin: 0 0 1rem; color: var(--muted); }
   width: 100%; padding: 0.8rem 0.95rem; border-radius: 12px; border: 1px solid var(--border); background: #fbfcff; font: inherit;
 }
 .form-message { min-height: 1.2rem; font-weight: 600; color: var(--primary); }
-.site-footer { padding: 3rem 0; background: rgba(15, 23, 42, 0.95); color: #f8fafc; backdrop-filter: blur(10px); }
-.footer-grid { display: grid; grid-template-columns: 1.2fr 0.8fr 0.8fr; gap: 2rem; }
-.site-footer a { color: #cbd5e1; }
-.site-footer a:hover { color: white; }
 .social-links { display: flex; flex-wrap: wrap; gap: 0.8rem; }
 .whatsapp-float { position: fixed; right: 1rem; bottom: 1rem; display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; background: linear-gradient(135deg, #25d366, #128c7e); color: white; font-weight: 800; box-shadow: var(--shadow); z-index: 1200; }
 
@@ -151,7 +147,7 @@ p { margin: 0 0 1rem; color: var(--muted); }
 .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
 @media (max-width: 900px) {
-  .hero-grid, .grid-2, .contact-grid, .footer-grid, .stats-grid, .testimonial-grid, .card-grid, .team-grid { grid-template-columns: 1fr; }
+  .hero-grid, .grid-2, .contact-grid, .stats-grid, .testimonial-grid, .card-grid, .team-grid { grid-template-columns: 1fr; }
   .nav-toggle { display: flex; }
   .nav-links { display: none; position: absolute; top: 72px; right: 1rem; left: 1rem; background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 1rem; flex-direction: column; align-items: flex-start; box-shadow: var(--shadow); }
   .nav-links.is-open { display: flex; }
@@ -364,10 +360,10 @@ p { margin: 0 0 1rem; color: var(--muted); }
         </section>
       </main>
 
-      <footer class="site-footer animate-in">
+      <footer class="site-footer">
   <div class="container footer-grid">
     <!-- Column 1: Brand Info -->
-    <div class="footer-col footer-brand animate-in">
+    <div class="footer-col footer-brand">
       <a class="footer-logo-wrap" href="index.html" aria-label="Fu-Glide Home">
         <img src="images/logo.png" alt="Fu-Glide Logo" class="footer-logo" />
         <span class="footer-brand-name">Fu-Glide</span>
@@ -399,7 +395,7 @@ p { margin: 0 0 1rem; color: var(--muted); }
     </div>
 
     <!-- Column 2: Quick Links -->
-    <div class="footer-col animate-in">
+    <div class="footer-col footer-links-col">
       <h4 class="footer-heading">Quick Links</h4>
       <ul class="footer-nav-list">
         <li class="footer-nav-item">
@@ -454,7 +450,7 @@ p { margin: 0 0 1rem; color: var(--muted); }
     </div>
 
     <!-- Column 3: Contact Us -->
-    <div class="footer-col animate-in">
+    <div class="footer-col footer-contact-col">
       <h4 class="footer-heading">Contact Us</h4>
       <ul class="footer-contact-list">
         <li class="footer-contact-item">
@@ -497,7 +493,7 @@ p { margin: 0 0 1rem; color: var(--muted); }
     </div>
 
     <!-- Column 4: Our Location -->
-    <div class="footer-col animate-in">
+    <div class="footer-col footer-map-col">
       <h4 class="footer-heading">Our Location</h4>
       <div class="footer-map-card">
         <div class="footer-map-badge">
