@@ -33,7 +33,7 @@
     parentMap.forEach(function (siblings) {
       if (siblings.length > 1) {
         siblings.forEach(function (el, index) {
-          el.style.setProperty('--stagger-delay', (index * 80) + 'ms');
+          el.style.setProperty('--stagger-delay', (index * 120) + 'ms');
         });
       }
     });

@@ -198,7 +198,7 @@ function initScrollAnimations() {
         {
           opacity: 1,
           x: 0,
-          duration: 0.6,
+          duration: 0.95,
           ease: 'power3.out',
           scrollTrigger: {
             trigger: element,
@@ -245,9 +245,9 @@ function initHeroTypography() {
       opacity: 0,
       y: 35,
       filter: 'blur(8px)',
-      duration: 0.7,
+      duration: 0.95,
       ease: 'power3.out',
-      delay: 0.15,
+      delay: 0.2,
     });
 
     const eyebrow = document.querySelector('.hero .eyebrow, .page-hero .eyebrow');
@@ -256,7 +256,7 @@ function initHeroTypography() {
         opacity: 0,
         scale: 0.85,
         y: 20,
-        duration: 0.55,
+        duration: 0.8,
         ease: 'back.out(1.7)',
       });
     }
