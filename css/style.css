@@ -2551,7 +2551,8 @@ iframe {
   border-radius: var(--radius);
   padding: 2.5rem;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
+  z-index: 1;
   transition: all var(--transition);
   box-shadow: var(--shadow);
 }
@@ -2560,6 +2561,7 @@ iframe {
   border-color: var(--border-gold);
   box-shadow: var(--shadow-lg);
   transform: translateY(-4px);
+  z-index: 20;
 }
 
 .service-badge-header {
@@ -2632,6 +2634,207 @@ iframe {
   background: var(--surface);
   border: 1px solid rgba(255, 255, 255, 0.08);
   color: #94a3b8;
+}
+
+/* Service Card 2-Column Grid & Dedicated Interactive Image Container */
+.service-card-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 2.25rem;
+  align-items: center;
+  position: relative;
+}
+
+.service-card-content {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.service-card-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  max-height: 330px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: radial-gradient(circle at center, rgba(176, 108, 255, 0.12), rgba(6, 17, 36, 0.92));
+  border: 1px solid rgba(246, 184, 75, 0.28);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-in;
+  z-index: 2;
+  transform-origin: center center;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.4s ease, 
+              border-color 0.4s ease, 
+              background 0.4s ease,
+              z-index 0.1s ease;
+}
+
+.service-detail-card:hover .service-card-image-wrap {
+  border-color: rgba(246, 184, 75, 0.5);
+  box-shadow: 0 12px 32px rgba(246, 184, 75, 0.15), 0 0 20px rgba(176, 108, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Hover effect: Pop out forward, come in front with high z-index and show full uncropped image */
+.service-card-image-wrap:hover {
+  z-index: 100 !important;
+  transform: scale(1.36) !important;
+  border-color: #f6b84b !important;
+  background: rgba(6, 17, 36, 0.98) !important;
+  box-shadow: 0 25px 65px rgba(0, 0, 0, 0.95), 
+              0 0 35px rgba(246, 184, 75, 0.6), 
+              0 0 25px rgba(176, 108, 255, 0.45) !important;
+}
+
+.service-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: 14px;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+              object-fit 0.3s ease;
+}
+
+.service-detail-card:hover .service-card-img {
+  transform: scale(1.02);
+}
+
+/* Switch to contain on image wrap hover so full image is shown completely without clipping */
+.service-card-image-wrap:hover .service-card-img {
+  object-fit: contain !important;
+  transform: scale(1.04) !important;
+}
+
+/* Interactive subtle zoom badge */
+.service-card-image-wrap::after {
+  content: '🔍 Full View';
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #f6b84b;
+  background: rgba(6, 17, 36, 0.92);
+  border: 1px solid rgba(246, 184, 75, 0.5);
+  border-radius: 999px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  letter-spacing: 0.02em;
+  backdrop-filter: blur(8px);
+}
+
+.service-card-image-wrap:hover::after {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Service Image Fullscreen Lightbox Modal */
+.service-lightbox-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: rgba(4, 9, 20, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
+}
+
+.service-lightbox-modal.is-active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.service-lightbox-dialog {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: scale(0.9);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.service-lightbox-modal.is-active .service-lightbox-dialog {
+  transform: scale(1);
+}
+
+.service-lightbox-img {
+  max-width: 100%;
+  max-height: 82vh;
+  object-fit: contain;
+  border-radius: 16px;
+  border: 1px solid rgba(246, 184, 75, 0.45);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95), 0 0 40px rgba(176, 108, 255, 0.35);
+}
+
+.service-lightbox-caption {
+  margin-top: 1rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #f6b84b;
+  text-align: center;
+  letter-spacing: 0.03em;
+}
+
+.service-lightbox-close {
+  position: absolute;
+  top: -48px;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.service-lightbox-close:hover {
+  background: #f6b84b;
+  color: #061124;
+  border-color: #f6b84b;
+  transform: rotate(90deg) scale(1.1);
+}
+
+@media (max-width: 900px) {
+  .service-card-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .service-card-image-wrap {
+    min-height: 220px;
+    max-height: 280px;
+    order: -1;
+  }
+
+  .service-card-image-wrap:hover {
+    transform: scale(1.12) !important;
+  }
 }
 
 /* Tablets Portrait & Large Handhelds (577px - 768px) */

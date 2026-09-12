@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   initBackToTop();
   initHeroRotator();
   initHeroLeadForm();
+  initServiceImageLightbox();
 });
 
 /* ==========================================================================
@@ -845,6 +846,68 @@ function normalizeLocalSitePaths() {
     const attribute = element.hasAttribute('href') ? 'href' : 'src';
     const value = element.getAttribute(attribute);
     element.setAttribute(attribute, `${relativeRoot}${value.slice(1)}`);
+  });
+}
+
+/* ==========================================================================
+   Service Image Fullscreen Lightbox Preview
+   ========================================================================== */
+function initServiceImageLightbox() {
+  const imageWraps = document.querySelectorAll('.service-card-image-wrap');
+  if (!imageWraps.length) return;
+
+  // Create modal container once if it doesn't exist
+  let modal = document.querySelector('.service-lightbox-modal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.className = 'service-lightbox-modal';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', 'Full Service Image Preview');
+    modal.innerHTML = `
+      <div class="service-lightbox-dialog">
+        <button type="button" class="service-lightbox-close" aria-label="Close Preview">&times;</button>
+        <img class="service-lightbox-img" src="" alt="Service Full Image Preview" />
+        <p class="service-lightbox-caption"></p>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    const closeBtn = modal.querySelector('.service-lightbox-close');
+    const closeModal = () => {
+      modal.classList.remove('is-active');
+      document.body.style.overflow = '';
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('is-active')) {
+        closeModal();
+      }
+    });
+  }
+
+  const modalImg = modal.querySelector('.service-lightbox-img');
+  const modalCaption = modal.querySelector('.service-lightbox-caption');
+
+  imageWraps.forEach((wrap) => {
+    if (wrap.dataset.lightboxInitialized) return;
+    wrap.dataset.lightboxInitialized = 'true';
+
+    wrap.addEventListener('click', () => {
+      const img = wrap.querySelector('.service-card-img');
+      if (!img) return;
+
+      modalImg.src = img.currentSrc || img.src;
+      modalImg.alt = img.alt || 'Service Full Preview';
+      modalCaption.textContent = img.alt || '';
+      modal.classList.add('is-active');
+      document.body.style.overflow = 'hidden';
+    });
   });
 }
 
