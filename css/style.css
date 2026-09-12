@@ -667,6 +667,92 @@ p {
   transform: translateX(4px);
 }
 
+    .cta {
+      margin-top: 36px;
+      padding: 34px 26px;
+      border: 1px solid rgba(195, 153, 255, 0.35);
+      border-radius: var(--radius);
+      background: linear-gradient(115deg, rgba(97, 45, 200, 0.68), rgba(50, 25, 106, 0.72));
+      box-shadow: 0 18px 55px var(--glow);
+      text-align: center;
+    }
+
+    .cta p {
+      margin: 0 0 18px;
+      color: #ece7fb;
+    }
+
+    .blog-nav-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 21px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 12px;
+      color: #180c35;
+      background: linear-gradient(135deg, #f0ddff, #b98bff);
+      box-shadow: 0 10px 24px rgba(8, 3, 22, 0.28);
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .cta-button:hover,
+    .cta-button:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(8, 3, 22, 0.38);
+    }
+
+    .cta-button-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 21px;
+      border: 1px solid rgba(246, 184, 75, 0.45);
+      border-radius: 12px;
+      color: #ffd07a;
+      background: rgba(14, 10, 31, 0.65);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 24px rgba(8, 3, 22, 0.28);
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, border-color 180ms ease, color 180ms ease;
+    }
+
+    .cta-button-secondary:hover,
+    .cta-button-secondary:focus-visible {
+      transform: translateY(-2px);
+      background: rgba(246, 184, 75, 0.18);
+      border-color: rgba(246, 184, 75, 0.85);
+      color: #ffffff;
+      box-shadow: 0 14px 28px rgba(246, 184, 75, 0.25);
+    }
+
+    @media (max-width: 560px) {
+      .page-shell {
+        width: min(calc(100% - 22px), var(--content-width));
+        padding-top: 44px;
+      }
+
+      .content-card {
+        padding: 23px 20px;
+      }
+
+      .placeholder-box {
+        min-height: 190px;
+      }
+    }
+
 /* Mobile Toggle Hamburger */
 .nav-toggle {
   display: none;
