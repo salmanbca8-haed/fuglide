@@ -58,24 +58,21 @@ function initNavigation() {
         e.preventDefault();
         e.stopPropagation();
 
-        // Close other open dropdowns
+        const isCurrentlyExpanded = dropdown.classList.contains('is-expanded') || dropdown.classList.contains('is-open');
+
+        // Close all other dropdowns
         dropdowns.forEach(other => {
           if (other !== dropdown) {
-            other.classList.remove('is-expanded');
-            other.classList.remove('is-open');
-            const otherMenu = other.querySelector('.dropdown-menu');
-            if (otherMenu && window.innerWidth <= 992) {
-              otherMenu.style.display = 'none';
-            }
+            other.classList.remove('is-expanded', 'is-open');
+            const otherBtn = other.querySelector('.dropdown-toggle');
+            if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
           }
         });
 
-        const isExpanded = dropdown.classList.toggle('is-expanded');
-        dropdown.classList.toggle('is-open', isExpanded);
-        const menu = dropdown.querySelector('.dropdown-menu');
-        if (menu && window.innerWidth <= 992) {
-          menu.style.display = isExpanded ? 'flex' : 'none';
-        }
+        // Toggle this dropdown
+        dropdown.classList.toggle('is-expanded', !isCurrentlyExpanded);
+        dropdown.classList.toggle('is-open', !isCurrentlyExpanded);
+        toggleBtn.setAttribute('aria-expanded', String(!isCurrentlyExpanded));
       });
     }
   });
@@ -86,12 +83,9 @@ function initNavigation() {
     document.addEventListener('click', (e) => {
       dropdowns.forEach(dropdown => {
         if (!dropdown.contains(e.target)) {
-          dropdown.classList.remove('is-expanded');
-          dropdown.classList.remove('is-open');
-          const menu = dropdown.querySelector('.dropdown-menu');
-          if (menu && window.innerWidth <= 992) {
-            menu.style.display = 'none';
-          }
+          dropdown.classList.remove('is-expanded', 'is-open');
+          const toggleBtn = dropdown.querySelector('.dropdown-toggle');
+          if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
         }
       });
     });
@@ -801,39 +795,42 @@ function highlightActiveNav() {
    ========================================================================== */
 async function initFooter() {
   const placeholder = document.getElementById('footer-placeholder');
-  if (!placeholder) return;
+  if (placeholder) {
+    const relativeRoot = getRelativeSiteRoot();
+    const candidatePaths = [
+      `${relativeRoot}footer.html`,
+      '/footer.html',
+      'footer.html',
+      '../footer.html',
+      '../../footer.html',
+      './footer.html'
+    ];
 
-  const relativeRoot = getRelativeSiteRoot();
-  const candidatePaths = [
-    `${relativeRoot}footer.html`,
-    '/footer.html',
-    'footer.html',
-    '../footer.html',
-    '../../footer.html',
-    './footer.html'
-  ];
-
-  let footerHtml = '';
-  for (const path of candidatePaths) {
-    try {
-      const response = await fetch(path);
-      if (response.ok) {
-        footerHtml = await response.text();
-        break;
+    let footerHtml = '';
+    for (const path of candidatePaths) {
+      try {
+        const response = await fetch(path);
+        if (response.ok) {
+          footerHtml = await response.text();
+          break;
+        }
+      } catch (e) {
+        // Try next candidate path
       }
-    } catch (e) {
-      // Try next candidate path
+    }
+
+    if (footerHtml) {
+      placeholder.outerHTML = footerHtml;
+      normalizeLocalSitePaths();
     }
   }
 
-  if (footerHtml) {
-    placeholder.outerHTML = footerHtml;
-    normalizeLocalSitePaths();
-    
-    // Auto-update copyright year
-    const yearEl = document.querySelector('.footer-bottom p');
-    if (yearEl && !yearEl.innerHTML.includes(new Date().getFullYear().toString())) {
-      yearEl.innerHTML = yearEl.innerHTML.replace(/\b20\d{2}\b/, new Date().getFullYear());
+  // Auto-update copyright year across all footers (static or dynamically loaded)
+  const yearEl = document.querySelector('.footer-bottom p');
+  if (yearEl) {
+    const currentYear = new Date().getFullYear().toString();
+    if (!yearEl.innerHTML.includes(currentYear)) {
+      yearEl.innerHTML = yearEl.innerHTML.replace(/\b20\d{2}\b/, currentYear);
     }
   }
 }
