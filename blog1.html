@@ -55,9 +55,15 @@
       pointer-events: none;
     }
 
-    body.blog-page > * {
+    body.blog-page > *:not(.site-header) {
       position: relative;
       z-index: 1;
+    }
+
+    body.blog-page > .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
     .page-shell {
@@ -214,6 +220,14 @@
       color: #ece7fb;
     }
 
+    .blog-nav-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
     .cta-button {
       display: inline-flex;
       align-items: center;
@@ -234,6 +248,32 @@
     .cta-button:focus-visible {
       transform: translateY(-2px);
       box-shadow: 0 14px 28px rgba(8, 3, 22, 0.38);
+    }
+
+    .cta-button-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 21px;
+      border: 1px solid rgba(246, 184, 75, 0.45);
+      border-radius: 12px;
+      color: #ffd07a;
+      background: rgba(14, 10, 31, 0.65);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 24px rgba(8, 3, 22, 0.28);
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, border-color 180ms ease, color 180ms ease;
+    }
+
+    .cta-button-secondary:hover,
+    .cta-button-secondary:focus-visible {
+      transform: translateY(-2px);
+      background: rgba(246, 184, 75, 0.18);
+      border-color: rgba(246, 184, 75, 0.85);
+      color: #ffffff;
+      box-shadow: 0 14px 28px rgba(246, 184, 75, 0.25);
     }
 
     @media (max-width: 560px) {
@@ -442,7 +482,12 @@
 
     <section class="cta animate-in" aria-label="Call to action">
       <p>Explore more practical projects and learning guides from Fu-Glide.</p>
-      <a class="cta-button animate-in" href="pages/blog.html">Back to the blog</a>
+      <div class="blog-nav-buttons">
+        <a class="cta-button animate-in" href="blog2.html">Next: Client Websites &rarr;</a>
+        <a class="cta-button-secondary animate-in" href="blog3.html">Sigarathalaivi Project &rarr;</a>
+        <a class="cta-button-secondary animate-in" href="blog4.html">Student Innovation &rarr;</a>
+        <a class="cta-button-secondary animate-in" href="pages/blog.html">All Blog Posts</a>
+      </div>
     </section>
   </main>
 
