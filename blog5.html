@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="A practical look at building a WiFi-controlled car with an ESP8266 and L298N motor driver." />
-  <title>We Built a WiFi-Controlled Car Using ESP8266 and L298N</title>
+  <meta name="description" content="FU DRIVO, the transport company of FU-GLIDE Innovation Intelligence Network, welcomes MBA student research and academic collaboration from Jamal Mohamed College of Engineering." />
+  <title>FU DRIVO – Student Research &amp; Industry Study | Fu-Glide</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
@@ -168,6 +168,36 @@
       font-weight: 700;
     }
 
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .meta-item {
+      padding: 16px 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(185, 143, 255, 0.15);
+      border-radius: 14px;
+    }
+
+    .meta-label {
+      display: block;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--violet);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .meta-value {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
     .wiring-summary {
       margin: 0;
       padding: 18px 22px;
@@ -177,10 +207,44 @@
       background: linear-gradient(90deg, rgba(116, 60, 226, 0.2), rgba(116, 60, 226, 0.05));
     }
 
+    .brand-tagline-box {
+      text-align: center;
+      padding: 24px 20px;
+      border: 1px dashed rgba(185, 143, 255, 0.35);
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(169, 108, 255, 0.08), rgba(109, 61, 226, 0.04));
+    }
+
+    .brand-tagline-box h3 {
+      margin: 0 0 6px;
+      font-size: 1.35rem;
+      font-family: 'Outfit', sans-serif;
+      color: #ffffff;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-tagline-box .tagline-sub {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .brand-tagline-box .motto-pill {
+      display: inline-block;
+      padding: 6px 18px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--purple), var(--violet));
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 16px rgba(109, 61, 226, 0.35);
+    }
+
     .image {
-        display: block;
-        max-width: 100%;
-        border-radius: 12px;
+      display: block;
+      max-width: 100%;
+      border-radius: 12px;
     }
 
     .placeholder-box {
@@ -289,6 +353,10 @@
       .placeholder-box {
         min-height: 190px;
       }
+
+      .meta-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
   <link rel="stylesheet" href="css/style.css" />
@@ -389,18 +457,17 @@
   </nav>
 </header>
 
-  
   <main class="page-shell">
-      <button id="backToTop" class="back-to-top" aria-label="Back to Top" title="Back to Top">
-    <svg viewBox="0 0 24 24">
-      <line x1="12" y1="19" x2="12" y2="5"></line>
-      <polyline points="5 12 12 5 19 12"></polyline>
-    </svg>
-  </button>
+    <button id="backToTop" class="back-to-top" aria-label="Back to Top" title="Back to Top">
+      <svg viewBox="0 0 24 24">
+        <line x1="12" y1="19" x2="12" y2="5"></line>
+        <polyline points="5 12 12 5 19 12"></polyline>
+      </svg>
+    </button>
     <header class="article-header animate-in">
-      <p class="eyebrow">Project Journal</p>
-      <h1>We Built a WiFi-Controlled Car Using ESP8266 and L298N</h1>
-      <p class="article-date">August 20, 2026</p>
+      <p class="eyebrow">Student Research &amp; Industry Study</p>
+      <h1>FU DRIVO – Student Research &amp; Industry Study</h1>
+      <p class="article-date">September 21, 2026</p>
     </header>
 
     <!-- Site-Wide Software & Web Development Highlight Banner -->
@@ -437,88 +504,92 @@
 
     <article class="article-content">
       <figure class="image-placeholder animate-in">
-        <div class="placeholder-box" role="img" aria-label="Photo of the finished car placeholder">
-          <img src="./images/car.png" alt="" class="image">
+        <div class="placeholder-box" role="img" aria-label="FU-GLIDE team with researcher and faculty from Jamal Mohamed College of Engineering" style="min-height: auto; padding: 6px; overflow: hidden;">
+          <img src="./images/grp_img.jpeg" alt="FU-GLIDE and FU DRIVO leadership engaging in academic research collaboration with Jamal Mohamed College of Engineering" class="image" style="width: 100%; height: auto; display: block; border-radius: 10px;">
         </div>
-        <figcaption>Final project image</figcaption>
+        <figcaption>FU-GLIDE and FU DRIVO team welcoming MBA student research and academic engagement in the transportation sector</figcaption>
       </figure>
 
       <section class="content-card animate-in">
-        <p>We wanted to build a small car that could move from a phone or laptop without a dedicated remote. Using an ESP8266 for WiFi control and an L298N motor driver for power, we turned that idea into a working project with a simple web interface.</p>
+        <p>As part of its commitment to encouraging practical learning and industry-oriented research, <strong>FU DRIVO</strong>, the transport company of <strong>FU-GLIDE Innovation Intelligence Network</strong>, warmly welcomes academic research and student engagement in the transportation sector.</p>
+        <p>An MBA student from <strong>Jamal Mohamed College of Engineering, Vadamadurai, Dindigul</strong>, is undertaking comprehensive research related to <strong>FU DRIVO</strong> and its dynamic transportation operations.</p>
       </section>
 
       <section class="content-card animate-in">
-        <h2>The Idea</h2>
-        <p>The goal was to make a compact, low-cost robot car that responds quickly to forward, reverse, left, and right commands. The ESP8266 handles the wireless connection and sends those commands to the motor driver, keeping the control system simple and easy to expand.</p>
-      </section>
-
-      <section class="content-card animate-in">
-        <h2>What We Used</h2>
+        <h2>Practical Aspects &amp; Core Research Focus Areas</h2>
+        <p>The research provides an in-depth opportunity to understand the practical aspects and real-world mechanics of a growing transport organization, including:</p>
         <ul>
-          <li>ESP8266 development board</li>
-          <li>L298N dual H-bridge motor driver</li>
-          <li>Four DC gear motors and a small car chassis</li>
-          <li>Wheels, caster wheel, and jumper wires</li>
-          <li>Ultrasonic sensor for obstacle detection</li>
-          <li>Battery pack and USB cable for programming</li>
-
-          <li>A phone or laptop connected to the car's WiFi network</li>
+          <li><strong>Transport Operations and Management:</strong> Fleet management, route optimization, vehicle scheduling, and operational efficiency.</li>
+          <li><strong>Customer Service and Mobility:</strong> Enhancing commuter satisfaction, safety standards, seamless booking, and modern mobility experiences.</li>
+          <li><strong>Business Development:</strong> Strategic market penetration, sustainable business models, and service expansion.</li>
+          <li><strong>Marketing Strategies:</strong> Targeted outreach campaigns, brand positioning, and customer acquisition channels.</li>
+          <li><strong>Logistics and Supply Chain Management:</strong> Resource planning, fleet lifecycle maintenance, and asset distribution.</li>
+          <li><strong>Technology in Transportation:</strong> Smart dispatching algorithms, GPS tracking, and digital transport infrastructure.</li>
+          <li><strong>Student Transportation Requirements:</strong> Affordable student commute solutions, safety protocols, and route accessibility for educational campuses.</li>
+          <li><strong>Organizational Development:</strong> Scalable organizational structures, standard operating procedures, and workforce collaboration.</li>
+          <li><strong>Employment &amp; Entrepreneurship Opportunities:</strong> Generating local employment, driver-partner models, and fostering entrepreneurial ventures in transport.</li>
         </ul>
       </section>
-
-      <section class="content-card animate-in">
-        <h2>How It Works</h2>
-        <ol>
-          <li>The ESP8266 starts a WiFi access point and hosts a small control page.</li>
-          <li>A button press on the page sends a movement command to the board.</li>
-          <li>The ESP8266 translates the command into direction signals.</li>
-          <li>The L298N uses those signals to drive the four motors forward or backward and right or left.</li>
-          <li>By changing the direction of each motor, the car can turn and stop.</li>
-        </ol>
-      </section>
-
-      <p class="wiring-summary animate-in">Equipments: connect the ESP8266 control pins to the L298N input pins, connect each motor to an output pair, and use a shared ground between the board, driver, and battery.</p>
 
       <figure class="image-placeholder animate-in">
-        <div class="placeholder-box" role="img" aria-label="Wiring and setup photo placeholder">
-          <img src="./images/equipments.png" alt="" class="image">
+        <div class="placeholder-box" role="img" aria-label="MBA students in classroom session at Jamal Mohamed College of Engineering" style="min-height: auto; padding: 6px; overflow: hidden;">
+          <img src="./images/clg_grp.jpeg" alt="MBA students and academic researchers studying transportation management and operations" class="image" style="width: 100%; height: auto; display: block; border-radius: 10px;">
         </div>
-        <figcaption>Equipments</figcaption>
+        <figcaption>Academic study session with MBA students exploring real-world transport operations, management, and logistics strategy</figcaption>
       </figure>
 
       <section class="content-card animate-in">
-        <h2>Problems We Fixed</h2>
-        <ul>
-          <li>The motors stuttered when the battery could not provide enough current, so we used a more suitable power source.</li>
-          <li>The ESP8266 reset unexpectedly until the motor power and board power were separated more carefully.</li>
-          <li>One motor spun in the wrong direction, which we corrected by swapping its output connections.</li>
-          <li>Commands felt delayed until we simplified the control page and sent only the action needed.</li>
-        </ul>
+        <h2>Connecting Academic Knowledge with Industry</h2>
+        <p><strong>FU-GLIDE</strong> strongly believes that students must have meaningful opportunities to connect classroom theory with real-world business environments.</p>
+        <p>Through <strong>FU DRIVO</strong>, MBA students and emerging managers gain valuable firsthand exposure to the practical challenges, daily operations, and strategic opportunities involved in running a modern transportation company.</p>
+        <p>This collaborative bridge between academia and industry helps students see how foundational concepts — such as <strong>Operations Management, Marketing, Human Resource Management, Business Development, and Entrepreneurship</strong> — are applied within active corporate enterprises.</p>
+      </section>
+
+      <p class="wiring-summary animate-in">Industry Collaboration: Bridging classroom concepts with live business execution enables students to gain practical insights, analytical skills, and real-world leadership capability in the transportation ecosystem.</p>
+
+      <section class="content-card animate-in">
+        <h2>About the Researcher &amp; Collaboration</h2>
+        <p>The research study is structured to contribute to academic literature while simultaneously providing actionable strategic insights for optimizing commercial transportation services.</p>
+        
+        <div class="meta-grid">
+          <div class="meta-item">
+            <span class="meta-label">Programme</span>
+            <span class="meta-value">Master of Business Administration (MBA)</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Institution</span>
+            <span class="meta-value">Jamal Mohamed College of Engineering</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Location</span>
+            <span class="meta-value">Vadamadurai, Dindigul, Tamil Nadu</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Industry Partner</span>
+            <span class="meta-value">FU DRIVO &bull; FU-GLIDE Network</span>
+          </div>
+        </div>
       </section>
 
       <section class="content-card animate-in">
-        <h2>What's Next</h2>
-        <ul>
-          <li>Add speed control with PWM.</li>
-          <li>Build a better mobile-friendly control panel.</li>
-          
-          <li>Explore an automatic mode that follows a planned route.</li>
-        </ul>
-      </section>
-
-      <section class="content-card animate-in">
-        <h2>Takeaway</h2>
-        <p>This project showed us how a small microcontroller, a motor driver, and a few well-tested connections can become a complete connected machine. The most useful lessons were in power management, shared grounding, and testing one part of the system at a time.</p>
+        <h2>FU DRIVO – Creating Opportunities for Students</h2>
+        <p><strong>FU DRIVO</strong> aims to become far more than just a transportation service provider. Through active academic engagement, internships, live corporate projects, and research opportunities, the company is dedicated to providing students with comprehensive exposure to the rapidly evolving mobility sector.</p>
+        
+        <div class="brand-tagline-box" style="margin-top: 20px;">
+          <h3>FU DRIVO</h3>
+          <p class="tagline-sub">Powered by FU-GLIDE Innovation Intelligence Network</p>
+          <div class="motto-pill">Move. Connect. Learn. Grow.</div>
+        </div>
       </section>
     </article>
 
     <section class="cta animate-in" aria-label="Call to action">
-      <p>Explore more practical projects and learning guides from Fu-Glide.</p>
+      <p>Explore more practical projects, student initiatives, and stories from Fu-Glide.</p>
       <div class="blog-nav-buttons">
-        <a class="cta-button animate-in" href="blog2.html">Next: Client Websites &rarr;</a>
+        <a class="cta-button-secondary animate-in" href="blog4.html">&larr; Previous: Student Innovation</a>
+        <a class="cta-button animate-in" href="blog1.html">WiFi-Controlled Car &rarr;</a>
+        <a class="cta-button-secondary animate-in" href="blog2.html">Client Websites &rarr;</a>
         <a class="cta-button-secondary animate-in" href="blog3.html">Sigarathalaivi Project &rarr;</a>
-        <a class="cta-button-secondary animate-in" href="blog4.html">Student Innovation &rarr;</a>
-        <a class="cta-button-secondary animate-in" href="blog5.html">FU DRIVO Research &rarr;</a>
         <a class="cta-button-secondary animate-in" href="pages/blog.html">All Blog Posts</a>
       </div>
     </section>
@@ -540,7 +611,7 @@
           class="footer-social-btn" aria-label="Instagram">
           <svg viewBox="0 0 24 24">
             <path
-              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.79 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
           </svg>
         </a>
         <a href="https://wa.me/9150792336" target="_blank" rel="noopener noreferrer" class="footer-social-btn"
