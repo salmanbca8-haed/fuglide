@@ -4,12 +4,19 @@ import re
 HEADER_TEMPLATE = """<header class="site-header animate-in">
   <div class="announcement-bar" role="region" aria-label="Fu-Glide announcements">
     <div class="announcement-bar__contact">
-      <a class="announcement-bar__phone" href="tel:+919150792336" aria-label="Call Fu-Glide">
+      <a class="announcement-bar__phone" href="tel:+919150792336" aria-label="Call Fu-Glide Direct Line">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path
             d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.053 15.053 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1.01A11.36 11.36 0 018.5 3.99c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.61c0-.55-.45-1-.99-1z" />
         </svg>
         <span>+91 91507 92336</span>
+      </a>
+      <a class="announcement-bar__phone" href="tel:+914513566973" aria-label="Call Fu-Glide Landline">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.053 15.053 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1.01A11.36 11.36 0 018.5 3.99c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.61c0-.55-.45-1-.99-1z" />
+        </svg>
+        <span>+91 4513566973</span>
       </a>
       <a class="announcement-bar__instagram" href="https://www.instagram.com/fu_glide_iin/?hl=en" target="_blank"
         rel="noopener noreferrer" aria-label="Follow Fu-Glide on Instagram">
@@ -128,12 +135,19 @@ def get_header_for_page(rel_path):
     h = f'''<header class="site-header animate-in">
   <div class="announcement-bar" role="region" aria-label="Fu-Glide announcements">
     <div class="announcement-bar__contact">
-      <a class="announcement-bar__phone" href="tel:+919150792336" aria-label="Call Fu-Glide">
+      <a class="announcement-bar__phone" href="tel:+919150792336" aria-label="Call Fu-Glide Direct Line">
         <svg viewBox="0 0 24 24" aria-hidden="true">
           <path
             d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.053 15.053 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1.01A11.36 11.36 0 018.5 3.99c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.61c0-.55-.45-1-.99-1z" />
         </svg>
         <span>+91 91507 92336</span>
+      </a>
+      <a class="announcement-bar__phone" href="tel:+914513566973" aria-label="Call Fu-Glide Landline">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.053 15.053 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1.01A11.36 11.36 0 018.5 3.99c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.61c0-.55-.45-1-.99-1z" />
+        </svg>
+        <span>+91 4513566973</span>
       </a>
       <a class="announcement-bar__instagram" href="https://www.instagram.com/fu_glide_iin/?hl=en" target="_blank"
         rel="noopener noreferrer" aria-label="Follow Fu-Glide on Instagram">
@@ -234,6 +248,12 @@ def batch_replace_headers(root_dir="."):
     
     modified_count = 0
     
+    # Also update header.html explicitly
+    header_html_content = get_header_for_page("index.html")
+    with open("header.html", "w", encoding="utf-8") as f:
+        f.write(header_html_content + "\n")
+    print("[UPDATED] header.html")
+
     for dirpath, dirnames, filenames in os.walk(root_dir):
         dirnames[:] = [d for d in dirnames if d not in skip_dirs]
         
