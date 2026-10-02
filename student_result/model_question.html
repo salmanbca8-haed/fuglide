@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="Practice with the Fu-Glide model question paper and prepare for your exam." />
+	<title>Exam Model Questions | Fu-Glide</title>
+	<link rel="icon" href="../images/icon.png" type="image/png" />
+	<link rel="stylesheet" href="../css/style.css" />
+	<link rel="stylesheet" href="../css/transitions.css" />
+	<style>
+
+		.model-paper {
+			padding: 2rem 0 5rem;
+		}
+
+		.model-paper__intro {
+			max-width: 760px;
+			margin-bottom: 1.5rem;
+		}
+
+		.model-paper__intro h2 {
+			margin-bottom: 0.75rem;
+		}
+
+		.model-paper__actions {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.75rem;
+			margin: 1.25rem 0 1.5rem;
+		}
+
+		.model-paper__viewer {
+			width: 100%;
+			height: min(82vh, 1000px);
+			min-height: 520px;
+			overflow: hidden;
+			border: 1px solid var(--border);
+			border-radius: 12px;
+			background: #fff;
+			box-shadow: var(--shadow);
+		}
+
+		.model-paper__viewer object {
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+
+		.model-paper__fallback {
+			padding: 2rem;
+			color: #172033;
+			text-align: center;
+		}
+
+		@media (max-width: 600px) {
+			.model-paper {
+				padding-top: 1rem;
+			}
+
+			.model-paper__viewer {
+				height: 72vh;
+				min-height: 420px;
+			}
+		}
+	</style>
+
+</head>
+<body>
+
+  <header class="site-header animate-in">
+    <div class="announcement-bar" role="region" aria-label="Fu-Glide announcements">
+      <div class="announcement-bar__contact">
+        <a class="announcement-bar__phone" href="tel:+919150792336" aria-label="Call Fu-Glide Direct Line">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.053 15.053 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1.01A11.36 11.36 0 018.5 3.99c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.61c0-.55-.45-1-.99-1z" />
+          </svg>
+          <span>+91 91507 92336</span>
+        </a>
+        <a class="announcement-bar__phone" href="tel:+914513566973" aria-label="Call Fu-Glide Landline">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.053 15.053 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1.01A11.36 11.36 0 018.5 3.99c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.61c0-.55-.45-1-.99-1z" />
+          </svg>
+          <span>+91 4513566973</span>
+        </a>
+        <a class="announcement-bar__instagram" href="https://www.instagram.com/fu_glide_iin/?hl=en" target="_blank" rel="noopener noreferrer" aria-label="Follow Fu-Glide on Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.013-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.79 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+          </svg>
+        </a>
+        <a class="announcement-bar__email" href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#search/fuglideiin%40gmail.com?compose=new" target="_blank" rel="noopener noreferrer" aria-label="Email Fu-Glide">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M3 5h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm0 2v.5l9 6 9-6V7H3zm18 10V9.9l-8.45 5.63a1 1 0 0 1-1.1 0L3 9.9V17h18z" />
+          </svg>
+        </a>
+      </div>
+      <div class="announcement-bar__marquee">
+        <div class="announcement-bar__viewport">
+          <div class="announcement-bar__track">
+            <div class="announcement-bar__group">
+              <span class="announcement-bar__item" style="color: #f6b84b;">Software Development &hearts;</span>
+              <span class="announcement-bar__item">Best AI Course in Dindigul</span>
+              <span class="announcement-bar__item" style="color: #f6b84b;">Software Development &hearts;</span>
+              <span class="announcement-bar__item">Practical Generative AI Training</span>
+              <span class="announcement-bar__item">Robotics &amp; Automation Programs Open</span>
+            </div>
+            <div class="announcement-bar__group" aria-hidden="true">
+              <span class="announcement-bar__item" style="color: #f6b84b;">Software Development &hearts;</span>
+              <span class="announcement-bar__item">Best AI Course in Dindigul</span>
+              <span class="announcement-bar__item" style="color: #f6b84b;">Software Development &hearts;</span>
+              <span class="announcement-bar__item">Practical Generative AI Training</span>
+              <span class="announcement-bar__item">Robotics &amp; Automation Programs Open</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="navbar container">
+      <a class="brand" href="../index.html" aria-label="Fu-Glide Home">
+        <img src="../images/logo.png" alt="Fu-Glide Logo" class="brand-logo" />
+        <img src="../images/logobelow.png" alt="Innovation Intelligence Network" class="brand-logo-sub" />
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="nav-links">
+        <a href="../index.html" style="color: #f6b84b;">Home</a>
+        <a href="../pages/about.html">About</a>
+        <div class="dropdown">
+          <button class="dropdown-toggle" type="button">
+            Courses
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="../pages/tutoring.html">IT courses &amp; Technology Training</a>
+            <a href="../pages/software-achievements.html">Non-IT Courses</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropdown-toggle" type="button">
+            Services
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+          <div class="dropdown-menu">
+            <a href="../pages/services2.html#seo">SEO</a>
+            <a href="../pages/services2.html#smo">SMO</a>
+            <a href="../pages/services2.html#ads">Meta and Google Ads</a>
+            <a href="../pages/services2.html#webdev">Website Development</a>
+            <a href="../pages/services2.html#branding">Branding and Marketing</a>
+            <a href="../pages/services2.html#robotics">Robotic Services</a>
+            <a href="../pages/services2.html#proposals">Business Proposals and Writing</a>
+            <a href="../pages/services2.html#growth">Business Growth Development</a>
+          </div>
+        </div>
+        <a href="../pages/blog.html">Blog</a>
+        <a href="../pages/apply.html">Apply</a>
+        <a href="../pages/contact.html">Contact</a>
+        <a href="./model_question.html">Model Questions</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero animate-in">
+      <div class="container">
+        <p class="eyebrow">AI EXECUTIVE LEADERSHIP PROGRAMME</p>
+        <h1>200 Model Questions</h1>
+        <p class="hero-copy">Use this Fu-Glide practice paper to prepare for the AI Executive Leadership Programme exam and review your understanding.</p>
+      </div>
+    </section>
+
+    <section class="model-paper">
+      <div class="container">
+        <div class="model-paper__intro">
+          <h2>Practice the paper</h2>
+          <p>The questions are presented without options, and an answer key is included in the paper. Try answering each question before checking the key, then revisit topics that need more practice.</p>
+          <div class="model-paper__actions">
+            <a class="btn btn-primary" href="./FU_GLIDE_model.pdf" target="_blank" rel="noopener noreferrer">Open Model Paper</a>
+            <a class="btn btn-secondary" href="./FU_GLIDE_model.pdf" download="FU_GLIDE_model.pdf">Download Paper</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+	<footer class="site-footer">
+		<div class="container footer-bottom">
+			<p>&copy; 2026 Fu-Glide Innovation Intelligence Network. All rights reserved.</p>
+			<a href="../index.html">Fu-Glide Home</a>
+		</div>
+	</footer>
+  <script src="../js/main.js"></script>
+  <script src="../js/animations.js"></script>
+</body>
+</html>
