@@ -1,0 +1,1891 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Result Portal | FU-GLIDE</title>
+  <meta name="description" content="Secure Online Student Result Verification Portal" />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" href="../images/icon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/transitions.css" />
+
+  <style>
+    /* ==========================================================================
+       FU-GLIDE STUDENT RESULT SYSTEM - INLINE STYLESHEET
+       Pure HTML/CSS/JS - Zero External Dependencies
+       ========================================================================== */
+    :root {
+      --res-bg: #061124;
+      --res-bg-deep: #030814;
+      --res-primary: #b06cff;
+      --res-primary-light: #c68fff;
+      --res-primary-glow: rgba(176, 108, 255, 0.4);
+      --res-secondary: #f6b84b;
+      --res-secondary-light: #ffd07a;
+      --res-secondary-glow: rgba(246, 184, 75, 0.35);
+      --res-success: #10b981;
+      --res-success-glow: rgba(16, 185, 129, 0.35);
+      --res-danger: #ef4444;
+      --res-danger-glow: rgba(239, 68, 68, 0.35);
+      --res-text: #ffffff;
+      --res-text-muted: rgba(246, 184, 75, 0.88);
+      --res-text-dim: rgba(226, 232, 240, 0.75);
+      --res-surface: rgba(255, 255, 255, 0.05);
+      --res-surface-card: rgba(12, 22, 45, 0.85);
+      --res-surface-inner: rgba(6, 14, 32, 0.9);
+      --res-border: rgba(255, 255, 255, 0.12);
+      --res-border-purple: rgba(176, 108, 255, 0.35);
+      --res-border-gold: rgba(246, 184, 75, 0.35);
+      --res-radius-sm: 10px;
+      --res-radius-md: 16px;
+      --res-radius-lg: 24px;
+      --res-transition: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+      --res-font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --res-font-heading: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: var(--res-font-body);
+      color: var(--res-text);
+      background-color: var(--res-bg);
+      background-image:
+        radial-gradient(circle at 15% 15%, rgba(176, 108, 255, 0.14) 0%, transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(246, 184, 75, 0.1) 0%, transparent 50%),
+        linear-gradient(180deg, #061124 0%, #030814 100%);
+      background-attachment: fixed;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .result-page {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .result-container {
+      width: 100%;
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* --- Header --- */
+    .result-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(6, 17, 36, 0.92);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--res-border-gold);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+      padding: 0.9rem 0;
+    }
+
+    .result-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .result-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      text-decoration: none;
+      color: var(--res-text);
+    }
+
+    .result-brand-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--res-primary), var(--res-secondary));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--res-font-heading);
+      font-weight: 900;
+      font-size: 1.25rem;
+      color: #ffffff;
+      box-shadow: 0 4px 14px var(--res-primary-glow);
+    }
+
+    .result-brand-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .result-brand-title {
+      font-family: var(--res-font-heading);
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: 0.06em;
+      background: linear-gradient(135deg, #ffffff 40%, var(--res-secondary-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .result-brand-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--res-text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .result-nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.45rem 1rem;
+      border-radius: 9999px;
+      background: var(--res-surface);
+      border: 1px solid var(--res-border);
+      color: var(--res-text-dim);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: var(--res-transition);
+    }
+
+    .result-nav-link:hover {
+      background: rgba(255, 255, 255, 0.12);
+      color: #ffffff;
+      border-color: var(--res-primary-light);
+    }
+
+    /* --- Main Layout --- */
+    .result-main {
+      flex: 1;
+      padding: 2.5rem 0 4rem;
+    }
+
+    .result-hero {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .result-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(176, 108, 255, 0.12);
+      border: 1px solid var(--res-border-purple);
+      color: var(--res-primary-light);
+      padding: 0.35rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.85rem;
+    }
+
+    .result-hero-title {
+      font-family: var(--res-font-heading);
+      font-size: clamp(1.85rem, 4vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+
+    .result-hero-subtitle {
+      color: var(--res-text-dim);
+      font-size: 0.95rem;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    /* --- Search Card --- */
+    .result-search-card {
+      max-width: 540px;
+      margin: 0 auto 2.5rem;
+      background: var(--res-surface-card);
+      border: 1px solid var(--res-border-purple);
+      border-radius: var(--res-radius-lg);
+      padding: 2rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .result-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .result-form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      text-align: left;
+    }
+
+    .result-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--res-text-muted);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    .result-input-wrapper {
+      position: relative;
+    }
+
+    .result-input {
+      width: 100%;
+      padding: 0.85rem 1.15rem;
+      background: var(--res-surface-inner);
+      border: 1.5px solid var(--res-border);
+      border-radius: var(--res-radius-sm);
+      color: #ffffff;
+      font-family: var(--res-font-body);
+      font-size: 0.95rem;
+      font-weight: 500;
+      outline: none;
+      transition: var(--res-transition);
+    }
+
+    .result-input:focus {
+      border-color: var(--res-primary);
+      box-shadow: 0 0 0 4px rgba(176, 108, 255, 0.2);
+    }
+
+    .result-input::placeholder {
+      color: rgba(255, 255, 255, 0.35);
+    }
+
+    input[type="date"]::-webkit-calendar-picker-indicator {
+      filter: invert(1);
+      cursor: pointer;
+    }
+
+    .result-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #b06cff;
+      gap: 0.6rem;
+      padding: 0.9rem 1.75rem;
+      border-radius: var(--res-radius-sm);
+      font-family: var(--res-font-heading);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      transition: var(--res-transition);
+      text-decoration: none;
+      cursor: pointer;
+    }
+      .result-btn1 {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #b06cff;
+      gap: 0.6rem;
+      padding: 0.9rem 1.75rem;
+      border-radius: var(--res-radius-sm);
+      font-family: var(--res-font-heading);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      transition: var(--res-transition);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .result-btn-primary {
+      background: linear-gradient(135deg, var(--res-primary) 0%, #9034eb 100%);
+      color: #ffffff;
+      box-shadow: 0 10px 25px var(--res-primary-glow);
+    }
+
+    .result-btn-primary:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(176, 108, 255, 0.55);
+    }
+
+    .result-btn-primary:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+
+    .result-btn-secondary {
+      background: var(--res-surface);
+      border: 1.5px solid var(--res-border-gold);
+      color: var(--res-secondary-light);
+    }
+
+    .result-btn-secondary:hover {
+      background: rgba(246, 184, 75, 0.15);
+      border-color: var(--res-secondary);
+      transform: translateY(-2px);
+    }
+
+    /* --- Loading Spinner --- */
+    .result-spinner {
+      display: none;
+      width: 18px;
+      height: 18px;
+      border: 2.5px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: #ffffff;
+      animation: spin 0.8s linear infinite;
+    }
+
+    .is-loading .result-spinner {
+      display: inline-block;
+    }
+
+    .is-loading .result-btn-icon {
+      display: none;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* --- Alert Messages --- */
+    .result-alert {
+      display: none;
+      max-width: 540px;
+      margin: 0 auto 2rem;
+      padding: 1.25rem 1.5rem;
+      border-radius: var(--res-radius-md);
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid var(--res-danger);
+      color: #fecaca;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(239, 68, 68, 0.2);
+      animation: shake 0.4s ease-in-out;
+    }
+
+    .result-alert-title {
+      font-family: var(--res-font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+    }
+
+    .result-alert-desc {
+      font-size: 0.88rem;
+      color: #fecaca;
+    }
+
+    @keyframes shake {
+
+      0%,
+      100% {
+        transform: translateX(0);
+      }
+
+      20%,
+      60% {
+        transform: translateX(-6px);
+      }
+
+      40%,
+      80% {
+        transform: translateX(6px);
+      }
+    }
+
+    /* --- Marksheet Card --- */
+    .result-display-wrapper {
+      display: none;
+      animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .result-sheet-card {
+      background: var(--res-surface-card);
+      border: 1px solid var(--res-border-gold);
+      border-radius: var(--res-radius-lg);
+      padding: 2.5rem;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .result-sheet-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--res-primary), var(--res-secondary), var(--res-primary));
+    }
+
+    /* Marksheet Header */
+    .result-sheet-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--res-border);
+      flex-wrap: wrap;
+    }
+
+    .result-sheet-org {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .result-sheet-logo {
+      height: 52px;
+      width: auto;
+      max-width: 170px;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.35));
+    }
+
+    .result-sheet-org-text h2 {
+      font-family: var(--res-font-heading);
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      color: #ffffff;
+    }
+
+    .result-sheet-org-text p {
+      font-size: 0.8rem;
+      color: var(--res-text-muted);
+      font-weight: 500;
+    }
+
+    .result-official-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.4rem 0.9rem;
+      border-radius: 9999px;
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid var(--res-success);
+      color: var(--res-success);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .result-doc-title {
+      text-align: center;
+      padding: 1.5rem 0 1.25rem;
+    }
+
+    .result-doc-title h3 {
+      font-family: var(--res-font-heading);
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      color: var(--res-secondary-light);
+      margin-bottom: 0.25rem;
+    }
+
+    .result-doc-title p {
+      font-size: 0.82rem;
+      color: var(--res-text-dim);
+    }
+
+    /* Student Info Grid */
+    .result-info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      padding: 1.5rem;
+      background: var(--res-surface-inner);
+      border-radius: var(--res-radius-md);
+      border: 1px solid var(--res-border);
+      margin-bottom: 2.25rem;
+    }
+
+    .result-info-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .result-info-label {
+      font-size: 0.74rem;
+      font-weight: 600;
+      color: var(--res-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .result-info-value {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #ffffff;
+      word-break: break-word;
+    }
+
+    .result-info-value.highlight {
+      color: var(--res-primary-light);
+      font-family: monospace;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    /* Result Table */
+    .result-table-wrapper {
+      overflow-x: auto;
+      margin-bottom: 2.25rem;
+      border-radius: var(--res-radius-md);
+      border: 1px solid var(--res-border);
+      background: var(--res-surface-inner);
+    }
+
+    .result-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.95rem;
+    }
+
+    .result-table th {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--res-text-muted);
+      padding: 1.1rem 1.35rem;
+      font-weight: 700;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-bottom: 1px solid var(--res-border);
+    }
+
+    .result-table td {
+      padding: 1.25rem 1.35rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    .result-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .result-table tr:hover td {
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .text-right {
+      text-align: right;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .grade-badge {
+      display: inline-block;
+      min-width: 32px;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      background: rgba(176, 108, 255, 0.15);
+      color: var(--res-primary-light);
+      border: 1px solid var(--res-border-purple);
+      text-align: center;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .status-badge.pass {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+    }
+
+    .status-badge.fail {
+      background: rgba(239, 68, 68, 0.15);
+      color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.4);
+    }
+
+    .status-badge.rank-top {
+      background: rgba(246, 184, 75, 0.2);
+      color: #fbd38d;
+      border: 1.5px solid rgba(246, 184, 75, 0.6);
+      box-shadow: 0 0 12px rgba(246, 184, 75, 0.25);
+      font-size: 0.78rem;
+      padding: 0.4rem 0.85rem;
+      letter-spacing: 0.04em;
+    }
+
+    .status-badge.rank-middle {
+      background: rgba(56, 189, 248, 0.2);
+      color: #7dd3fc;
+      border: 1.5px solid rgba(56, 189, 248, 0.6);
+      box-shadow: 0 0 12px rgba(56, 189, 248, 0.2);
+      font-size: 0.78rem;
+      padding: 0.4rem 0.85rem;
+      letter-spacing: 0.04em;
+    }
+
+    .status-badge.rank-low {
+      background: rgba(239, 68, 68, 0.2);
+      color: #fca5a5;
+      border: 1.5px solid rgba(239, 68, 68, 0.6);
+      box-shadow: 0 0 12px rgba(239, 68, 68, 0.2);
+      font-size: 0.78rem;
+      padding: 0.4rem 0.85rem;
+      letter-spacing: 0.04em;
+    }
+
+    /* Summary Grid */
+    .result-summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1.15rem;
+      margin-bottom: 2.25rem;
+    }
+
+    .result-summary-card {
+      background: var(--res-surface-inner);
+      border: 1px solid var(--res-border);
+      border-radius: var(--res-radius-md);
+      padding: 1.35rem 1.15rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 0.45rem;
+    }
+
+    .result-summary-card.highlight-card {
+      border-color: var(--res-border-gold);
+      background: rgba(246, 184, 75, 0.08);
+    }
+
+    .result-summary-title {
+      font-size: 0.76rem;
+      font-weight: 600;
+      color: var(--res-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .result-summary-num {
+      font-family: var(--res-font-heading);
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    /* Marksheet Footer / Seal */
+    .result-sheet-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 2rem;
+      padding-top: 1.75rem;
+      margin-top: 1.75rem;
+      border-top: 1px solid var(--res-border);
+      flex-wrap: wrap;
+    }
+
+    .result-sheet-disclaimer {
+      flex: 1;
+      min-width: 260px;
+    }
+
+    .result-sheet-disclaimer p {
+      font-size: 0.76rem;
+      color: var(--res-text-dim);
+      line-height: 1.5;
+    }
+
+    .result-sheet-seal {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 180px;
+    }
+
+    .result-signature-img {
+      height: 52px;
+      width: auto;
+      max-width: 160px;
+      object-fit: contain;
+      display: block;
+      margin-bottom: -4px;
+      filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.4));
+    }
+
+    .result-signature-line {
+      width: 150px;
+      height: 1.5px;
+      background: var(--res-border-gold);
+      margin-bottom: 0.45rem;
+    }
+
+    .result-seal-text {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    /* Actions Bar */
+    .result-actions {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    /* Portal Footer */
+    .result-portal-footer {
+      padding: 2rem 0;
+      text-align: center;
+      border-top: 1px solid var(--res-border);
+      font-size: 0.82rem;
+      color: var(--res-text-dim);
+    }
+
+    .result-portal-footer a {
+      color: var(--res-secondary-light);
+      text-decoration: none;
+    }
+
+    /* ==========================================================================
+       PRINT MEDIA STYLES - Strict Single-Page A4 Statement of Academic Performance
+       ========================================================================== */
+    @page {
+      size: A4 portrait;
+      margin: 8mm 10mm;
+    }
+
+    @media print {
+
+      html,
+      body {
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+        background-image: none !important;
+        color: #0a1128 !important;
+        height: 100% !important;
+        min-height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        page-break-after: avoid !important;
+        page-break-inside: avoid !important;
+      }
+
+      .no-print,
+      .site-header,
+      .announcement-bar,
+      .result-header,
+      .result-hero,
+      .result-search-card,
+      .result-alert,
+      .result-actions,
+      .result-portal-footer,
+      .back-to-top,
+      .whatsapp-float {
+        display: none !important;
+      }
+
+      .result-page,
+      .result-main,
+      .result-container,
+      .result-display-wrapper {
+        padding: 0 !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        flex: 1 1 auto !important;
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+        background-image: none !important;
+        page-break-after: avoid !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+
+      /* Full A4 Single-Page Sheet Card with Thin Border */
+      .result-sheet-card {
+        background: #ffffff !important;
+        background-image: none !important;
+        border: 1px solid #94a3b8 !important;
+        border-radius: 6px !important;
+        box-shadow: none !important;
+        padding: 16px 20px !important;
+        margin: 0 auto !important;
+        color: #0a1128 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 100% !important;
+        min-height: 255mm !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: space-between !important;
+        page-break-after: avoid !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+      }
+
+      .result-sheet-card::before {
+        display: none !important;
+      }
+
+      /* Header */
+      .result-sheet-header {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding-bottom: 14px !important;
+        margin-bottom: 0 !important;
+        border-bottom: 2px solid #cbd5e1 !important;
+      }
+
+      .result-sheet-org {
+        display: flex !important;
+        align-items: center !important;
+        gap: 1rem !important;
+      }
+
+      .result-sheet-logo {
+        height: 60px !important;
+        width: auto !important;
+        max-width: 175px !important;
+        object-fit: contain !important;
+        filter: none !important;
+      }
+
+      .result-sheet-org-text h2 {
+        color: #0a1128 !important;
+        -webkit-text-fill-color: #0a1128 !important;
+        font-size: 1.3rem !important;
+        font-weight: 800 !important;
+        letter-spacing: 0.02em !important;
+        margin: 0 0 3px 0 !important;
+      }
+
+      .result-sheet-org-text p {
+        color: #475569 !important;
+        font-size: 0.85rem !important;
+        font-weight: 600 !important;
+        margin: 0 !important;
+      }
+
+      .result-official-badge {
+        padding: 6px 14px !important;
+        font-size: 0.8rem !important;
+        font-weight: 800 !important;
+        border-radius: 9999px !important;
+        background: #dcfce7 !important;
+        color: #166534 !important;
+        border: 1.5px solid #166534 !important;
+      }
+
+      /* Document Title */
+      .result-doc-title {
+        text-align: center !important;
+        padding: 18px 0 14px !important;
+      }
+
+      .result-doc-title h3 {
+        color: #0a1128 !important;
+        -webkit-text-fill-color: #0a1128 !important;
+        font-size: 1.48rem !important;
+        font-weight: 900 !important;
+        letter-spacing: 0.05em !important;
+        margin-bottom: 4px !important;
+      }
+
+      .result-doc-title p {
+        color: #475569 !important;
+        font-size: 0.88rem !important;
+        font-weight: 600 !important;
+        margin: 0 !important;
+      }
+
+      /* Student Info Grid */
+      .result-info-grid {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 14px 24px !important;
+        padding: 16px 22px !important;
+        margin-bottom: 22px !important;
+        background: #f8fafc !important;
+        border: 1.5px solid #cbd5e1 !important;
+        border-radius: 10px !important;
+      }
+
+      .result-info-label {
+        color: #64748b !important;
+        font-size: 0.78rem !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        margin-bottom: 3px !important;
+        letter-spacing: 0.04em !important;
+      }
+
+      .result-info-value {
+        color: #0a1128 !important;
+        -webkit-text-fill-color: #0a1128 !important;
+        font-size: 1.08rem !important;
+        font-weight: 800 !important;
+      }
+
+      .result-info-value.highlight {
+        color: #0a1128 !important;
+        -webkit-text-fill-color: #0a1128 !important;
+      }
+
+      /* Subjects Table - Moved Down & Generous Padding */
+      .result-table-wrapper {
+        display: block !important;
+        margin-bottom: 24px !important;
+        background: #f8fafc !important;
+        border: 1.5px solid #cbd5e1 !important;
+        border-radius: 10px !important;
+        overflow: hidden !important;
+      }
+
+      .result-table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+        height: auto !important;
+      }
+
+      .result-table th {
+        background: #e2e8f0 !important;
+        color: #0a1128 !important;
+        border-bottom: 2px solid #94a3b8 !important;
+        padding: 14px 20px !important;
+        font-size: 0.92rem !important;
+        font-weight: 800 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.04em !important;
+      }
+
+      .result-table td {
+        color: #0a1128 !important;
+        border-bottom: 1px solid #cbd5e1 !important;
+        padding: 20px 20px !important;
+        font-size: 1.12rem !important;
+        font-weight: 700 !important;
+      }
+
+      .result-table tr:last-child td {
+        border-bottom: none !important;
+      }
+
+      /* Summary 4-Column Grid - Moved Down with Generous Padding */
+      .result-summary-grid {
+        display: grid !important;
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 14px !important;
+        margin-bottom: 22px !important;
+      }
+
+      .result-summary-card {
+        background: #f8fafc !important;
+        border: 1.5px solid #cbd5e1 !important;
+        border-radius: 10px !important;
+        padding: 16px 12px !important;
+        text-align: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        gap: 5px !important;
+      }
+
+      .result-summary-card.highlight-card {
+        background: #fefce8 !important;
+        border-color: #ca8a04 !important;
+      }
+
+      .result-summary-title {
+        color: #64748b !important;
+        font-size: 0.78rem !important;
+        font-weight: 700 !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.05em !important;
+      }
+
+      .result-summary-num {
+        color: #0a1128 !important;
+        -webkit-text-fill-color: #0a1128 !important;
+        font-size: 1.55rem !important;
+        font-weight: 900 !important;
+      }
+
+      /* Badges in Print */
+      .status-badge.rank-top {
+        background: #fef3c7 !important;
+        color: #92400e !important;
+        border: 1.5px solid #b45309 !important;
+        padding: 6px 12px !important;
+        font-size: 0.8rem !important;
+        font-weight: 800 !important;
+        border-radius: 9999px !important;
+        box-shadow: none !important;
+      }
+
+      .status-badge.rank-middle {
+        background: #e0f2fe !important;
+        color: #0369a1 !important;
+        border: 1.5px solid #0284c7 !important;
+        padding: 6px 12px !important;
+        font-size: 0.8rem !important;
+        font-weight: 800 !important;
+        border-radius: 9999px !important;
+        box-shadow: none !important;
+      }
+
+      .status-badge.rank-low {
+        background: #fee2e2 !important;
+        color: #991b1b !important;
+        border: 1.5px solid #b91c1c !important;
+        padding: 6px 12px !important;
+        font-size: 0.8rem !important;
+        font-weight: 800 !important;
+        border-radius: 9999px !important;
+        box-shadow: none !important;
+      }
+
+      /* Sheet Footer & Seal - Anchored down at the bottom of the A4 Sheet */
+      .result-sheet-footer {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: flex-end !important;
+        padding-top: 18px !important;
+        margin-top: auto !important;
+        border-top: 2px solid #cbd5e1 !important;
+        page-break-inside: avoid !important;
+        break-inside: avoid !important;
+        page-break-after: avoid !important;
+      }
+
+      .result-sheet-disclaimer {
+        max-width: 58% !important;
+      }
+
+      .result-sheet-disclaimer p {
+        color: #64748b !important;
+        font-size: 0.78rem !important;
+        line-height: 1.45 !important;
+        margin: 0 !important;
+      }
+
+      .result-sheet-seal {
+        min-width: 170px !important;
+        text-align: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+      }
+
+      .result-signature-img {
+        height: 52px !important;
+        width: auto !important;
+        max-width: 160px !important;
+        object-fit: contain !important;
+        margin-bottom: -3px !important;
+        filter: none !important;
+      }
+
+      .result-signature-line {
+        background: #0a1128 !important;
+        width: 150px !important;
+        height: 2px !important;
+        margin-bottom: 4px !important;
+      }
+
+      .result-seal-text {
+        color: #0a1128 !important;
+        -webkit-text-fill-color: #0a1128 !important;
+        font-size: 0.86rem !important;
+        font-weight: 800 !important;
+        display: block !important;
+      }
+
+      .result-sheet-seal span:last-child {
+        color: #64748b !important;
+        font-size: 0.74rem !important;
+        font-weight: 600 !important;
+        display: block !important;
+      }
+    }
+
+    @media (max-width: 640px) {
+
+      .result-search-card,
+      .result-sheet-card {
+        padding: 1.5rem 1.15rem;
+      }
+
+      .result-sheet-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .result-summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="result-page">
+
+    <!-- Site Header -->
+    <header class="site-header animate-in no-print">
+      <div class="announcement-bar" role="region" aria-label="Fu-Glide announcements">
+        <div class="announcement-bar__contact">
+          <a class="announcement-bar__phone" href="tel:+919150792336" aria-label="Call Fu-Glide Direct Line">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.053 15.053 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1.01A11.36 11.36 0 018.5 3.99c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.61c0-.55-.45-1-.99-1z" />
+            </svg>
+            <span>+91 91507 92336</span>
+          </a>
+          <a class="announcement-bar__phone" href="tel:+914513566973" aria-label="Call Fu-Glide Landline">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.053 15.053 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1.01A11.36 11.36 0 018.5 3.99c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.61c0-.55-.45-1-.99-1z" />
+            </svg>
+            <span>+91 4513566973</span>
+          </a>
+          <a class="announcement-bar__instagram" href="https://www.instagram.com/fu_glide_iin/?hl=en" target="_blank"
+            rel="noopener noreferrer" aria-label="Follow Fu-Glide on Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.79 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+            </svg>
+          </a>
+          <a class="announcement-bar__email"
+            href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#search/fuglideiin%40gmail.com?compose=new"
+            target="_blank" rel="noopener noreferrer" aria-label="Email Fu-Glide">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M3 5h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm0 2v.5l9 6 9-6V7H3zm18 10V9.9l-8.45 5.63a1 1 0 0 1-1.1 0L3 9.9V17h18z" />
+            </svg>
+          </a>
+        </div>
+        <div class="announcement-bar__marquee">
+          <div class="announcement-bar__viewport">
+            <div class="announcement-bar__track">
+              <div class="announcement-bar__group">
+                <span class="announcement-bar__item">Best AI Course in Dindigul</span>
+                <span class="announcement-bar__item">Practical Generative AI Training</span>
+                <span class="announcement-bar__item">Robotics &amp; Automation Programs Open</span>
+              </div>
+              <div class="announcement-bar__group" aria-hidden="true">
+                <span class="announcement-bar__item">Best AI Course in Dindigul</span>
+                <span class="announcement-bar__item">Practical Generative AI Training</span>
+                <span class="announcement-bar__item">Robotics &amp; Automation Programs Open</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="navbar container">
+        <a class="brand" href="../index.html" aria-label="Fu-Glide Home">
+          <img src="../images/logo.png" alt="Fu-Glide Logo" class="brand-logo" />
+          <img src="../images/logobelow.png" alt="Innovation Intelligence Network" class="brand-logo-sub" />
+        </a>
+
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <div class="nav-links">
+          <a href="../index.html">Home</a>
+          <a href="../pages/about.html">About</a>
+
+          <div class="dropdown">
+            <button class="dropdown-toggle" type="button">
+              Courses
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="dropdown-menu">
+              <a href="../pages/tutoring.html">IT courses & Technology Training</a>
+              <a href="../pages/software-achievements.html">Non-IT Courses</a>
+            </div>
+          </div>
+
+          <div class="dropdown">
+            <button class="dropdown-toggle" type="button">
+              Services
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="dropdown-menu">
+              <a href="../pages/services2.html#seo">SEO</a>
+              <a href="../pages/services2.html#smo">SMO</a>
+              <a href="../pages/services2.html#ads">Meta and Google Ads</a>
+              <a href="../pages/services2.html#webdev">Website Development</a>
+              <a href="../pages/services2.html#branding">Branding and Marketing</a>
+              <a href="../pages/services2.html#robotics">Robotic Services</a>
+              <a href="../pages/services2.html#proposals">Business Proposals and Writing</a>
+              <a href="../pages/services2.html#growth">Business Growth Development</a>
+            </div>
+          </div>
+
+          <a href="../pages/blog.html">Blog</a>
+          <a href="../pages/apply.html">Apply</a>
+          <a href="../pages/contact.html">Contact</a>
+          <a href="result.html" style="color: #f6b84b;">Results</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Portal Content -->
+    <main class="result-main">
+      <div class="result-container">
+
+        <!-- Hero Section -->
+        <section class="result-hero no-print">
+         <a href="../index.html"><button class="result-btn1">Back To Home</button></a>
+          <div class="result-badge">Academic Verification Portal</div>
+          <h1 class="result-hero-title">Student Result Verification</h1>
+          <p class="result-hero-subtitle">Enter your Unique Student ID or College Register Number to securely access your
+            official statement of marks.</p>
+
+        </section>
+
+        <!-- Search Form Card -->
+        <section class="result-search-card no-print">
+          <form id="studentResultForm" class="result-form" autocomplete="off">
+            <div class="result-form-group">
+              <label for="unique_id" class="result-label">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                <span>Hall Ticket Number / College Register Number</span>
+              </label>
+              <div class="result-input-wrapper">
+                <input type="text" id="unique_id" name="unique_id" class="result-input" placeholder="e.g. FG-2026-001 or 717822104001"
+                  required autofocus />
+              </div>
+            </div>
+
+            <button type="submit" id="viewResultBtn" class="result-btn result-btn-primary">
+              <span class="result-spinner"></span>
+              <span class="result-btn-text">VIEW RESULT</span>
+              <svg class="result-btn-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="2.5">
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
+            </button>
+          </form>
+        </section>
+
+        <!-- Generic Feedback Alert on Decryption Failure -->
+        <div id="alertNotFound" class="result-alert no-print" role="alert">
+          <div class="result-alert-title">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+            <span>Result Lookup Status</span>
+          </div>
+          <p class="result-alert-desc">No result found. Check your Unique ID or College Register Number.</p>
+        </div>
+
+        <!-- Marksheet Card Display -->
+        <div id="resultDisplayWrapper" class="result-display-wrapper">
+          <div class="result-sheet-card" id="marksheetCard">
+
+            <!-- Header -->
+            <div class="result-sheet-header">
+              <div class="result-sheet-org">
+                <img src="../images/logo.png" alt="Fu-Glide Logo" class="result-sheet-logo" />
+                <div class="result-sheet-org-text">
+                  <h2>FU-GLIDE INNOVATION INTELLIGENCE NETWORK</h2>
+                  <p>Center for Advanced Technology &amp; Academic Examinations</p>
+                </div>
+              </div>
+              <div class="result-official-badge">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                <span>Official Statement of Marks</span>
+              </div>
+            </div>
+
+            <!-- Statement Title -->
+            <div class="result-doc-title">
+              <h3>STATEMENT OF ACADEMIC PERFORMANCE</h3>
+              <p>Academic Evaluation &bull; Issue Date: <span id="sheetIssueDate">—</span></p>
+            </div>
+
+            <!-- Student Info Grid -->
+            <div class="result-info-grid">
+              <div class="result-info-item">
+                <span class="result-info-label">Student Name</span>
+                <span id="sheetStudentName" class="result-info-value">—</span>
+              </div>
+              <div class="result-info-item">
+                <span class="result-info-label">Hall Ticket Number</span>
+                <span id="sheetUniqueId" class="result-info-value highlight">—</span>
+              </div>
+              <div class="result-info-item">
+                <span class="result-info-label">College Register No.</span>
+                <span id="sheetRegNo" class="result-info-value highlight">—</span>
+              </div>
+              <div class="result-info-item">
+                <span class="result-info-label">Course Program</span>
+                <span id="sheetCourse" class="result-info-value">—</span>
+              </div>
+              <div class="result-info-item">
+                <span class="result-info-label">Department</span>
+                <span id="sheetDepartment" class="result-info-value">—</span>
+              </div>
+            </div>
+
+            <!-- Subjects Table -->
+            <div class="result-table-wrapper">
+              <table class="result-table">
+                <thead>
+                  <tr>
+                    <th style="width: 10%;">#</th>
+                    <th style="width: 50%;">Subject Name</th>
+                    <th class="text-right" style="width: 20%;">Max Marks</th>
+                    <th class="text-right" style="width: 20%;">Marks Obtained</th>
+                  </tr>
+                </thead>
+                <tbody id="sheetSubjectRows">
+                  <!-- Injected via JavaScript -->
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Summary Statistics Cards -->
+            <div class="result-summary-grid">
+              <div class="result-summary-card">
+                <span class="result-summary-title">Total Maximum</span>
+                <span id="sheetTotalMax" class="result-summary-num">0</span>
+              </div>
+              <div class="result-summary-card">
+                <span class="result-summary-title">Total Obtained</span>
+                <span id="sheetTotalObtained" class="result-summary-num">0</span>
+              </div>
+              <div class="result-summary-card highlight-card">
+                <span class="result-summary-title">Percentage</span>
+                <span id="sheetPercentage" class="result-summary-num">0.00%</span>
+              </div>
+              <div class="result-summary-card">
+                <span class="result-summary-title">Rank / Designation</span>
+                <span class="result-summary-num">
+                  <span id="sheetRank" class="status-badge rank-top">—</span>
+                </span>
+              </div>
+            </div>
+
+            <!-- Footer & Official Seal -->
+            <div class="result-sheet-footer">
+              <div class="result-sheet-disclaimer">
+                <p><strong>Note:</strong> This is a digitally verified statement of marks issued by the FU-GLIDE
+                  Examination Authority. The integrity of this document is cryptographically validated.</p>
+              </div>
+              <div class="result-sheet-seal">
+                <img src="../images/controller-of-examination.png" alt="Controller of Examinations Signature"
+                  class="result-signature-img" />
+                <div class="result-signature-line"></div>
+                <span class="result-seal-text">Controller of Examinations</span>
+                <span style="font-size: 0.7rem; color: var(--res-text-dim);">FU-GLIDE Academic Board</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Actions Bar -->
+          <div class="result-actions no-print">
+            <button type="button" id="printResultBtn" class="result-btn result-btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="6 9 6 2 18 2 18 9"></polyline>
+                <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+                <rect x="6" y="14" width="12" height="8"></rect>
+              </svg>
+              <span>PRINT RESULT</span>
+            </button>
+            <button type="button" id="searchAnotherBtn" class="result-btn result-btn-secondary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <span>SEARCH ANOTHER RESULT</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="result-portal-footer no-print">
+      <div class="result-container">
+        <p>&copy; <span id="currentYear"></span> FU-GLIDE Innovation Intelligence Network. All rights reserved.</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    /* ==========================================================================
+       FU-GLIDE CLIENT-SIDE DECRYPTION & RESULT PORTAL ENGINE
+       Standard Web Crypto API (PBKDF2 SHA-256 + AES-GCM 256)
+       ========================================================================== */
+    /* Header Navigation & Mobile Drawer */
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const dropdowns = document.querySelectorAll('.dropdown');
+    const siteHeader = document.querySelector('.site-header');
+
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = navLinks.classList.toggle('is-open');
+        navToggle.classList.toggle('is-active', isOpen);
+        navToggle.setAttribute('aria-expanded', String(isOpen));
+      });
+
+      document.addEventListener('click', (e) => {
+        if (navLinks.classList.contains('is-open') && !navLinks.contains(e.target) && !navToggle.contains(e.target)) {
+          navLinks.classList.remove('is-open');
+          navToggle.classList.remove('is-active');
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+
+    dropdowns.forEach((dropdown) => {
+      const toggleBtn = dropdown.querySelector('.dropdown-toggle');
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const isCurrentlyExpanded = dropdown.classList.contains('is-expanded') || dropdown.classList.contains('is-open');
+          dropdowns.forEach(other => {
+            if (other !== dropdown) {
+              other.classList.remove('is-expanded', 'is-open');
+              const otherBtn = other.querySelector('.dropdown-toggle');
+              if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+            }
+          });
+          dropdown.classList.toggle('is-expanded', !isCurrentlyExpanded);
+          dropdown.classList.toggle('is-open', !isCurrentlyExpanded);
+          toggleBtn.setAttribute('aria-expanded', String(!isCurrentlyExpanded));
+        });
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      dropdowns.forEach(dropdown => {
+        if (!dropdown.contains(e.target)) {
+          dropdown.classList.remove('is-expanded', 'is-open');
+          const toggleBtn = dropdown.querySelector('.dropdown-toggle');
+          if (toggleBtn) toggleBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+
+    if (siteHeader) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 30) {
+          siteHeader.classList.add('scrolled');
+        } else {
+          siteHeader.classList.remove('scrolled');
+        }
+      }, { passive: true });
+    }
+
+    const form = document.getElementById('studentResultForm');
+    const uniqueIdInput = document.getElementById('unique_id');
+    const submitBtn = document.getElementById('viewResultBtn');
+    const alertNotFound = document.getElementById('alertNotFound');
+    const resultDisplayWrapper = document.getElementById('resultDisplayWrapper');
+    const printBtn = document.getElementById('printResultBtn');
+    const searchAnotherBtn = document.getElementById('searchAnotherBtn');
+
+    // Auto-uppercase input
+    uniqueIdInput.addEventListener('input', () => {
+      uniqueIdInput.value = uniqueIdInput.value.toUpperCase();
+    });
+
+    // Helper: Base64 string to Uint8Array
+    function base64ToUint8Array(base64) {
+      const binaryString = window.atob(base64);
+      const len = binaryString.length;
+      const bytes = new Uint8Array(len);
+      for (let i = 0; i < len; i++) {
+        bytes[i] = binaryString.charCodeAt(i);
+      }
+      return bytes;
+    }
+
+    // Helper: Format Date for display
+    function formatDisplayDate(dateStr) {
+      if (!dateStr) return '—';
+      const parts = dateStr.split('-');
+      if (parts.length === 3) {
+        const year = parseInt(parts[0], 10);
+        const month = parseInt(parts[1], 10) - 1;
+        const day = parseInt(parts[2], 10);
+        const d = new Date(year, month, day);
+        if (!isNaN(d.getTime())) {
+          return d.toLocaleDateString('en-US', { day: '2-digit', month: 'short', year: 'numeric' });
+        }
+      }
+      return dateStr;
+    }
+
+    // Helper: Escape HTML to prevent XSS
+    function escapeHtml(str) {
+      if (typeof str !== 'string') return str || '';
+      return str
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    // Derive AES-GCM Key using Web Crypto PBKDF2 (SHA-256, 200,000 iterations) from student ID/RegNo
+    async function deriveDecryptionKey(normalizedId, saltBytes) {
+      const passphrase = normalizedId;
+      const enc = new TextEncoder();
+      const keyMaterial = await crypto.subtle.importKey(
+        'raw',
+        enc.encode(passphrase),
+        { name: 'PBKDF2' },
+        false,
+        ['deriveKey']
+      );
+
+      return await crypto.subtle.deriveKey(
+        {
+          name: 'PBKDF2',
+          salt: saltBytes,
+          iterations: 200000,
+          hash: 'SHA-256'
+        },
+        keyMaterial,
+        { name: 'AES-GCM', length: 256 },
+        false,
+        ['decrypt']
+      );
+    }
+
+    // Attempt to decrypt a single record
+    async function tryDecryptRecord(record, normalizedId) {
+      try {
+        const saltBytes = base64ToUint8Array(record.salt);
+        const ivBytes = base64ToUint8Array(record.iv);
+        const cipherBytes = base64ToUint8Array(record.data);
+
+        const key = await deriveDecryptionKey(normalizedId, saltBytes);
+        const decryptedBuffer = await crypto.subtle.decrypt(
+          { name: 'AES-GCM', iv: ivBytes },
+          key,
+          cipherBytes
+        );
+
+        const jsonStr = new TextDecoder().decode(decryptedBuffer);
+        const student = JSON.parse(jsonStr);
+
+        // Verify ID match (Unique ID or College Register Number)
+        const matchesUniqueId = student && student.uniqueId && String(student.uniqueId).trim().toUpperCase() === normalizedId;
+        const matchesRegNo = student && student.regNo && String(student.regNo).trim().toUpperCase() === normalizedId;
+
+        if (matchesUniqueId || matchesRegNo) {
+          return student;
+        }
+      } catch (err) {
+        // Expected decryption failure on mismatch (AES-GCM authentication tag mismatch)
+      }
+      return null;
+    }
+
+    // Render Student Marksheet
+    function renderMarksheet(student) {
+      document.getElementById('sheetStudentName').textContent = student.name || '—';
+      document.getElementById('sheetUniqueId').textContent = student.uniqueId || '—';
+      document.getElementById('sheetRegNo').textContent = student.regNo || '—';
+      document.getElementById('sheetCourse').textContent = student.course || '—';
+      document.getElementById('sheetDepartment').textContent = student.department || '—';
+      document.getElementById('sheetIssueDate').textContent = formatDisplayDate(new Date().toISOString().split('T')[0]);
+
+      // Populate Subjects Table
+      const tbody = document.getElementById('sheetSubjectRows');
+      tbody.innerHTML = '';
+
+      const subjects = Array.isArray(student.subjects) ? student.subjects : [];
+      subjects.forEach((sub, idx) => {
+        const tr = document.createElement('tr');
+        const maxMarks = parseInt(sub.maxMarks || sub.maximumMarks || 75, 10);
+        const marksObtained = parseInt(sub.marks || sub.marksObtained || 0, 10);
+
+        tr.innerHTML = `
+          <td>${idx + 1}</td>
+          <td><strong>${escapeHtml(sub.name || sub.subject || 'Subject')}</strong></td>
+          <td class="text-right">${maxMarks}</td>
+          <td class="text-right" style="color: var(--res-secondary-light); font-weight: 700;">${marksObtained}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      // Populate Summary Cards
+      const summary = student.summary || {};
+      const totalMax = summary.totalMaxMarks !== undefined ? summary.totalMaxMarks :
+        subjects.reduce((sum, s) => sum + parseInt(s.maxMarks || s.maximumMarks || 75, 10), 0);
+      const totalObtained = summary.totalMarksObtained !== undefined ? summary.totalMarksObtained :
+        subjects.reduce((sum, s) => sum + parseInt(s.marks || s.marksObtained || 0, 10), 0);
+      const percentage = summary.percentage !== undefined ? summary.percentage :
+        (totalMax > 0 ? ((totalObtained / totalMax) * 100).toFixed(2) : '0.00');
+
+      document.getElementById('sheetTotalMax').textContent = totalMax;
+      document.getElementById('sheetTotalObtained').textContent = totalObtained;
+      document.getElementById('sheetPercentage').textContent = `${percentage}%`;
+
+      function calculateRank(pctVal) {
+        const val = parseFloat(pctVal);
+        if (isNaN(val)) return 'LOW LEVEL MANAGER';
+        if (val >= 80) return 'TOP LEVEL MANAGER';
+        if (val >= 50) return 'MIDDLE LEVEL MANAGER';
+        return 'LOW LEVEL MANAGER';
+      }
+
+      const rank = summary.rank || calculateRank(percentage);
+      const rankEl = document.getElementById('sheetRank');
+      if (rankEl) {
+        rankEl.textContent = rank;
+        if (rank === 'TOP LEVEL MANAGER') {
+          rankEl.className = 'status-badge rank-top';
+        } else if (rank === 'MIDDLE LEVEL MANAGER') {
+          rankEl.className = 'status-badge rank-middle';
+        } else {
+          rankEl.className = 'status-badge rank-low';
+        }
+      }
+
+      // Show Result Section and scroll to it smoothly
+      alertNotFound.style.display = 'none';
+      resultDisplayWrapper.style.display = 'block';
+      resultDisplayWrapper.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    // Form Submission Handler
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const rawId = uniqueIdInput.value;
+
+      if (!rawId) {
+        alertNotFound.style.display = 'block';
+        return;
+      }
+
+      // Input Normalization
+      const normalizedId = rawId.trim().toUpperCase();
+
+      // UI Loading state
+      submitBtn.classList.add('is-loading');
+      submitBtn.disabled = true;
+      alertNotFound.style.display = 'none';
+      resultDisplayWrapper.style.display = 'none';
+
+      try {
+        // Fetch results.json with cache buster
+        const response = await fetch(`results.json?v=${Date.now()}`);
+        if (!response.ok) {
+          throw new Error('Could not load results.json');
+        }
+
+        const encryptedRecords = await response.json();
+        if (!Array.isArray(encryptedRecords) || encryptedRecords.length === 0) {
+          throw new Error('Empty dataset');
+        }
+
+        let matchedStudent = null;
+
+        // Decrypt records
+        // For optimal speed, try in batches with Promise.any to return on first match
+        const chunkSize = 6;
+        for (let i = 0; i < encryptedRecords.length; i += chunkSize) {
+          const chunk = encryptedRecords.slice(i, i + chunkSize);
+          const promises = chunk.map(rec => tryDecryptRecord(rec, normalizedId).then(res => {
+            if (res) return res;
+            throw new Error('No match');
+          }));
+
+          try {
+            matchedStudent = await Promise.any(promises);
+            if (matchedStudent) break;
+          } catch (batchErr) {
+            // No match in this batch, continue to next
+          }
+          // Micro-yield to keep the browser responsive
+          await new Promise(r => setTimeout(r, 0));
+        }
+
+        if (matchedStudent) {
+          renderMarksheet(matchedStudent);
+          return;
+        }
+
+        // Instant local admin preview fallback if results.json was not yet replaced in project folder
+        try {
+          const localData = localStorage.getItem('fuglide_students_data');
+          if (localData) {
+            const localStudents = JSON.parse(localData);
+            if (Array.isArray(localStudents)) {
+              const localMatch = localStudents.find(s => 
+                s && 
+                (
+                  (String(s.uniqueId || '').trim().toUpperCase() === normalizedId) ||
+                  (String(s.regNo || '').trim().toUpperCase() === normalizedId)
+                )
+              );
+              if (localMatch) {
+                renderMarksheet(localMatch);
+                return;
+              }
+            }
+          }
+        } catch (localErr) {
+          // Ignore local storage read errors
+        }
+
+        // If no match found in results.json or local admin storage
+        alertNotFound.style.display = 'block';
+        alertNotFound.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } catch (err) {
+        // Local preview fallback in case results.json fails to load over HTTP
+        try {
+          const localData = localStorage.getItem('fuglide_students_data');
+          if (localData) {
+            const localStudents = JSON.parse(localData);
+            if (Array.isArray(localStudents)) {
+              const localMatch = localStudents.find(s => 
+                s && 
+                (
+                  (String(s.uniqueId || '').trim().toUpperCase() === normalizedId) ||
+                  (String(s.regNo || '').trim().toUpperCase() === normalizedId)
+                )
+              );
+              if (localMatch) {
+                renderMarksheet(localMatch);
+                return;
+              }
+            }
+          }
+        } catch (localErr) {
+          // Ignore local storage read errors
+        }
+
+        // Generic failure message
+        alertNotFound.style.display = 'block';
+        alertNotFound.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } finally {
+        submitBtn.classList.remove('is-loading');
+        submitBtn.disabled = false;
+      }
+    });
+
+    // Print Action
+    printBtn.addEventListener('click', () => {
+      window.print();
+    });
+
+    // Search Another Action
+    searchAnotherBtn.addEventListener('click', () => {
+      resultDisplayWrapper.style.display = 'none';
+      uniqueIdInput.value = '';
+      uniqueIdInput.focus();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
+</body>
+
+</html>
