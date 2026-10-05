@@ -1201,6 +1201,10 @@
       .result-summary-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+              @keyframes redBlink {
+      0%, 100% { text-shadow: 0 0 4px #ff0000, 0 0 10px #ff0000, 0 0 20px #ff0000; opacity: 1; }
+      50% { text-shadow: none; opacity: 3.0; }
+    }
     }
   </style>
 </head>
@@ -1333,7 +1337,8 @@
 
         <!-- Search Form Card -->
         <section class="result-search-card no-print">
-          <form id="studentResultForm" class="result-form" autocomplete="off">
+            <h3 style="color: rgb(188, 139, 231); font-weight: bold; animation: redBlink 1.5s infinite alternate;"> Examination Result will be announce soon</h3>
+          <!-- <form id="studentResultForm" class="result-form" autocomplete="off">
             <div class="result-form-group">
               <label for="unique_id" class="result-label">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1356,7 +1361,7 @@
                 <polyline points="9 18 15 12 9 6"></polyline>
               </svg>
             </button>
-          </form>
+          </form> -->
         </section>
 
         <!-- Generic Feedback Alert on Decryption Failure -->

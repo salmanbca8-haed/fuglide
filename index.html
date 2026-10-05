@@ -18,6 +18,12 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/transitions.css" />
+  <style>
+        @keyframes redBlink {
+      0%, 100% { text-shadow: 0 0 4px #ff0000, 0 0 10px #ff0000, 0 0 20px #ff0000; opacity: 1; }
+      50% { text-shadow: none; opacity: 3.0; }
+    }
+  </style>
 </head>
 
 <body>
@@ -123,7 +129,7 @@
       <a href="pages/blog.html">Blog</a>
       <a href="pages/apply.html">Apply</a>
       <a href="pages/contact.html">Contact</a>
-      <a href="./student_result/model_question.html">Model Questions</a>
+      <a href="./student-results/wait.html"  style="color: red; font-weight: bold; animation: redBlink 1.5s infinite alternate;">Result</a>
     </div>
   </nav>
 </header>
