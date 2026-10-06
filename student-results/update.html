@@ -734,14 +734,11 @@
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
               <span>Export Backup</span>
             </button>
-            <label class="btn btn-secondary" style="margin-bottom: 0;">
+            <button type="button" id="importBackupBtn" class="btn btn-secondary">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
               <span>Import Backup</span>
-              <input type="file" id="importFileInput" accept=".json" style="display: none;" />
-            </label>
-            <button id="bulkAielpImportBtn" class="btn btn-primary" title="Load the 47 AIELP students from the supplied register and hall-ticket list">
-              <span>📥 Import 47 AIELP Students</span>
             </button>
+            <input type="file" id="importFileInput" accept=".json" style="display: none;" />
             <button id="generateResultsBtn" class="btn btn-gold">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
               <span>Generate results.json</span>
@@ -985,9 +982,9 @@
     
     const resetSamplesBtn = document.getElementById('resetSamplesBtn');
     const exportBackupBtn = document.getElementById('exportBackupBtn');
+    const importBackupBtn = document.getElementById('importBackupBtn');
     const importFileInput = document.getElementById('importFileInput');
     const generateResultsBtn = document.getElementById('generateResultsBtn');
-    const bulkAielpImportBtn = document.getElementById('bulkAielpImportBtn');
     const progressModal = document.getElementById('progressModal');
     const progressBarFill = document.getElementById('progressBarFill');
     const progressStatus = document.getElementById('progressStatus');
@@ -1474,6 +1471,14 @@
       });
     }
 
+    if (importBackupBtn) {
+      importBackupBtn.addEventListener('click', () => {
+        if (importFileInput) {
+          importFileInput.click();
+        }
+      });
+    }
+
     if (importFileInput) {
       importFileInput.addEventListener('change', (e) => {
         const file = e.target.files[0];
@@ -1517,82 +1522,7 @@
     }
 
     // --------------------------------------------------------------------------
-    // 8. Bulk import: AIELP 47-student register + hall-ticket list
-    //     Source: FU-GLIDE AIELP Entrance Examination 2026 student list
-    // --------------------------------------------------------------------------
-    const AIELP_47_STUDENTS = [
-      ["AARTHI R","922625631001","AIELP-C-001"],
-      ["ARAVIND S","922625631010","AIELP-C-002"],
-      ["ARAVIND SUNDAR R","922625631011","AIELP-C-003"],
-      ["AZHAGU MUTHUKUMAR K","922625631016","AIELP-C-004"],
-      ["BHUVANESWARI","922625631018","AIELP-C-005"],
-      ["BRINTHALAKSHMIA","922625631020","AIELP-C-006"],
-      ["CHANDRU KUMAR S","922625631023","AIELP-C-007"],
-      ["FELIX JEROME J","922625631031","AIELP-C-008"],
-      ["GIL CHRIST T","922625631033","AIELP-C-009"],
-      ["HARISH N K","922625631040","AIELP-C-010"],
-      ["JOHN PRAKASHI I","922625631044","AIELP-C-011"],
-      ["KAVIN S","922625631052","AIELP-C-012"],
-      ["LENIN KUMAR S","922625631055","AIELP-C-013"],
-      ["LOGESHWARAN M","922625631057","AIELP-C-014"],
-      ["MADUBALA N","922625631058","AIELP-C-015"],
-      ["MANGALA GOWRI G","922625631060","AIELP-C-016"],
-      ["MANIRATHNAM S","922625631061","AIELP-C-017"],
-      ["MOHAN M","922625631064","AIELP-C-018"],
-      ["NIVETHA R","922625631071","AIELP-C-019"],
-      ["RAJESH P","922625631079","AIELP-C-020"],
-      ["RENGA MADESWARAN S","922625631085","AIELP-C-021"],
-      ["SATHISH KUMAR A","922625631092","AIELP-C-022"],
-      ["SOUNDARYA R","922625631099","AIELP-C-023"],
-      ["STEPHILA SHEBI J","922625631100","AIELP-C-024"],
-      ["THANIYA HARNIA","922625631107","AIELP-C-025"],
-      ["THARANYA M","922625631108","AIELP-C-026"],
-      ["THILPANA RAJ S","922625631110","AIELP-C-027"],
-      ["VASANTH KUMAR C","922625631112","AIELP-C-028"],
-      ["VEMBAIYA C","922625631115","AIELP-C-029"],
-      ["YAMINI S","922625631119","AIELP-C-030"],
-      ["MAHAVISHNU I","922626631016","AIELP-C-031"],
-      ["NEPIN M","922626631025","AIELP-C-032"],
-      ["DHANUSH S","922626631002","AIELP-C-033"],
-      ["GOKUL S","922626631004","AIELP-C-034"],
-      ["GOWRI LAKSHMI S","922626631005","AIELP-C-035"],
-      ["JANCY J","922626631008","AIELP-C-036"],
-      ["JEEVARATHINAM M","922626631010","AIELP-C-037"],
-      ["JEYAPRIYA M","922626631011","AIELP-C-038"],
-      ["KARTHIGA J","922626631012","AIELP-C-039"],
-      ["KESAVA KATHIRVEL M","922626631015","AIELP-C-040"],
-      ["SHIFANA PARVEEN A","922626631034","AIELP-C-041"],
-      ["SHINY INFANCIA J","922626631035","AIELP-C-042"],
-      ["SORNAVARSHINI M E","922626631036","AIELP-C-043"],
-      ["SRI RAM M","922626631037","AIELP-C-044"],
-      ["SRISUMA V","922626631038","AIELP-C-045"],
-      ["SUKUMAR R","922626631040","AIELP-C-046"],
-      ["YOGA PRIYADHARSHINI G","922626631044","AIELP-C-047"]
-    ];
-
-    function buildAielpStudentRecords() {
-      return AIELP_47_STUDENTS.map(([name, regNo, uniqueId]) => normalizeStudentRecord({
-        uniqueId, regNo, name, subjects: [{ name: DEFAULT_SUBJECT_NAME, maxMarks: DEFAULT_MAX_MARKS, marks: 0 }]
-      }));
-    }
-
-    if (bulkAielpImportBtn) {
-      bulkAielpImportBtn.addEventListener('click', () => {
-        const proceed = confirm(
-          'This will replace the current student list with the 47 AIELP students from the supplied register.\n\n' +
-          'All marks will start at 0 so you can enter/update marks afterward.\n\nContinue?'
-        );
-        if (!proceed) return;
-
-        students = buildAielpStudentRecords().filter(Boolean);
-        saveStudentsToStorage();
-        renderStudentsTable();
-        showToast(`Successfully loaded ${students.length} AIELP students. Marks are set to 0.`, 'success');
-      });
-    }
-
-    // --------------------------------------------------------------------------
-    // 9. Web Crypto PBKDF2 + AES-GCM Encrypted Generator (results.json)
+    // 8. Web Crypto PBKDF2 + AES-GCM Encrypted Generator (results.json)
     // --------------------------------------------------------------------------
     if (generateResultsBtn) {
       generateResultsBtn.addEventListener('click', generateEncryptedResultsFile);
