@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internship Opportunities | Fu-Glide</title>
+  <meta name="description" content="Explore hands-on technology, web development, and digital marketing internship opportunities with Fu-Glide." />
+  <link rel="icon" href="../images/icon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="stylesheet" href="../css/transitions.css" />
+  <style>
+    .career-hero {
+      padding: 4rem 0 3rem;
+    }
+
+    .career-hero .container {
+      max-width: 1180px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
+      align-items: center;
+      gap: 3rem;
+    }
+
+    .career-hero-copy h1 {
+      max-width: 680px;
+      margin: 0 0 1.2rem;
+    }
+
+    .career-hero-copy p {
+      max-width: 610px;
+    }
+
+    .career-hero-copy .eyebrow {
+      color: var(--secondary);
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .career-hero-image {
+      position: relative;
+      width: 100%;
+      min-width: 0;
+      min-height: 0;
+      aspect-ratio: 4 / 3;
+      margin: 0;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: var(--shadow-lg);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .career-hero-image img,
+    .career-track-image img,
+    .career-story-image img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .career-hero-image img {
+      position: absolute;
+      inset: 0;
+      object-position: center 42%;
+      transition: opacity 0.45s ease;
+    }
+
+    .career-hero-image .career-hero-image-full {
+      object-fit: contain;
+      object-position: center;
+      opacity: 0;
+    }
+
+    .career-hero-image:hover,
+    .career-hero-image:focus-visible {
+      z-index: 1;
+      transform: scale(1.04);
+    }
+
+    .career-hero-image:hover > img:first-of-type,
+    .career-hero-image:focus-visible > img:first-of-type {
+      opacity: 0;
+    }
+
+    .career-hero-image:hover > .career-hero-image-full,
+    .career-hero-image:focus-visible > .career-hero-image-full {
+      opacity: 1;
+    }
+
+    .career-hero-image figcaption {
+      position: absolute;
+      inset: auto 0 0;
+      padding: 2.5rem 1.25rem 1rem;
+      color: #fff;
+      background: linear-gradient(transparent, rgba(3, 8, 20, 0.92));
+      font-size: 0.9rem;
+      transition: opacity 0.2s ease;
+    }
+
+    .career-hero-image:hover figcaption,
+    .career-hero-image:focus-visible figcaption {
+      opacity: 0;
+    }
+
+    .career-action-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1.6rem;
+    }
+
+    .career-section-heading {
+      max-width: 720px;
+      margin-bottom: 2rem;
+    }
+
+    .career-section-heading p {
+      color: rgba(226, 232, 240, 0.88);
+      margin-top: 0.65rem;
+    }
+
+    .career-track-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .career-track {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface-card);
+      box-shadow: var(--shadow);
+      transition: transform var(--transition), border-color var(--transition);
+    }
+
+    .career-track:hover {
+      transform: translateY(-5px);
+      border-color: rgba(246, 184, 75, 0.55);
+    }
+
+    .career-track-image {
+      height: 210px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .career-track-image img {
+      transition: transform 0.45s ease;
+    }
+
+    .career-track:hover .career-track-image img {
+      transform: scale(1.04);
+    }
+
+    .career-track-content {
+      padding: 1.4rem;
+    }
+
+    .career-track-content h3 {
+      color: var(--secondary);
+      margin-bottom: 0.55rem;
+    }
+
+    .career-track-content p,
+    .career-track-content li {
+      color: rgba(226, 232, 240, 0.88);
+    }
+
+    .career-track-content ul {
+      padding-left: 1.15rem;
+      margin: 0.8rem 0 1rem;
+    }
+
+    .career-track-content li {
+      margin-bottom: 0.35rem;
+    }
+
+    .career-track-link {
+      color: var(--secondary);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .career-track-link:hover {
+      text-decoration: underline;
+    }
+
+    .career-story {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 0.85fr);
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    .career-story-image {
+      height: 320px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .career-story-copy p {
+      color: rgba(226, 232, 240, 0.88);
+      margin-top: 0.8rem;
+    }
+
+    .career-process {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+      counter-reset: career-step;
+    }
+
+    .career-step {
+      border-top: 2px solid var(--secondary);
+      padding-top: 1rem;
+    }
+
+    .career-step::before {
+      counter-increment: career-step;
+      content: "0" counter(career-step);
+      display: block;
+      color: var(--secondary);
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .career-step p {
+      color: rgba(226, 232, 240, 0.82);
+      margin-top: 0.4rem;
+    }
+
+    .career-cta {
+      text-align: center;
+    }
+
+    .career-cta p {
+      max-width: 660px;
+      margin: 0 auto 1.4rem;
+      color: rgba(226, 232, 240, 0.88);
+    }
+
+    @media (max-width: 800px) {
+      .career-hero .container,
+      .career-story {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+      }
+
+      .career-hero-image {
+        aspect-ratio: 16 / 10;
+      }
+
+      .career-track-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 560px) {
+      .career-hero {
+        padding-top: 3rem;
+      }
+
+      .career-hero .container {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .career-hero-image {
+        order: -1;
+        aspect-ratio: 4 / 3;
+      }
+
+      .career-track-grid,
+      .career-process {
+        grid-template-columns: 1fr;
+      }
+
+      .career-track-image {
+        height: 230px;
+      }
+
+      .career-story-image {
+        height: 240px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header animate-in">
+  <div class="announcement-bar" role="region" aria-label="Fu-Glide announcements">
+    <div class="announcement-bar__contact">
+      <a class="announcement-bar__phone" href="tel:+919150792336" aria-label="Call Fu-Glide Direct Line">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.053 15.053 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1.01A11.36 11.36 0 018.5 3.99c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.61c0-.55-.45-1-.99-1z" />
+        </svg>
+        <span>+91 91507 92336</span>
+      </a>
+      <a class="announcement-bar__phone" href="tel:+914513566973" aria-label="Call Fu-Glide Landline">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.053 15.053 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1.01A11.36 11.36 0 018.5 3.99c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.61c0-.55-.45-1-.99-1z" />
+        </svg>
+        <span>+91 4513566973</span>
+      </a>
+      <a class="announcement-bar__instagram" href="https://www.instagram.com/fu_glide_iin/?hl=en" target="_blank"
+        rel="noopener noreferrer" aria-label="Follow Fu-Glide on Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.79 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+        </svg>
+      </a>
+      <a class="announcement-bar__email" href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#search/fuglideiin%40gmail.com?compose=new" target="_blank" rel="noopener noreferrer" aria-label="Email Fu-Glide">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 5h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm0 2v.5l9 6 9-6V7H3zm18 10V9.9l-8.45 5.63a1 1 0 0 1-1.1 0L3 9.9V17h18z" />
+        </svg>
+      </a>
+    </div>
+    <div class="announcement-bar__marquee">
+      <div class="announcement-bar__viewport">
+        <div class="announcement-bar__track">
+          <div class="announcement-bar__group">
+            <span class="announcement-bar__item">Best AI Course in Dindigul</span>
+            <span class="announcement-bar__item">Practical Generative AI Training</span>
+            <span class="announcement-bar__item">Robotics &amp; Automation Programs Open</span>
+          </div>
+          <div class="announcement-bar__group" aria-hidden="true">
+            <span class="announcement-bar__item">Best AI Course in Dindigul</span>
+            <span class="announcement-bar__item">Practical Generative AI Training</span>
+            <span class="announcement-bar__item">Robotics &amp; Automation Programs Open</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    <nav class="navbar container">
+      <a class="brand" href="../index.html" aria-label="Fu-Glide Home">
+        <img src="../images/logo.png" alt="Fu-Glide Logo" class="brand-logo" />
+        <img src="../images/logobelow.png" alt="Innovation Intelligence Network" class="brand-logo-sub" />
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+      <div class="nav-links">
+        <a href="../index.html">Home</a>
+        <a href="about.html">About</a>
+        <div class="dropdown">
+          <button class="dropdown-toggle" type="button">Courses</button>
+          <div class="dropdown-menu">
+            <a href="tutoring.html">IT courses &amp; Technology Training</a>
+            <a href="software-achievements.html">Non-IT Courses</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <button class="dropdown-toggle" type="button">Services</button>
+          <div class="dropdown-menu">
+            <a href="services2.html#seo">SEO</a>
+            <a href="services2.html#webdev">Website Development</a>
+            <a href="services2.html#robotics">Robotic Services</a>
+          </div>
+        </div>
+        <a href="blog.html">Blog</a>
+        <a href="career.html" style="color: #f6b84b;">Career</a>
+        <a href="apply.html">Apply</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero career-hero">
+      <div class="container">
+        <div class="career-hero-copy reveal animate-in">
+          <p class="eyebrow">Internships at Fu-Glide</p>
+          <h1>Make your next step a real project.</h1>
+          <p>Build practical skills alongside a working team. Explore internship tracks in technology, web development, and digital marketing, and learn by contributing to real briefs and guided projects.</p>
+          <div class="career-action-row">
+            <a class="btn btn-primary" href="#internship-tracks">Explore opportunities</a>
+            <a class="btn btn-secondary" href="https://wa.me/9150792336?text=Hello%20Fu-Glide%2C%20I%27m%20interested%20in%20an%20internship." target="_blank" rel="noopener noreferrer">Ask about internships</a>
+          </div>
+        </div>
+        <figure class="career-hero-image reveal animate-in" tabindex="0">
+          <img src="../images/fuglide_team_composite_white.jpg" alt="Fu-Glide team members during a professional meeting" />
+          <img class="career-hero-image-full" src="../images/fuglide_team_composite_white.jpg" alt="" aria-hidden="true" />
+          <figcaption>Learn with mentors. Contribute with a team.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="section" id="internship-tracks">
+      <div class="container">
+        <div class="career-section-heading reveal animate-in">
+          <p class="eyebrow">Find your track</p>
+          <h2>Internship opportunities</h2>
+          <p>Choose an area that fits your interests. Projects and current intake are confirmed with each applicant so the experience matches the work underway.</p>
+        </div>
+        <div class="career-track-grid">
+          <article class="career-track reveal animate-in">
+            <div class="career-track-image"><img src="../images/AI-CAREER.jpg" alt="Technology team exploring an AI project" loading="lazy" /></div>
+            <div class="career-track-content">
+              <h3>AI &amp; Technology</h3>
+              <p>Explore practical AI, data, and automation work with support from a mentor.</p>
+              <ul><li>Assist with guided prototypes</li><li>Explore data and AI tools</li><li>Present your project learnings</li></ul>
+              <a class="career-track-link" href="https://wa.me/9150792336?text=Hello%20Fu-Glide%2C%20I%27m%20interested%20in%20the%20AI%20and%20Technology%20internship." target="_blank" rel="noopener noreferrer">Ask about this track</a>
+            </div>
+          </article>
+          <article class="career-track reveal animate-in">
+            <div class="career-track-image"><img src="../images/WEB-CAREER.jpg" alt="Students and mentors collaborating at Fu-Glide" loading="lazy" /></div>
+            <div class="career-track-content">
+              <h3>Web Development</h3>
+              <p>Turn requirements into useful web experiences while learning a modern development workflow.</p>
+              <ul><li>Contribute to website features</li><li>Practice responsive UI development</li><li>Work through feedback and iteration</li></ul>
+              <a class="career-track-link" href="https://wa.me/9150792336?text=Hello%20Fu-Glide%2C%20I%27m%20interested%20in%20the%20Web%20Development%20internship." target="_blank" rel="noopener noreferrer">Ask about this track</a>
+            </div>
+          </article>
+          <article class="career-track reveal animate-in">
+            <div class="career-track-image"><img src="../images/DIGI-CAREER.jpg" alt="Students attending a Fu-Glide learning session" loading="lazy" /></div>
+            <div class="career-track-content">
+              <h3>Digital Marketing</h3>
+              <p>Get hands-on exposure to content, campaign planning, and digital brand building.</p>
+              <ul><li>Support content and social campaigns</li><li>Learn basic performance reporting</li><li>Build a portfolio of practical work</li></ul>
+              <a class="career-track-link" href="https://wa.me/9150792336?text=Hello%20Fu-Glide%2C%20I%27m%20interested%20in%20the%20Digital%20Marketing%20internship." target="_blank" rel="noopener noreferrer">Ask about this track</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt">
+      <div class="container career-story">
+        <div class="career-story-copy reveal animate-in">
+          <p class="eyebrow">A practical start</p>
+          <h2>Experience that goes beyond observation.</h2>
+          <p>Interns learn through structured guidance, collaborative work, and clear feedback. The goal is to leave with stronger skills, a better understanding of professional workflows, and work you can talk about.</p>
+          <p>Internship scope, schedule, eligibility, and any available openings are discussed directly with our team before you begin.</p>
+        </div>
+        <figure class="career-story-image reveal animate-in">
+          <img src="../images/PRACT-CAREER.jpg" alt="Fu-Glide team sharing workplace experience" loading="lazy" />
+        </figure>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="career-section-heading">
+          <p class="eyebrow">Getting started</p>
+          <h2>Three simple steps</h2>
+        </div>
+        <div class="career-process">
+          <div class="career-step"><h3>Tell us what interests you</h3><p>Share your preferred track, current studies, and the skills you want to build.</p></div>
+          <div class="career-step"><h3>Talk through the fit</h3><p>We will discuss current projects, eligibility, schedule, and available places.</p></div>
+          <div class="career-step"><h3>Start with a clear plan</h3><p>If there is a fit, we will outline your project scope and next steps before you begin.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt career-cta">
+      <div class="container">
+        <p class="eyebrow">Your next experience starts here</p>
+        <h2>Interested in an internship?</h2>
+        <p>Message our team with your area of interest and a short introduction. We will share details about current opportunities and the application process.</p>
+        <a class="btn btn-primary" href="https://wa.me/9150792336?text=Hello%20Fu-Glide%2C%20I%27d%20like%20to%20ask%20about%20current%20internship%20opportunities." target="_blank" rel="noopener noreferrer">Contact us on WhatsApp</a>
+      </div>
+    </section>
+  </main>
+  
+  <footer class="site-footer">
+  <div class="container footer-grid">
+    <!-- Column 1: Brand Info -->
+    <div class="footer-col footer-brand">
+      <a class="footer-logo-wrap" href="../index.html" aria-label="Fu-Glide Home">
+        <img src="../images/logo.png" alt="Fu-Glide Logo" class="footer-logo" />
+        <span class="footer-brand-name">Fu-Glide</span>
+      </a>
+      <p class="footer-about-text">
+        At Fu-Glide, we’re entirely focused on helping you succeed. We provide modern digital tools and hands-on guidance for teams and students with big goals. Whether you’re trying to land your first job or level up your current skills, we’re here to help you get where you want to be.
+      </p>
+      <div class="footer-social-row">
+        <a href="https://www.instagram.com/fu_glide_iin/?hl=en" target="_blank" rel="noopener noreferrer"
+          class="footer-social-btn" aria-label="Instagram">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+          </svg>
+        </a>
+        <a href="https://wa.me/9150792336" target="_blank" rel="noopener noreferrer" class="footer-social-btn"
+          aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.456 5.711 1.457h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
+        </a>
+        <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#search/fuglideiin%40gmail.com?compose=new" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Email Fu-Glide">
+          <svg viewBox="0 0 24 24">
+            <path d="M3 5h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm0 2v.5l9 6 9-6V7H3zm18 10V9.9l-8.45 5.63a1 1 0 0 1-1.1 0L3 9.9V17h18z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Column 2: Quick Links -->
+    <div class="footer-col footer-links-col">
+      <h4 class="footer-heading">Quick Links</h4>
+      <ul class="footer-nav-list">
+        <li class="footer-nav-item">
+          <a href="../index.html" class="footer-nav-link">
+            <svg class="footer-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <span>Home</span>
+          </a>
+        </li>
+        <li class="footer-nav-item">
+          <a href="about.html" class="footer-nav-link">
+            <svg class="footer-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <span>About Us</span>
+          </a>
+        </li>
+        <li class="footer-nav-item">
+          <a href="tutoring.html" class="footer-nav-link">
+            <svg class="footer-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <span>Our Courses</span>
+          </a>
+        </li>
+        <li class="footer-nav-item">
+          <a href="blog.html" class="footer-nav-link">
+            <svg class="footer-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <span>Blog</span>
+          </a>
+        </li>
+        <li class="footer-nav-item">
+          <a href="services2.html" class="footer-nav-link">
+            <svg class="footer-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <span>Our Services</span>
+          </a>
+        </li>
+        <li class="footer-nav-item">
+          <a href="contact.html" class="footer-nav-link">
+            <svg class="footer-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <span>Contact Us</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Column 3: Contact Us -->
+    <div class="footer-col footer-contact-col">
+      <h4 class="footer-heading">Contact Us</h4>
+      <ul class="footer-contact-list">
+        <li class="footer-contact-item">
+          <div class="footer-contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+            </svg>
+          </div>
+          <div class="footer-contact-info">
+            <span class="footer-contact-label">Location</span>
+            <span class="footer-contact-val">
+              <strong>Fu-Glide Innovation Intelligence Network</strong>
+              38B RMV Complex, Palani Road, Dindigul 624003.
+            </span>
+          </div>
+        </li>
+        <li class="footer-contact-item">
+          <div class="footer-contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+            </svg>
+          </div>
+          <div class="footer-contact-info">
+            <span class="footer-contact-label">Email Support</span>
+            <a class="footer-contact-val" href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#search/fuglideiin%40gmail.com?compose=new" target="_blank" rel="noopener noreferrer">fuglide@gmail.com</a>
+          </div>
+        </li>
+        <li class="footer-contact-item">
+          <div class="footer-contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.053 15.053 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1.01A11.36 11.36 0 018.5 3.99c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.61c0-.55-.45-1-.99-1z" />
+            </svg>
+          </div>
+          <div class="footer-contact-info">
+            <span class="footer-contact-label">Direct Line</span>
+            <a class="footer-contact-val" href="tel:+919150792336">+91 91507 92336</a>
+            <span class="footer-contact-label">Land Line</span>
+            <a class="footer-contact-val" href="tel:+914513566973">+91 4513566973</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Column 4: Our Location -->
+    <div class="footer-col footer-map-col">
+      <h4 class="footer-heading">Our Location</h4>
+      <div class="footer-map-card">
+        <div class="footer-map-badge">
+          <span class="footer-map-dot"></span>
+          <span>Live HQ Campus</span>
+        </div>
+        <div class="footer-map-wrapper">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62804.04400047483!2d77.90463166305959!3d10.321646438874492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00ab004b59b95d%3A0x1382bb12b1642380!2sFu-Glide%20Innovation%20Intelligence%20Network!5e0!3m2!1sen!2sin!4v1785505014608!5m2!1sen!2sin"
+            width="100%" height="175" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin" title="Fu-Glide Innovation Network Location Map">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>&copy; 2026 Fu-Glide Innovation Intelligence Network. All rights reserved.</p>
+    <div class="footer-tagline-pill">
+    <span>Designed &amp; Developed by Fu-Glide Innovation Intelligence Network</span>
+    </div>
+  </div>
+</footer>
+  <!-- <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-col footer-brand">
+        <a class="footer-logo-wrap" href="../index.html" aria-label="Fu-Glide Home"><img src="../images/logo.png" alt="Fu-Glide Logo" class="footer-logo" /><span class="footer-brand-name">Fu-Glide</span></a>
+        <p class="footer-about-text">Practical learning and digital solutions for people ready to build what comes next.</p>
+      </div>
+      <div class="footer-col footer-links-col">
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul class="footer-nav-list">
+          <li class="footer-nav-item"><a href="../index.html" class="footer-nav-link">Home</a></li>
+          <li class="footer-nav-item"><a href="about.html" class="footer-nav-link">About Us</a></li>
+          <li class="footer-nav-item"><a href="career.html" class="footer-nav-link">Career</a></li>
+          <li class="footer-nav-item"><a href="contact.html" class="footer-nav-link">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact-col">
+        <h4 class="footer-heading">Talk with our team</h4>
+        <p><a href="tel:+919150792336">+91 91507 92336</a></p>
+        <p><a href="mailto:fuglideiin@gmail.com">fuglideiin@gmail.com</a></p>
+      </div>
+    </div>
+    <div class="container footer-bottom"><p>&copy; 2026 Fu-Glide Innovation Intelligence Network.</p></div>
+  </footer> -->
+
+  <script src="../js/main.js"></script>
+  <script src="../js/animations.js"></script>
+</body>
+</html>
