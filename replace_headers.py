@@ -119,6 +119,7 @@ def get_header_for_page(rel_path):
     is_home = rel_norm in ["index.html", "./index.html"]
     is_about = "about" in rel_norm
     is_blog = "blog" in rel_norm
+    is_career = "career" in rel_norm
     is_apply = "apply" in rel_norm
     is_contact = "contact" in rel_norm
     is_courses = ("tutoring" in rel_norm or "software-achievements" in rel_norm or "course_details" in rel_norm)
@@ -127,11 +128,14 @@ def get_header_for_page(rel_path):
     home_style = ' style="color: #f6b84b;"' if is_home else ''
     about_style = ' style="color: #f6b84b;"' if is_about else ''
     blog_style = ' style="color: #f6b84b;"' if is_blog else ''
+    career_style = ' style="color: #f6b84b;"' if is_career else ''
     apply_style = ' style="color: #f6b84b;"' if is_apply else ''
     contact_style = ' style="color: #f6b84b;"' if is_contact else ''
     courses_style = ' style="color: #f6b84b;"' if is_courses else ''
     services_style = ' style="color: #f6b84b;"' if is_services else ''
     
+    extra_model_link = f'\n      <a href="./model_question.html" style="color: #f6b84b;">Model Questions</a>' if "model_question" in rel_norm else ''
+
     h = f'''<header class="site-header animate-in">
   <div class="announcement-bar" role="region" aria-label="Fu-Glide announcements">
     <div class="announcement-bar__contact">
@@ -222,14 +226,16 @@ def get_header_for_page(rel_path):
           <a href="{pages_prefix}services2.html#webdev">Website Development</a>
           <a href="{pages_prefix}services2.html#branding">Branding and Marketing</a>
           <a href="{pages_prefix}services2.html#robotics">Robotic Services</a>
+          <a href="{pages_prefix}services2.html#robot-rental">Robot Rentals (Events)</a>
           <a href="{pages_prefix}services2.html#proposals">Business Proposals and Writing</a>
           <a href="{pages_prefix}services2.html#growth">Business Growth Development</a>
         </div>
       </div>
 
       <a href="{pages_prefix}blog.html"{blog_style}>Blog</a>
+      <a href="{pages_prefix}career.html"{career_style}>Career</a>
       <a href="{pages_prefix}apply.html"{apply_style}>Apply</a>
-      <a href="{pages_prefix}contact.html"{contact_style}>Contact</a>
+      <a href="{pages_prefix}contact.html"{contact_style}>Contact</a>{extra_model_link}
     </div>
   </nav>
 </header>'''

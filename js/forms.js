@@ -242,3 +242,30 @@ attachFormHandler(
   ],
   'Contact'
 );
+
+// Auto-populate Subject from URL parameter (e.g., ?service=robot_rental)
+document.addEventListener('DOMContentLoaded', () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const service = urlParams.get('service');
+  const subjectInput = document.getElementById('subject');
+  const messageInput = document.getElementById('message');
+  if (service && subjectInput) {
+    const serviceMap = {
+      'robot_rental': 'Robot Rental Booking for Event / Function',
+      'robotics': 'Robotics & Automation Services Inquiry',
+      'branding': 'Branding & Identity Design Inquiry',
+      'webdev': 'Website & Software Development Inquiry',
+      'seo': 'SEO Services Inquiry',
+      'smo': 'Social Media Optimization (SMO) Inquiry',
+      'ads': 'Meta & Google Ads Campaign Inquiry',
+      'proposals': 'Business Proposals & Pitch Deck Writing',
+      'growth': 'Business Growth & Scaling Strategy'
+    };
+    if (serviceMap[service]) {
+      subjectInput.value = serviceMap[service];
+      if (service === 'robot_rental' && messageInput) {
+        messageInput.placeholder = 'Please share your event date, occasion type (Inauguration, Marriage, Corporate Expo, Birthday, etc.), venue location, and requirements.';
+      }
+    }
+  }
+});
