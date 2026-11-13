@@ -774,8 +774,28 @@ async function initHeader() {
 }
 
 function highlightActiveNav() {
+  const nav = document.querySelector('.nav-links');
+  if (!nav) return;
+
+  const eventPath = new URL(`${getRelativeSiteRoot()}pages/event.html`, window.location.href).pathname.toLowerCase();
+  const hasEventLink = Array.from(nav.querySelectorAll('a')).some((link) => (
+    new URL(link.href, window.location.href).pathname.toLowerCase() === eventPath
+  ));
+
+  if (!hasEventLink) {
+    const eventLink = document.createElement('a');
+    eventLink.href = `${getRelativeSiteRoot()}pages/event.html`;
+    eventLink.textContent = 'Event';
+
+    const contactLink = Array.from(nav.querySelectorAll('a')).find((link) => (
+      new URL(link.href, window.location.href).pathname.toLowerCase().endsWith('/contact.html')
+    ));
+
+    nav.insertBefore(eventLink, contactLink || null);
+  }
+
   const currentPath = window.location.pathname.toLowerCase().replace(/^\//, '');
-  const links = document.querySelectorAll('.nav-links a');
+  const links = nav.querySelectorAll('a');
   
   links.forEach(link => {
     const href = link.getAttribute('href');
