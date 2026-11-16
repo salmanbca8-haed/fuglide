@@ -778,13 +778,14 @@ function highlightActiveNav() {
   if (!nav) return;
 
   const eventPath = new URL(`${getRelativeSiteRoot()}pages/event.html`, window.location.href).pathname.toLowerCase();
-  const hasEventLink = Array.from(nav.querySelectorAll('a')).some((link) => (
+  const eventLinks = Array.from(nav.querySelectorAll('a')).filter((link) => (
     new URL(link.href, window.location.href).pathname.toLowerCase() === eventPath
   ));
 
-  if (!hasEventLink) {
+  if (eventLinks.length === 0) {
     const eventLink = document.createElement('a');
     eventLink.href = `${getRelativeSiteRoot()}pages/event.html`;
+    eventLink.classList.add('event-nav-link');
     eventLink.textContent = 'Event';
 
     const contactLink = Array.from(nav.querySelectorAll('a')).find((link) => (
@@ -792,6 +793,8 @@ function highlightActiveNav() {
     ));
 
     nav.insertBefore(eventLink, contactLink || null);
+  } else {
+    eventLinks.forEach((link) => link.classList.add('event-nav-link'));
   }
 
   const currentPath = window.location.pathname.toLowerCase().replace(/^\//, '');

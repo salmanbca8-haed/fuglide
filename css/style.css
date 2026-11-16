@@ -620,6 +620,32 @@ p {
   border-color: rgba(246, 184, 75, 0.3);
 }
 
+.nav-links a.event-nav-link,
+.nav-links a.event-nav-link.active {
+  color: #43ff62 !important;
+  background: rgba(42, 255, 87, 0.12);
+  border-color: rgba(67, 255, 98, 0.55);
+  box-shadow: 0 0 10px rgba(67, 255, 98, 0.35), 0 0 22px rgba(67, 255, 98, 0.2);
+  text-shadow: 0 0 8px rgba(67, 255, 98, 0.8);
+  animation: eventNavFlicker 1.6s ease-in-out infinite;
+}
+
+.nav-links a.event-nav-link:hover {
+  background: rgba(42, 255, 87, 0.2);
+  border-color: rgba(67, 255, 98, 0.8);
+}
+
+@keyframes eventNavFlicker {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(67, 255, 98, 0.35), 0 0 22px rgba(67, 255, 98, 0.2);
+    text-shadow: 0 0 8px rgba(67, 255, 98, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 2px rgba(67, 255, 98, 0.15);
+    text-shadow: 0 0 2px rgba(67, 255, 98, 0.35);
+  }
+}
+
 .dropdown-toggle svg {
   width: 13px;
   height: 13px;
