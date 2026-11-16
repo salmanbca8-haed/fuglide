@@ -18,6 +18,7 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/transitions.css" />
+  <link rel="stylesheet" href="./css/registration.css" />
   <style>
         @keyframes redBlink {
       0%, 100% { text-shadow: 0 0 4px rgb(34, 240, 34), 0 0 10px rgb(34, 240, 34), 0 0 20px rgb(34, 240, 34); opacity: 1; }
@@ -369,6 +370,41 @@
       </div>
     </section>
   </main>
+   <aside class="event-reminder" aria-label="Event reminder">
+      <button
+        class="event-reminder__toggle"
+        id="event-reminder-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="event-reminder-details"
+      >
+        <span class="event-reminder__icon" aria-hidden="true">FD</span>
+        <span class="event-reminder__toggle-copy">
+          <strong id="event-reminder-summary">FOUNDER'S DIARY · 11 DEC</strong>
+          <span id="event-reminder-countdown">Loading countdown…</span>
+        </span>
+        <span class="event-reminder__chevron" aria-hidden="true">⌃</span>
+      </button>
+      <section class="event-reminder__details" id="event-reminder-details" hidden>
+        <p class="event-reminder__eyebrow">MARK YOUR CALENDAR</p>
+        <h2>FOUNDER'S DIARY <span>2026</span></h2>
+        <p class="event-reminder__date">11 December 2026</p>
+        <div class="event-reminder__timer" aria-label="Time remaining to the registration reminder date">
+          <div><strong id="reminder-days">--</strong><span>days</span></div>
+          <div><strong id="reminder-hours">--</strong><span>hrs</span></div>
+          <div><strong id="reminder-minutes">--</strong><span>min</span></div>
+          <div><strong id="reminder-seconds">--</strong><span>sec</span></div>
+        </div>
+        <p class="event-reminder__deadline">
+          Registration reminder: <strong>by 9 December</strong>
+          <span>(2 days before the event)</span>
+        </p>
+        <p class="event-reminder__fee">Registration fee <strong>₹250</strong></p>
+        <button class="event-reminder__cta" id="event-reminder-register" style="cursor: not-allowed;" type="button">
+          Registration will open soon
+        </button>
+      </section>
+    </aside>
 
   <footer class="site-footer">
   <div class="container footer-grid">
@@ -567,6 +603,7 @@
   <script src="js/firebase-config.js"></script>
   <script src="js/main.js"></script>
   <script src="js/animations.js"></script>
+  <script src="js/event-reminder.js"></script>
 </body>
 
 </html>
