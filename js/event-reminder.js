@@ -36,11 +36,5 @@ reminderToggle.addEventListener("click", () => {
   reminder.classList.toggle("is-open", !isExpanded);
 });
 
-document.querySelector("#event-reminder-register").addEventListener("click", () => {
-  const registrationForm = document.querySelector("#registration-form");
-  registrationForm.scrollIntoView({ behavior: "smooth", block: "start" });
-  registrationForm.querySelector("input").focus({ preventScroll: true });
-});
-
 updateReminderCountdown();
 window.setInterval(updateReminderCountdown, 1000);
