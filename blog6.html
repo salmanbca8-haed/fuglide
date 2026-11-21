@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="FU-GLIDE Founder and team meet Mr. Sree Karthikeyan, Founder of Tech Vaseegara, to explore technology, innovation, and FOUNDER'S DIARY collaboration." />
+  <title>FU-GLIDE Meets Tech Vaseegara Founder | Fu-Glide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/transitions.css" />
+  <style>
+    :root {
+      --background: #050713;
+      --background-soft: #0b0d1d;
+      --card: rgba(18, 20, 43, 0.82);
+      --card-strong: #11142b;
+      --text: #f7f5ff;
+      --muted: #aaa9c2;
+      --line: rgba(185, 143, 255, 0.2);
+      --violet: #a96cff;
+      --purple: #6d3de2;
+      --glow: rgba(143, 82, 255, 0.28);
+      --radius: 22px;
+      --content-width: 760px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--background);
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 50% -10%, rgba(112, 56, 224, 0.28), transparent 38rem),
+        linear-gradient(155deg, #08091a 0%, var(--background) 48%, #0e071b 100%);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body.blog-page::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background: linear-gradient(180deg, rgba(6, 17, 36, 0.82) 0%, rgba(3, 8, 20, 0.92) 100%);
+      pointer-events: none;
+    }
+
+    body.blog-page > *:not(.site-header) {
+      position: relative;
+      z-index: 1;
+    }
+
+    body.blog-page > .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .page-shell {
+      position: relative;
+      width: min(calc(100% - 36px), var(--content-width));
+      margin: 0 auto;
+      padding: 64px 0 84px;
+    }
+
+    .article-header {
+      margin-bottom: 34px;
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin: 0 0 10px;
+      padding: 4px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--violet);
+      background: rgba(169, 108, 255, 0.1);
+      font-size: 0.84rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(1.85rem, 4vw, 2.7rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      text-wrap: balance;
+    }
+
+    .article-date {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .article-content {
+      display: grid;
+      gap: 22px;
+    }
+
+    .image-placeholder {
+      margin: 0;
+    }
+
+    .image-placeholder figcaption {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    .content-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px 30px;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 45%),
+        var(--card);
+      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(8px);
+    }
+
+    .content-card h2 {
+      margin: 0 0 12px;
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.45rem;
+      letter-spacing: -0.01em;
+    }
+
+    .content-card p {
+      margin: 0;
+      color: #e5e2f6;
+    }
+
+    .content-card p + p {
+      margin-top: 12px;
+    }
+
+    .content-card ul,
+    .content-card ol {
+      margin: 0;
+      padding-left: 22px;
+      color: #e5e2f6;
+    }
+
+    .content-card li + li {
+      margin-top: 8px;
+    }
+
+    li::marker {
+      color: var(--violet);
+      font-weight: 700;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .meta-item {
+      padding: 16px 18px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(185, 143, 255, 0.15);
+      border-radius: 14px;
+    }
+
+    .meta-label {
+      display: block;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--violet);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .meta-value {
+      font-size: 0.98rem;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .wiring-summary {
+      margin: 0;
+      padding: 18px 22px;
+      border-left: 3px solid var(--violet);
+      border-radius: 0 14px 14px 0;
+      color: #ece8f8;
+      background: linear-gradient(90deg, rgba(116, 60, 226, 0.2), rgba(116, 60, 226, 0.05));
+    }
+
+    .brand-tagline-box {
+      text-align: center;
+      padding: 24px 20px;
+      border: 1px dashed rgba(185, 143, 255, 0.35);
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(169, 108, 255, 0.08), rgba(109, 61, 226, 0.04));
+    }
+
+    .brand-tagline-box h3 {
+      margin: 0 0 6px;
+      font-size: 1.35rem;
+      font-family: 'Outfit', sans-serif;
+      color: #ffffff;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-tagline-box .tagline-sub {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .brand-tagline-box .motto-pill {
+      display: inline-block;
+      padding: 6px 18px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--purple), var(--violet));
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.05em;
+      box-shadow: 0 4px 16px rgba(109, 61, 226, 0.35);
+    }
+
+    .image {
+      display: block;
+      max-width: 100%;
+      border-radius: 12px;
+    }
+
+    .placeholder-box {
+      display: grid;
+      min-height: 250px;
+      place-items: center;
+      border: 1px dashed rgba(188, 148, 255, 0.65);
+      border-radius: 15px;
+      color: #c7a7ff;
+      background:
+        linear-gradient(135deg, rgba(119, 62, 232, 0.18), transparent 50%),
+        repeating-gradient(135deg, rgba(255, 255, 255, 0.025) 0 2px, transparent 2px 10px);
+      text-align: center;
+    }
+
+    .placeholder-box span {
+      padding: 12px 18px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 999px;
+      background: rgba(14, 10, 31, 0.8);
+      font-size: 0.92rem;
+      font-weight: 500;
+    }
+
+    .cta {
+      margin-top: 36px;
+      padding: 34px 26px;
+      border: 1px solid rgba(195, 153, 255, 0.35);
+      border-radius: var(--radius);
+      background: linear-gradient(115deg, rgba(97, 45, 200, 0.68), rgba(50, 25, 106, 0.72));
+      box-shadow: 0 18px 55px var(--glow);
+      text-align: center;
+    }
+
+    .cta p {
+      margin: 0 0 18px;
+      color: #ece7fb;
+    }
+
+    .blog-nav-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 21px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      border-radius: 12px;
+      color: #180c35;
+      background: linear-gradient(135deg, #f0ddff, #b98bff);
+      box-shadow: 0 10px 24px rgba(8, 3, 22, 0.28);
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .cta-button:hover,
+    .cta-button:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(8, 3, 22, 0.38);
+    }
+
+    .cta-button-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 21px;
+      border: 1px solid rgba(246, 184, 75, 0.45);
+      border-radius: 12px;
+      color: #ffd07a;
+      background: rgba(14, 10, 31, 0.65);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 24px rgba(8, 3, 22, 0.28);
+      font-weight: 700;
+      text-decoration: none;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, border-color 180ms ease, color 180ms ease;
+    }
+
+    .cta-button-secondary:hover,
+    .cta-button-secondary:focus-visible {
+      transform: translateY(-2px);
+      background: rgba(246, 184, 75, 0.18);
+      border-color: rgba(246, 184, 75, 0.85);
+      color: #ffffff;
+      box-shadow: 0 14px 28px rgba(246, 184, 75, 0.25);
+    }
+
+    @media (max-width: 640px) {
+      .page-shell {
+        width: min(calc(100% - 24px), var(--content-width));
+        padding-top: 36px;
+        padding-bottom: 56px;
+      }
+
+      .article-header {
+        margin-bottom: 24px;
+      }
+
+      h1 {
+        font-size: clamp(1.6rem, 6vw, 2.2rem);
+        line-height: 1.25;
+      }
+
+      .content-card {
+        padding: 20px 18px;
+        border-radius: 16px;
+      }
+
+      .content-card h2 {
+        font-size: 1.28rem;
+      }
+
+      .meta-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .meta-item {
+        padding: 12px 14px;
+      }
+
+      .cta {
+        padding: 24px 18px;
+        border-radius: 16px;
+      }
+
+      .blog-nav-buttons {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+      }
+
+      .blog-nav-buttons .cta-button,
+      .blog-nav-buttons .cta-button-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 380px) {
+      .content-card {
+        padding: 16px 14px;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="blog-page">
+  <header class="site-header animate-in">
+  <div class="announcement-bar" role="region" aria-label="Fu-Glide announcements">
+    <div class="announcement-bar__contact">
+      <a class="announcement-bar__phone" href="tel:+919150792336" aria-label="Call Fu-Glide Direct Line">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.053 15.053 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1.01A11.36 11.36 0 018.5 3.99c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.61c0-.55-.45-1-.99-1z" />
+        </svg>
+        <span>+91 91507 92336</span>
+      </a>
+      <a class="announcement-bar__phone" href="tel:+914513566973" aria-label="Call Fu-Glide Landline">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.053 15.053 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1.01A11.36 11.36 0 018.5 3.99c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.61c0-.55-.45-1-.99-1z" />
+        </svg>
+        <span>+91 4513566973</span>
+      </a>
+      <a class="announcement-bar__instagram" href="https://www.instagram.com/fu_glide_iin/?hl=en" target="_blank"
+        rel="noopener noreferrer" aria-label="Follow Fu-Glide on Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path
+            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.79 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+        </svg>
+      </a>
+      <a class="announcement-bar__email" href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#search/fuglideiin%40gmail.com?compose=new" target="_blank" rel="noopener noreferrer" aria-label="Email Fu-Glide">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 5h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm0 2v.5l9 6 9-6V7H3zm18 10V9.9l-8.45 5.63a1 1 0 0 1-1.1 0L3 9.9V17h18z" />
+        </svg>
+      </a>
+    </div>
+    <div class="announcement-bar__marquee">
+      <div class="announcement-bar__viewport">
+        <div class="announcement-bar__track">
+          <div class="announcement-bar__group">
+            <span class="announcement-bar__item">Best AI Course in Dindigul</span>
+            <span class="announcement-bar__item">Practical Generative AI Training</span>
+            <span class="announcement-bar__item">Robotics &amp; Automation Programs Open</span>
+          </div>
+          <div class="announcement-bar__group" aria-hidden="true">
+            <span class="announcement-bar__item">Best AI Course in Dindigul</span>
+            <span class="announcement-bar__item">Practical Generative AI Training</span>
+            <span class="announcement-bar__item">Robotics &amp; Automation Programs Open</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="navbar container">
+    <a class="brand" href="index.html" aria-label="Fu-Glide Home">
+      <img src="images/logo.png" alt="Fu-Glide Logo" class="brand-logo" />
+      <img src="images/logobelow.png" alt="Innovation Intelligence Network" class="brand-logo-sub" />
+    </a>
+
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="pages/about.html">About</a>
+
+      <div class="dropdown">
+        <button class="dropdown-toggle" type="button">
+          Courses
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="dropdown-menu">
+          <a href="pages/tutoring.html">IT courses & Technology Training</a>
+          <a href="pages/software-achievements.html">Non-IT Courses</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <button class="dropdown-toggle" type="button">
+          Services
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </button>
+        <div class="dropdown-menu">
+          <a href="pages/services2.html#seo">SEO</a>
+          <a href="pages/services2.html#smo">SMO</a>
+          <a href="pages/services2.html#ads">Meta and Google Ads</a>
+          <a href="pages/services2.html#webdev">Website Development</a>
+          <a href="pages/services2.html#branding">Branding and Marketing</a>
+          <a href="pages/services2.html#robotics">Robotic Services</a>
+          <a href="pages/services2.html#robot-rental">Robot Rentals (Events)</a>
+          <a href="pages/services2.html#proposals">Business Proposals and Writing</a>
+          <a href="pages/services2.html#growth">Business Growth Development</a>
+        </div>
+      </div>
+
+      <a href="pages/blog.html" style="color: #f6b84b;">Blog</a>
+      <a href="pages/career.html">Career</a>
+      <a href="pages/apply.html">Apply</a>
+      <a href="pages/contact.html">Contact</a>
+    </div>
+  </nav>
+</header>
+
+  <main class="page-shell">
+    <button id="backToTop" class="back-to-top" aria-label="Back to Top" title="Back to Top">
+      <svg viewBox="0 0 24 24">
+        <line x1="12" y1="19" x2="12" y2="5"></line>
+        <polyline points="5 12 12 5 19 12"></polyline>
+      </svg>
+    </button>
+    <header class="article-header animate-in">
+      <p class="eyebrow">Founder Meeting &amp; Innovation Network</p>
+      <h1>FU-GLIDE Founder &amp; Team Meet the Founder of Tech Vaseegara</h1>
+      <p class="article-date">November 21, 2026</p>
+    </header>
+
+    <!-- Site-Wide Software & Web Development Highlight Banner -->
+    <section class="site-highlight-banner animate-in" style="padding-left: 0; padding-right: 0;">
+      <div class="feature-item site-highlight-card reveal animate-in">
+        <div class="site-highlight-content">
+          <div class="site-highlight-header">
+            <span class="eyebrow">Enterprise Solutions</span>
+            <h2>We Also Build Software &amp; Websites</h2>
+            <p>
+              Fu-Glide designs and develops custom websites, web apps, and software for clients — not just training.
+            </p>
+          </div>
+          <div class="site-highlight-badges">
+            <div class="site-highlight-badge">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>10+ Projects Delivered</span>
+            </div>
+            <div class="site-highlight-badge">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Custom Web &amp; App Development</span>
+            </div>
+            <div class="site-highlight-badge">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>From Idea to Launch</span>
+            </div>
+          </div>
+        </div>
+        <div class="site-highlight-action">
+          <a class="btn btn-primary" href="pages/services2.html#webdev">See Our Work</a>
+        </div>
+      </div>
+    </section>
+
+    <article class="article-content">
+      <figure class="image-placeholder animate-in">
+        <div class="placeholder-box" role="img" aria-label="FU-GLIDE Founder and team meeting Mr. Sree Karthikeyan" style="min-height: auto; padding: 6px; overflow: hidden;">
+          <img src="./images/thanjavur.jpeg" alt="FU-GLIDE Founder and team meeting the Founder of Tech Vaseegara" class="image" style="width: 100%; height: auto; display: block; border-radius: 10px;">
+        </div>
+        <figcaption>FU-GLIDE Founder and team with Mr. Sree Karthikeyan, Founder of Tech Vaseegara</figcaption>
+      </figure>
+
+      <section class="content-card animate-in">
+        <p>Today marks an important milestone for <strong>FU-GLIDE Innovation Intelligence Network</strong> as our Founder and team had the opportunity to meet <strong>Mr. Sree Karthikeyan</strong>, Founder of Tech Vaseegara.</p>
+        <p>The meeting was organised as part of our initiative to invite him as a distinguished guest to the upcoming <strong>FOUNDER'S DIARY – Untold Stories of Business Leaders</strong>. This platform celebrates entrepreneurial journeys, shares business experiences, and inspires the next generation of entrepreneurs.</p>
+      </section>
+
+      <section class="content-card animate-in">
+        <h2>Exploring New Technology and Innovation</h2>
+        <p>During the meeting, we held meaningful discussions on emerging technologies, digital transformation, and the implementation of innovative technology solutions in business operations.</p>
+        <ul>
+          <li><strong>Technology Implementation:</strong> Applying new technologies across business operations.</li>
+          <li><strong>Digital Transformation:</strong> Automating business processes and modernizing workflows.</li>
+          <li><strong>Technology-Driven Growth:</strong> Building strategies supported by digital innovation.</li>
+          <li><strong>Organisational Efficiency:</strong> Identifying solutions that improve productivity and operations.</li>
+          <li><strong>Collaboration and Knowledge Sharing:</strong> Creating opportunities for mutual learning and partnership.</li>
+          <li><strong>Future-Ready Infrastructure:</strong> Leveraging technological expertise to strengthen FU-GLIDE's growth.</li>
+        </ul>
+      </section>
+
+      <section class="content-card animate-in">
+        <h2>Strengthening FU-GLIDE's Growth Through Technology</h2>
+        <p>As FU-GLIDE continues its journey towards becoming an innovation-driven organisation, we recognise that technology plays a significant role in sustainable business development.</p>
+        <p>We look forward to exploring the expertise and technological support of <strong>Tech Vaseegara</strong> to identify new opportunities, strengthen operational capabilities, improve digital infrastructure, and accelerate organisational growth.</p>
+      </section>
+
+      <p class="wiring-summary animate-in">Building Connections: Meaningful collaboration creates opportunities for innovation, stronger businesses, and sustainable growth.</p>
+
+      <section class="content-card animate-in">
+        <h2>An Invitation to FOUNDER'S DIARY</h2>
+        <p>We are delighted to extend our invitation to Mr. Sree Karthikeyan to be part of <strong>FOUNDER'S DIARY – Untold Stories of Business Leaders</strong>.</p>
+        <p>Through this initiative, we aim to bring inspiring founders, business leaders, innovators, and aspiring entrepreneurs together to share real-world experiences, entrepreneurial challenges, leadership insights, and future business opportunities.</p>
+        <div class="meta-grid">
+          <div class="meta-item">
+            <span class="meta-label">Guest</span>
+            <span class="meta-value">Mr. Sree Karthikeyan</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Organisation</span>
+            <span class="meta-value">Tech Vaseegara</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Event</span>
+            <span class="meta-value">FOUNDER'S DIARY</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Focus</span>
+            <span class="meta-value">Technology &amp; Innovation</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-card animate-in">
+        <h2>Moving Forward Together</h2>
+        <p>At FU-GLIDE, we believe that meaningful connections create new opportunities, innovation builds stronger businesses, and collaboration drives sustainable growth.</p>
+        <p>Today's meeting represents another positive step towards building a technology-oriented and innovation-focused business ecosystem.</p>
+        <p><strong>FU-GLIDE Innovation Intelligence Network</strong><br />Innovate. Educate. Empower. Transform.</p>
+      </section>
+    </article>
+
+    <section class="cta animate-in" aria-label="Call to action">
+      <p>Explore more founder stories, technology insights, and innovation updates from Fu-Glide.</p>
+      <div class="blog-nav-buttons">
+        <a class="cta-button-secondary animate-in" href="blog5.html">&larr; Previous: FG DRIVO</a>
+        <a class="cta-button animate-in" href="pages/contact.html">Contact FU-GLIDE &rarr;</a>
+        <a class="cta-button-secondary animate-in" href="blog3.html">Sigarathalaivi Project &rarr;</a>
+        <a class="cta-button-secondary animate-in" href="pages/blog.html">All Blog Posts</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+  <div class="container footer-grid">
+    <!-- Column 1: Brand Info -->
+    <div class="footer-col footer-brand">
+      <a class="footer-logo-wrap" href="index.html" aria-label="Fu-Glide Home">
+        <img src="images/logo.png" alt="Fu-Glide Logo" class="footer-logo" />
+        <span class="footer-brand-name">Fu-Glide</span>
+      </a>
+      <p class="footer-about-text">
+        At Fu-Glide, we’re entirely focused on helping you succeed. We provide modern digital tools and hands-on guidance for teams and students with big goals. Whether you’re trying to land your first job or level up your current skills, we’re here to help you get where you want to be.
+      </p>
+      <div class="footer-social-row">
+        <a href="https://www.instagram.com/fu_glide_iin/?hl=en" target="_blank" rel="noopener noreferrer"
+          class="footer-social-btn" aria-label="Instagram">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+          </svg>
+        </a>
+        <a href="https://wa.me/9150792336" target="_blank" rel="noopener noreferrer" class="footer-social-btn"
+          aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L0 24l6.335-1.662c1.746.953 3.71 1.456 5.711 1.457h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+          </svg>
+        </a>
+        <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#search/fuglideiin%40gmail.com?compose=new" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Email Fu-Glide">
+          <svg viewBox="0 0 24 24">
+            <path d="M3 5h18a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2zm0 2v.5l9 6 9-6V7H3zm18 10V9.9l-8.45 5.63a1 1 0 0 1-1.1 0L3 9.9V17h18z" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Column 2: Quick Links -->
+    <div class="footer-col footer-links-col">
+      <h4 class="footer-heading">Quick Links</h4>
+      <ul class="footer-nav-list">
+        <li class="footer-nav-item">
+          <a href="index.html" class="footer-nav-link">
+            <svg class="footer-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <span>Home</span>
+          </a>
+        </li>
+        <li class="footer-nav-item">
+          <a href="pages/about.html" class="footer-nav-link">
+            <svg class="footer-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <span>About Us</span>
+          </a>
+        </li>
+        <li class="footer-nav-item">
+          <a href="pages/tutoring.html" class="footer-nav-link">
+            <svg class="footer-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <span>Our Courses</span>
+          </a>
+        </li>
+        <li class="footer-nav-item">
+          <a href="pages/blog.html" class="footer-nav-link">
+            <svg class="footer-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <span>Blog</span>
+          </a>
+        </li>
+        <li class="footer-nav-item">
+          <a href="pages/services2.html" class="footer-nav-link">
+            <svg class="footer-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <span>Our Services</span>
+          </a>
+        </li>
+        <li class="footer-nav-item">
+          <a href="pages/contact.html" class="footer-nav-link">
+            <svg class="footer-link-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+            <span>Contact Us</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Column 3: Contact Us -->
+    <div class="footer-col footer-contact-col">
+      <h4 class="footer-heading">Contact Us</h4>
+      <ul class="footer-contact-list">
+        <li class="footer-contact-item">
+          <div class="footer-contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+            </svg>
+          </div>
+          <div class="footer-contact-info">
+            <span class="footer-contact-label">Location</span>
+            <span class="footer-contact-val">
+              <strong>Fu-Glide Innovation Intelligence Network</strong>
+              38B RMV Complex, Palani Road, Dindigul 624003.
+            </span>
+          </div>
+        </li>
+        <li class="footer-contact-item">
+          <div class="footer-contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+            </svg>
+          </div>
+          <div class="footer-contact-info">
+            <span class="footer-contact-label">Email Support</span>
+            <a class="footer-contact-val" href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#search/fuglideiin%40gmail.com?compose=new" target="_blank" rel="noopener noreferrer">fuglide@gmail.com</a>
+          </div>
+        </li>
+        <li class="footer-contact-item">
+          <div class="footer-contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-2.2 2.2a15.053 15.053 0 01-6.59-6.59l2.2-2.21a.96.96 0 00.25-1.01A11.36 11.36 0 018.5 3.99c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.61c0-.55-.45-1-.99-1z" />
+            </svg>
+          </div>
+          <div class="footer-contact-info">
+            <span class="footer-contact-label">Direct Line</span>
+            <a class="footer-contact-val" href="tel:+919150792336">+91 91507 92336</a>
+            <span class="footer-contact-label">Land Line</span>
+            <a class="footer-contact-val" href="tel:+914513566973">+91 4513566973</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Column 4: Our Location -->
+    <div class="footer-col footer-map-col">
+      <h4 class="footer-heading">Our Location</h4>
+      <div class="footer-map-card">
+        <div class="footer-map-badge">
+          <span class="footer-map-dot"></span>
+          <span>Live HQ Campus</span>
+        </div>
+        <div class="footer-map-wrapper">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d62804.04400047483!2d77.90463166305959!3d10.321646438874492!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b00ab004b59b95d%3A0x1382bb12b1642380!2sFu-Glide%20Innovation%20Intelligence%20Network!5e0!3m2!1sen!2sin!4v1785505014608!5m2!1sen!2sin"
+            width="100%" height="175" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin" title="Fu-Glide Innovation Network Location Map">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>&copy; 2026 Fu-Glide Innovation Intelligence Network. All rights reserved.</p>
+    <div class="footer-tagline-pill">
+      <span>Empowering Next-Gen Innovators &amp; Students</span>
+    </div>
+  </div>
+</footer>
+  <script src="js/animations.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
